@@ -117,3 +117,7 @@ void secuencia_aumento_j1(void){
 void secuencia_aumento_j2(void){
     PORTD = PORTD + 2;
 }
+
+void gana_j1(void){
+    
+}
