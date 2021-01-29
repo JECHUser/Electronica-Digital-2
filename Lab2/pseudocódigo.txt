@@ -1,0 +1,34 @@
+
+----------------------------------------------------
+UNIVERSIDAD DEL VALLE DE GUATEMALA                  |
+DEPARTAMENTO DE INGENIERÍA ELECTRÓNICA              | 
+ELECTRÓNICA DIGITAL 2                               |
+LABORATORIO 2 - INTERRUPCIONES Y USO DE LIBRERÍAS   |
+----------------------------------------------------
+
+----------------------------------------------------
+PSEUDOCODIGO                                        |
+----------------------------------------------------
+
+IMPLEMENTAR CONTADOR DE 8 BITS
+	- Configurar TRISC y PORTC (salidas - LEDs)
+	- COnfigurar TRISB (entradas - push-buttons)
+CONFIGURACION DE ADC
+	- Configurar ANSEL para determinar una entada analógica
+	- Seleccionar la conversión del clock
+	- Seleccionar el formato (right justified)
+	- Establecer el canal de selección con CHS del ADC
+	- Configurar interrupciones del ADC con ADIF y ADIE
+DESPLEGAR VALOR DE ADC - MULTIPLEXADO DE SEÑALES (TEMPORIZADOR)
+	- Configurar bits PSA, PS<2:0> del TIMER0
+	- Controlar la bandera T0IF y habilitarlo con T0IE
+RELACION CONTADOR - VALOR DIGITAL (ALARMA)
+	- Con una relación determinar si el valor analógico
+	  es mayor al valor de referencia, si es mayor 	
+	  encender un bit.
+
+
+
+
+
+
