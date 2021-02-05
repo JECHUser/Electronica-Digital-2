@@ -10,6 +10,8 @@
 //******************************************************************************
 
 #include <xc.h>
+#include <stdint.h>
+#include "tabla_7seg.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -37,6 +39,44 @@
 // Variables
 //******************************************************************************
 
+int i;
+int cont = 0;
+uint8_t conversion = 0;
+int MSB;
+int LSB;
+int transistor = 1;
+
+//******************************************************************************
+// Interrupciones
+//******************************************************************************
+void __interrupt() isr(void){
+    if (INTCONbits.RBIF == 1){
+        __delay_ms(2);
+        if (PORTBbits.RB0 == 1){
+            PORTC++;
+        }
+        if (PORTBbits.RB1 == 1){
+            PORTC--;
+        }
+        INTCONbits.RBIF = 0;
+    }
+    
+    if (PIR1bits.ADIF == 1){
+        conversion = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+    
+    if (INTCONbits.T0IF == 1){
+        if (transistor == 1){
+            transistor = 0;
+        }
+        else{
+            transistor = 1;
+        }
+        TMR0 = 254;
+        INTCONbits.T0IF = 0;
+    }
+}
 
 //******************************************************************************
 // Prototipo de funciones
@@ -48,18 +88,65 @@ void setup(void);
 // Ciclo principal
 //******************************************************************************
 
-void main(void) {
+void main(void){
     setup();
+
     //**************************************************************************
     // Loop principal
     //**************************************************************************
-    while (1){
+    
+    while (1){ 
+        __delay_ms(1);
+        ADCON0bits.GO_nDONE = 1;
+        if (ADCON0bits.GO_nDONE == 0){
+            ADCON0bits.GO_nDONE = 1;
+        }
+        
+        if (transistor == 1){
+            LSB = conversion & 0x0F;
+            tabla(LSB);
+            PORTEbits.RE0 = 1;
+            PORTEbits.RE1 = 0; 
+        }
+        else{
+            MSB = conversion>>4;
+            tabla(MSB);
+            PORTEbits.RE0 = 0;
+            PORTEbits.RE1 = 1;  
+        }  
+        
+        if (conversion > PORTC){
+            PORTEbits.RE2 = 1;
+        }
+        else{
+            PORTEbits.RE2 = 0;
+        }
+    }
 }
-
 //******************************************************************************
 // Configuración
 //******************************************************************************
 void setup(void){
+    TRISA = 0x01;
+    PORTA = 0;
+    TRISB = 0x03;
+    PORTB = 0;
+    TRISC = 0;
+    PORTC = 0;
+    TRISD = 0;
+    PORTD = 0;
+    TRISE = 0;
+    PORTE = 0x01;
+    ANSEL = 0x01;
+    ANSELH = 0;
+    IOCB = 0x03;
+    INTCON = 0b11101000;
+    ADCON0 = 0b00000011;
+    ADCON1 = 0b00000000;
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
+    OPTION_REG = 0b01010111;
+    TMR0 = 254;
 }
 
 //******************************************************************************
