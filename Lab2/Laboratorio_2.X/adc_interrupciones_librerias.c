@@ -38,42 +38,54 @@
 //******************************************************************************
 // Variables
 //******************************************************************************
-
-int i;
-int cont = 0;
+// definición de variables
 uint8_t conversion = 0;
-int MSB;
-int LSB;
+uint8_t MSB;
+uint8_t LSB;
 int transistor = 1;
 
 //******************************************************************************
 // Interrupciones
 //******************************************************************************
+// inicio de módulo de interrupciones
 void __interrupt() isr(void){
+    
+    // interrupciones debido a las interrupt-on-change del puerto B
     if (INTCONbits.RBIF == 1){
         __delay_ms(2);
+        
+        // evalua si se presiona el botón de incremento
         if (PORTBbits.RB0 == 1){
             PORTC++;
         }
+        // evalua si se presiona el botón de decremento
         if (PORTBbits.RB1 == 1){
             PORTC--;
         }
+        // apaga bandera de interrupt-on-change
         INTCONbits.RBIF = 0;
     }
     
+    // interrupciones del adc (cuando se carga el valor)
     if (PIR1bits.ADIF == 1){
+        // se mueve el valor de la conversion a una variable
         conversion = ADRESH;
+        // apaga bandera de que se completó la conversión
         PIR1bits.ADIF = 0;
     }
     
+    // interrupcion del timer0
     if (INTCONbits.T0IF == 1){
+        // si el timer0 hacer overflow
+        // hacer que el valor de transistor oscile entre 0 y 1
         if (transistor == 1){
             transistor = 0;
         }
         else{
             transistor = 1;
         }
-        TMR0 = 254;
+        
+        // apaga bandera de overflow del timer0
         INTCONbits.T0IF = 0;
     }
 }
@@ -96,25 +108,38 @@ void main(void){
     //**************************************************************************
     
     while (1){ 
-        __delay_ms(1);
+        // tiempo de captura de conversión
+        __delay_ms(2);
+        // enciende inicio de conversion A/D
         ADCON0bits.GO_nDONE = 1;
+        // evalua si se completó y la enciende nuevamente para que se repita la conversion
         if (ADCON0bits.GO_nDONE == 0){
             ADCON0bits.GO_nDONE = 1;
         }
         
+        // esta parte hace la multiplexacion de los displays
+        // cuando el timer0 hace overflow el valor de transistor cambia de 0 a 1 y visceversa
         if (transistor == 1){
+            // se toma el nibble (LSB) de la conversion
             LSB = conversion & 0x0F;
+            // llamada de libreria para tomar el valor del display
             tabla(LSB);
-            PORTEbits.RE0 = 1;
-            PORTEbits.RE1 = 0; 
+            // alternancia de los transitores de los display
+            PORTEbits.RE0 = 0;
+            PORTEbits.RE1 = 1; 
         }
         else{
-            MSB = conversion>>4;
+            // se toma el nibble (MSB) de la conversion
+            MSB = (conversion & 0xF0)>>5;
+            // llamada de libreria para tomar el valor del display
             tabla(MSB);
-            PORTEbits.RE0 = 0;
-            PORTEbits.RE1 = 1;  
+            // alternancia de los transitores de los display
+            PORTEbits.RE0 = 1;
+            
+            PORTEbits.RE1 = 0; 
         }  
         
+        // si se cumple la condicion enciende la alarma
         if (conversion > PORTC){
             PORTEbits.RE2 = 1;
         }
@@ -145,7 +170,7 @@ void setup(void){
     ADCON1 = 0b00000000;
     PIE1bits.ADIE = 1;
     PIR1bits.ADIF = 0;
-    OPTION_REG = 0b01010111;
+    OPTION_REG = 0b01000111;
     TMR0 = 254;
 }
 

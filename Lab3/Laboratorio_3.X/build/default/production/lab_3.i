@@ -1,4 +1,4 @@
-# 1 "adc_interrupciones_librerias.c"
+# 1 "lab_3.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,23 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "adc_interrupciones_librerias.c" 2
-# 12 "adc_interrupciones_librerias.c"
+# 1 "lab_3.c" 2
+# 15 "lab_3.c"
+#pragma config FOSC = XT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+# 39 "lab_3.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,310 +2503,9 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 12 "adc_interrupciones_librerias.c" 2
+# 39 "lab_3.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
 
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 13 "adc_interrupciones_librerias.c" 2
-
-# 1 "./tabla_7seg.h" 1
-# 14 "./tabla_7seg.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 14 "./tabla_7seg.h" 2
-
-
-void tabla(uint8_t adc_lecture);
-# 14 "adc_interrupciones_librerias.c" 2
-
-
-
-
-
-
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-
-
-uint8_t conversion = 0;
-uint8_t MSB;
-uint8_t LSB;
-int transistor = 1;
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) isr(void){
-
-
-    if (INTCONbits.RBIF == 1){
-        _delay((unsigned long)((2)*(8000000/4000.0)));
-
-
-        if (PORTBbits.RB0 == 1){
-            PORTC++;
-        }
-
-        if (PORTBbits.RB1 == 1){
-            PORTC--;
-        }
-
-        INTCONbits.RBIF = 0;
-    }
-
-
-    if (PIR1bits.ADIF == 1){
-
-        conversion = ADRESH;
-
-        PIR1bits.ADIF = 0;
-    }
-
-
-    if (INTCONbits.T0IF == 1){
-
-
-        if (transistor == 1){
-            transistor = 0;
-        }
-        else{
-            transistor = 1;
-        }
-
-
-        INTCONbits.T0IF = 0;
-    }
-}
-
-
-
-
-
-void setup(void);
-
-
-
-
-
-void main(void){
-    setup();
-
-
-
-
-
-    while (1){
-
-        _delay((unsigned long)((2)*(8000000/4000.0)));
-
-        ADCON0bits.GO_nDONE = 1;
-
-        if (ADCON0bits.GO_nDONE == 0){
-            ADCON0bits.GO_nDONE = 1;
-        }
-
-
-
-        if (transistor == 1){
-
-            LSB = conversion & 0x0F;
-
-            tabla(LSB);
-
-            PORTEbits.RE0 = 0;
-            PORTEbits.RE1 = 1;
-        }
-        else{
-
-            MSB = (conversion & 0xF0)>>5;
-
-            tabla(MSB);
-
-            PORTEbits.RE0 = 1;
-
-            PORTEbits.RE1 = 0;
-        }
-
-
-        if (conversion > PORTC){
-            PORTEbits.RE2 = 1;
-        }
-        else{
-            PORTEbits.RE2 = 0;
-        }
-    }
-}
-
-
-
-void setup(void){
-    TRISA = 0x01;
-    PORTA = 0;
-    TRISB = 0x03;
-    PORTB = 0;
-    TRISC = 0;
-    PORTC = 0;
-    TRISD = 0;
-    PORTD = 0;
-    TRISE = 0;
-    PORTE = 0x01;
-    ANSEL = 0x01;
-    ANSELH = 0;
-    IOCB = 0x03;
-    INTCON = 0b11101000;
-    ADCON0 = 0b00000011;
-    ADCON1 = 0b00000000;
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 0;
-    OPTION_REG = 0b01000111;
-    TMR0 = 254;
+void main(void) {
+    return;
 }
