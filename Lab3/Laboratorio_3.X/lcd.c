@@ -1,3 +1,10 @@
+/*
+ * File: lcd.h
+ * Se utilizó y se adaptaron las librerías de Ligo George
+ * de la página www.electrosome.com
+ * Enlace: http://electrosome.com/lcd-pic-mplab-xc8/
+ * Revision history:
+ */
 
 #include <xc.h>
 #include "lcd.h"

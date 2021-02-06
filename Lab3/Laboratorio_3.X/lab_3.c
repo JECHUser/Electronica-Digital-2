@@ -5,7 +5,26 @@
  * Created on 5 de febrero de 2021, 10:22 AM
  */
 
+#define _XTAL_FREQ 8000000
 
+#define RS RD2
+#define EN RD3
+#define D4 RD4
+#define D5 RD5
+#define D6 RD6
+#define D7 RD7
+
+//******************************************************************************
+// Importación de librerías
+//******************************************************************************
+
+#include <xc.h>
+#include "lcd.h"
+#include "adc.h"
+
+//******************************************************************************
+// Palabra de configuración
+//******************************************************************************
 
 // PIC16F887 Configuration Bit Settings
 
@@ -27,17 +46,65 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
-#define _XTAL_FREQ 8000000
+//******************************************************************************
+// Variables
+//******************************************************************************
 
-#define RS RD2
-#define EN RD3
-#define D4 RD4
-#define D5 RD5
-#define D6 RD6
-#define D7 RD7
+uint8_t conversion;
+uint8_t pot1_value;
+uint8_t pot2_value;
+int channel;
+int format_result = 0;
 
-#include <xc.h>
+//******************************************************************************
+// Interrupciones
+//******************************************************************************
+
+void __interrupt() isr(void){
+    
+    if(PIR1bits.ADIF == 1){
+        conversion = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+}
+
+//******************************************************************************
+// Prototipo de funciones
+//******************************************************************************
+
+void setup(void);
+
+//******************************************************************************
+// Ciclo principal
+//******************************************************************************
 
 void main(void) {
-    return;
+    setup();
+    adc_setup(format_result);
+    
+    //**************************************************************************
+    // Loop principal
+    //**************************************************************************
+    while (1){
+        channel = 0x00;
+        adc_convert(channel);
+        pot1_value = conversion;
+        channel = 0x02;
+        adc_convert(channel);
+        pot2_value = conversion;
+    }
 }
+
+//******************************************************************************
+// Configuración
+//******************************************************************************
+void setup(void){
+    TRISA = 0x03;
+    PORTA = 0;
+    TRISD = 0;
+    PORTD = 0;
+}
+
+//******************************************************************************
+// Funciones
+//******************************************************************************
