@@ -7,22 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "lab_3.c" 2
-# 15 "lab_3.c"
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-# 39 "lab_3.c"
+# 25 "lab_3.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2503,9 +2488,262 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 39 "lab_3.c" 2
+# 25 "lab_3.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
+
+
+
+
+
+
+typedef signed int int16_t;
+
+
+
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 26 "lab_3.c" 2
+
+# 1 "./lcd.h" 1
+# 53 "./lcd.h"
+void Lcd_Port(char a);
+void Lcd_Cmd(char a);
+void Lcd_Clear(void);
+void Lcd_Set_Cursor(char a, char b);
+void Lcd_Init(void);
+void Lcd_Write_Char(char a);
+void Lcd_Write_String(char *a);
+# 27 "lab_3.c" 2
+
+# 1 "./adc.h" 1
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 6 "./adc.h" 2
+
+void adc_convert(uint8_t channel);
+void adc_setup(uint8_t format_result);
+# 28 "lab_3.c" 2
+# 39 "lab_3.c"
+#pragma config FOSC = XT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+
+
+
+
+
+
+
+uint8_t conversion;
+uint8_t pot1_value;
+uint8_t pot2_value;
+uint8_t channel_1;
+uint8_t channel_2;
+uint8_t format_result = 0;
+
+
+
+
+
+void __attribute__((picinterrupt(("")))) isr(void) {
+    if (PIR1bits.ADIF == 1) {
+        conversion = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+}
+
+
+
+
+
+void setup(void);
+void mostrar(void);
+
+
+
 
 
 void main(void) {
-    return;
+    setup();
+    adc_setup(format_result);
+    Lcd_Init();
+
+
+
+    while (1) {
+        mostrar();
+        channel_1 = 0;
+        adc_convert(channel_1);
+        pot1_value = conversion;
+        channel_2 = 1;
+        adc_convert(channel_2);
+        pot2_value = conversion;
+    }
+}
+
+
+
+
+void setup(void) {
+    TRISA = 0x0F;
+    PORTA = 0x00;
+    TRISC = 0x00;
+    PORTC = 0x00;
+    TRISD = 0x00;
+    PORTD = 0x00;
+    TRISE = 0x00;
+    PORTE = 0x00;
+    ANSEL = 0x0F;
+    ANSELH = 0;
+}
+
+
+
+
+
+void mostrar(void){
+    Lcd_Clear();
+    Lcd_Set_Cursor(1,1);
+    Lcd_Write_String("T1");
+    Lcd_Set_Cursor(1,5);
+    Lcd_Write_String("T2");
+    Lcd_Set_Cursor(1,10);
+    Lcd_Write_String("P");
+    _delay((unsigned long)((2000)*(8000000/4000.0)));
 }

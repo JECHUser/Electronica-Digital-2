@@ -1,29 +1,78 @@
 Version 4.0 HI-TECH Software Intermediate Code
+[t ~ __interrupt . k ]
+[t T1 __interrupt ]
+"543 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1238
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 [p mainexit ]
-"15 lab_3.c
-[p x FOSC  =  XT         ]
-"16
-[p x WDTE  =  OFF        ]
-"17
-[p x PWRTE  =  OFF       ]
-"18
-[p x MCLRE  =  OFF       ]
-"19
-[p x CP  =  OFF          ]
-"20
-[p x CPD  =  OFF         ]
-"21
-[p x BOREN  =  OFF       ]
-"22
-[p x IESO  =  OFF        ]
-"23
-[p x FCMEN  =  OFF       ]
-"24
-[p x LVP  =  OFF         ]
-"27
-[p x BOR4V  =  BOR40V    ]
-"28
-[p x WRT  =  OFF         ]
+"82 lab_3.c
+[; ;lab_3.c: 82: }
+[v _setup `(v ~T0 @X0 0 ef ]
+"8 ./adc.h
+[; ;./adc.h: 8: void adc_setup(uint8_t format_result);
+[v _adc_setup `(v ~T0 @X0 0 ef1`uc ]
+"57 ./lcd.h
+[; ;./lcd.h: 57: void Lcd_Init(void);
+[v _Lcd_Init `(v ~T0 @X0 0 ef ]
+"83 lab_3.c
+[v _mostrar `(v ~T0 @X0 0 ef ]
+"7 ./adc.h
+[; ;./adc.h: 7: void adc_convert(uint8_t channel);
+[v _adc_convert `(v ~T0 @X0 0 ef1`uc ]
+"1416 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1416: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"166
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"1540
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1540: extern volatile unsigned char TRISC __attribute__((address(0x087)));
+[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
+"290
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"1602
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"352
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"1664
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
+[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
+"414
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
+[v _PORTE `Vuc ~T0 @X0 0 e@9 ]
+"3387
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
+"3449
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3449: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
+[v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
+"55 ./lcd.h
+[; ;./lcd.h: 55: void Lcd_Clear(void);
+[v _Lcd_Clear `(v ~T0 @X0 0 ef ]
+"56
+[; ;./lcd.h: 56: void Lcd_Set_Cursor(char a, char b);
+[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"59
+[; ;./lcd.h: 59: void Lcd_Write_String(char *a);
+[v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -258,17 +307,177 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"39 lab_3.c
+[; ;lab_3.c: 39: 
+[p x FOSC  =  XT         ]
+"40
+[; ;lab_3.c: 40: 
+[p x WDTE  =  OFF        ]
+"41
+[; ;lab_3.c: 41: 
+[p x PWRTE  =  OFF       ]
+"42
+[; ;lab_3.c: 42:     while (1) {
+[p x MCLRE  =  OFF       ]
+"43
+[; ;lab_3.c: 43:         mostrar();
+[p x CP  =  OFF          ]
+"44
+[; ;lab_3.c: 44:         channel_1 = 0;
+[p x CPD  =  OFF         ]
+"45
+[; ;lab_3.c: 45:         adc_convert(channel_1);
+[p x BOREN  =  OFF       ]
+"46
+[; ;lab_3.c: 46:         pot1_value = conversion;
+[p x IESO  =  OFF        ]
+"47
+[; ;lab_3.c: 47:         channel_2 = 1;
+[p x FCMEN  =  OFF       ]
+"48
+[; ;lab_3.c: 48:         adc_convert(channel_2);
+[p x LVP  =  OFF         ]
+"51
+[; ;lab_3.c: 51: }
+[p x BOR4V  =  BOR40V    ]
+"52
+[; ;lab_3.c: 52: 
+[p x WRT  =  OFF         ]
+"60
+[; ;lab_3.c: 60:     PORTC = 0x00;
+[v _conversion `uc ~T0 @X0 1 e ]
+"61
+[; ;lab_3.c: 61:     TRISD = 0x00;
+[v _pot1_value `uc ~T0 @X0 1 e ]
+"62
+[; ;lab_3.c: 62:     PORTD = 0x00;
+[v _pot2_value `uc ~T0 @X0 1 e ]
+"63
+[; ;lab_3.c: 63:     TRISE = 0x00;
+[v _channel_1 `uc ~T0 @X0 1 e ]
+"64
+[; ;lab_3.c: 64:     PORTE = 0x00;
+[v _channel_2 `uc ~T0 @X0 1 e ]
+"65
+[; ;lab_3.c: 65:     ANSEL = 0x0F;
+[v _format_result `uc ~T0 @X0 1 e ]
+[i _format_result
+-> -> 0 `i `uc
+]
+[v $root$_isr `(v ~T0 @X0 0 e ]
+"71
+[; ;lab_3.c: 71: 
+[v _isr `(v ~T1 @X0 1 ef ]
+{
+[e :U _isr ]
+[f ]
+"72
+[; ;lab_3.c: 72: 
+[e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 139  ]
+{
+"73
+[; ;lab_3.c: 73: void mostrar(void){
+[e = _conversion _ADRESH ]
+"74
+[; ;lab_3.c: 74:     Lcd_Clear();
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"75
+[; ;lab_3.c: 75:     Lcd_Set_Cursor(1,1);
+}
+[e :U 139 ]
+"76
+[; ;lab_3.c: 76:     Lcd_Write_String("T1");
+[e :UE 138 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"41 lab_3.c
-[; ;lab_3.c: 41: void main(void) {
+"89
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"42
-[; ;lab_3.c: 42:     return;
-[e $UE 138  ]
-"43
-[; ;lab_3.c: 43: }
-[e :UE 138 ]
+"90
+[e ( _setup ..  ]
+"91
+[e ( _adc_setup (1 _format_result ]
+"92
+[e ( _Lcd_Init ..  ]
+"96
+[e :U 142 ]
+{
+"97
+[e ( _mostrar ..  ]
+"98
+[e = _channel_1 -> -> 0 `i `uc ]
+"99
+[e ( _adc_convert (1 _channel_1 ]
+"100
+[e = _pot1_value _conversion ]
+"101
+[e = _channel_2 -> -> 1 `i `uc ]
+"102
+[e ( _adc_convert (1 _channel_2 ]
+"103
+[e = _pot2_value _conversion ]
+"104
 }
+[e :U 141 ]
+[e $U 142  ]
+[e :U 143 ]
+"105
+[e :UE 140 ]
+}
+"110
+[v _setup `(v ~T0 @X0 1 ef ]
+{
+[e :U _setup ]
+[f ]
+"111
+[e = _TRISA -> -> 15 `i `uc ]
+"112
+[e = _PORTA -> -> 0 `i `uc ]
+"113
+[e = _TRISC -> -> 0 `i `uc ]
+"114
+[e = _PORTC -> -> 0 `i `uc ]
+"115
+[e = _TRISD -> -> 0 `i `uc ]
+"116
+[e = _PORTD -> -> 0 `i `uc ]
+"117
+[e = _TRISE -> -> 0 `i `uc ]
+"118
+[e = _PORTE -> -> 0 `i `uc ]
+"119
+[e = _ANSEL -> -> 15 `i `uc ]
+"120
+[e = _ANSELH -> -> 0 `i `uc ]
+"121
+[e :UE 144 ]
+}
+"127
+[v _mostrar `(v ~T0 @X0 1 ef ]
+{
+[e :U _mostrar ]
+[f ]
+"128
+[e ( _Lcd_Clear ..  ]
+"129
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"130
+[e ( _Lcd_Write_String (1 :s 1C ]
+"131
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 5 `i `uc ]
+"132
+[e ( _Lcd_Write_String (1 :s 2C ]
+"133
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 10 `i `uc ]
+"134
+[e ( _Lcd_Write_String (1 :s 3C ]
+"135
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"136
+[e :UE 145 ]
+}
+[a 3C 80 0 ]
+[a 2C 84 50 0 ]
+[a 1C 84 49 0 ]

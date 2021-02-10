@@ -1,17 +1,33 @@
   
-#ifndef LCD
-#define	LCD
+#ifndef _LCD_
+#define	_LCD_
 
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 8000000
 #endif
 
 #ifndef RS
-#define RS PORTDbits.RD2
+#define RS RE0
 #endif
 
 #ifndef EN
-#define EN RD3
+#define EN RE1
+#endif
+
+#ifndef D0
+#define D0 RD0
+#endif
+
+#ifndef D1
+#define D1 RD1
+#endif
+
+#ifndef D2
+#define D2 RD2
+#endif
+
+#ifndef D3
+#define D3 RD3
 #endif
 
 #ifndef D4
@@ -41,8 +57,6 @@ void Lcd_Set_Cursor(char a, char b);
 void Lcd_Init(void);
 void Lcd_Write_Char(char a);
 void Lcd_Write_String(char *a);
-void Lcd_Shift_Right(void);
-void Lcd_Shift_Left(void);
 
 #endif
 
