@@ -2652,6 +2652,8 @@ typedef uint16_t uintptr_t;
 
 
 int var = 0;
+uint8_t cont = 0;
+uint8_t var_temp;
 
 
 
@@ -2660,10 +2662,10 @@ void __attribute__((picinterrupt(("")))) isr(void) {
 
     if (INTCONbits.RBIF == 1) {
         if (PORTBbits.RB0 == 1) {
-            PORTD++;
+            cont++;
         }
         if (PORTBbits.RB1 == 1) {
-            PORTD--;
+            cont--;
         }
         INTCONbits.RBIF = 0;
     }
@@ -2683,7 +2685,12 @@ void main(void) {
 
 
 
-    while (1) {}
+    while (1) {
+        PORTD = cont;
+        SSPBUF = cont;
+        while(!SSPSTATbits.BF){}
+        var_temp = SSPBUF;
+    }
 }
 
 
@@ -2691,12 +2698,18 @@ void main(void) {
 
 
 void setup(void) {
+    TRISA = 0b00100000;
+    PORTA = 0x00;
+    TRISC = 0b00011000;
+    PORTC = 0x00;
     TRISD = 0x00;
     PORTD = 0x00;
     TRISB = 0x03;
     PORTB = 0;
     ANSEL = 0;
     ANSELH = 0;
-    INTCON = 11001000;
+    INTCON = 0b11001000;
     IOCB = 0x03;
+    SSPSTAT = 0b00000000;
+    SSPCON = 0b00110100;
 }

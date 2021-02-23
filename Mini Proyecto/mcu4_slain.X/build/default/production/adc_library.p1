@@ -310,8 +310,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _adc_convert ]
 [f ]
 "14
-[; ;adc_library.c: 14:     _delay((unsigned long)((2)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;adc_library.c: 14:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "15
 [; ;adc_library.c: 15:     ADCON0bits.GO_nDONE = 1;
 [e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
@@ -352,8 +352,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;adc_library.c: 26:     ADCON0 = 0b00000011;
 [e = _ADCON0 -> -> 3 `i `uc ]
 "27
-[; ;adc_library.c: 27:     ADCON1 = 0b00000000;
-[e = _ADCON1 -> -> 0 `i `uc ]
+[; ;adc_library.c: 27:     ADCON1 = 0b00010000;
+[e = _ADCON1 -> -> 16 `i `uc ]
 "28
 [; ;adc_library.c: 28: }
 [e :UE 140 ]

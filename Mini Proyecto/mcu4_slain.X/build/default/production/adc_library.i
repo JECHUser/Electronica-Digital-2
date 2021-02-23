@@ -2506,7 +2506,7 @@ void adc_setup(void);
 
 
 void adc_convert(void){
-    _delay((unsigned long)((2)*(8000000/4000.0)));
+    _delay((unsigned long)((5)*(8000000/4000.0)));
     ADCON0bits.GO_nDONE = 1;
     if (ADCON0bits.GO_nDONE == 0){
         ADCON0bits.GO_nDONE = 1;
@@ -2519,5 +2519,5 @@ void adc_setup(void){
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
     ADCON0 = 0b00000011;
-    ADCON1 = 0b00000000;
+    ADCON1 = 0b00010000;
 }

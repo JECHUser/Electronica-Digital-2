@@ -73,6 +73,7 @@ void main(void) {
     //**************************************************************************
     while(1){
         adc_convert();
+        PORTD = temp;
         semaforo();
     }
 }
@@ -83,8 +84,10 @@ void main(void) {
 void setup(void){
     TRISE = 0x00;
     PORTE = 0x00;
-    TRISA = 0x01;
+    TRISA = 0x05;
     PORTA = 0x00;
+    TRISD = 0;
+    PORTD = 0;
     ANSEL = 0x01;
     ANSELH = 0x00;
 }
@@ -93,12 +96,12 @@ void setup(void){
 // Funciones
 //******************************************************************************
 void semaforo(void){
-    if (temp < 25){
+    if (temp < 44){
         PORTEbits.RE0 = 1;
         PORTEbits.RE1 = 0;
         PORTEbits.RE2 = 0;
     }
-    else if (temp > 25 && temp < 36){
+    else if (temp >= 44 && temp <= 61){
         PORTEbits.RE0 = 0;
         PORTEbits.RE1 = 1;
         PORTEbits.RE2 = 0;

@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Thu Feb 18 15:55:21 2021
+                                                                                               Tue Feb 23 02:20:48 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -302,593 +302,615 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    288  0009                     _PORTEbits	set	9
    289  0005                     _PORTA	set	5
    290  0009                     _PORTE	set	9
-   291  001E                     _ADRESH	set	30
-   292  000C                     _PIR1bits	set	12
-   293  009F                     _ADCON1	set	159
-   294  008C                     _PIE1bits	set	140
-   295  0085                     _TRISA	set	133
-   296  0089                     _TRISE	set	137
-   297  0189                     _ANSELH	set	393
-   298  0188                     _ANSEL	set	392
-   299                           
-   300                           	psect	cinit
-   301  000F                     start_initialization:	
-   302                           ; #config settings
-   303                           
-   304  000F                     __initialization:
+   291  0008                     _PORTD	set	8
+   292  001E                     _ADRESH	set	30
+   293  000C                     _PIR1bits	set	12
+   294  009F                     _ADCON1	set	159
+   295  008C                     _PIE1bits	set	140
+   296  0088                     _TRISD	set	136
+   297  0085                     _TRISA	set	133
+   298  0089                     _TRISE	set	137
+   299  0189                     _ANSELH	set	393
+   300  0188                     _ANSEL	set	392
+   301                           
+   302                           	psect	cinit
+   303  000F                     start_initialization:	
+   304                           ; #config settings
    305                           
-   306                           ; Clear objects allocated to COMMON
-   307  000F  01F5               	clrf	__pbssCOMMON& (0+127)
-   308  0010  01F6               	clrf	(__pbssCOMMON+1)& (0+127)
-   309  0011                     end_of_initialization:	
-   310                           ;End of C runtime variable initialization code
-   311                           
-   312  0011                     __end_of__initialization:
-   313  0011  0183               	clrf	3
-   314  0012  120A  118A  2839   	ljmp	_main	;jump to C main() function
-   315                           
-   316                           	psect	bssCOMMON
-   317  0075                     __pbssCOMMON:
-   318  0075                     _temp:
-   319  0075                     	ds	1
-   320  0076                     _conv_adc:
-   321  0076                     	ds	1
-   322                           
-   323                           	psect	cstackCOMMON
-   324  0070                     __pcstackCOMMON:
-   325  0070                     ?_setup:
-   326  0070                     ?_adc_setup:	
-   327                           ; 1 bytes @ 0x0
-   328                           
-   329  0070                     ?_adc_convert:	
-   330                           ; 1 bytes @ 0x0
-   331                           
-   332  0070                     ?_semaforo:	
-   333                           ; 1 bytes @ 0x0
-   334                           
-   335  0070                     ?_isr:	
-   336                           ; 1 bytes @ 0x0
-   337                           
-   338  0070                     ??_isr:	
-   339                           ; 1 bytes @ 0x0
-   340                           
-   341  0070                     ?_main:	
-   342                           ; 1 bytes @ 0x0
-   343                           
-   344                           
-   345                           ; 1 bytes @ 0x0
-   346  0070                     	ds	3
-   347  0073                     ??_setup:
-   348  0073                     ??_adc_setup:	
-   349                           ; 1 bytes @ 0x3
-   350                           
-   351  0073                     ??_adc_convert:	
-   352                           ; 1 bytes @ 0x3
-   353                           
-   354  0073                     ??_semaforo:	
-   355                           ; 1 bytes @ 0x3
-   356                           
-   357                           
-   358                           ; 1 bytes @ 0x3
-   359  0073                     	ds	2
-   360  0075                     ??_main:
-   361                           
-   362                           	psect	maintext
-   363  0039                     __pmaintext:	
-   364                           ; 1 bytes @ 0x5
-   365 ;;
-   366 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   306  000F                     __initialization:
+   307                           
+   308                           ; Clear objects allocated to COMMON
+   309  000F  01F5               	clrf	__pbssCOMMON& (0+127)
+   310  0010  01F6               	clrf	(__pbssCOMMON+1)& (0+127)
+   311  0011                     end_of_initialization:	
+   312                           ;End of C runtime variable initialization code
+   313                           
+   314  0011                     __end_of__initialization:
+   315  0011  0183               	clrf	3
+   316  0012  120A  118A  2839   	ljmp	_main	;jump to C main() function
+   317                           
+   318                           	psect	bssCOMMON
+   319  0075                     __pbssCOMMON:
+   320  0075                     _temp:
+   321  0075                     	ds	1
+   322  0076                     _conv_adc:
+   323  0076                     	ds	1
+   324                           
+   325                           	psect	cstackCOMMON
+   326  0070                     __pcstackCOMMON:
+   327  0070                     ?_setup:
+   328  0070                     ?_adc_setup:	
+   329                           ; 1 bytes @ 0x0
+   330                           
+   331  0070                     ?_adc_convert:	
+   332                           ; 1 bytes @ 0x0
+   333                           
+   334  0070                     ?_semaforo:	
+   335                           ; 1 bytes @ 0x0
+   336                           
+   337  0070                     ?_isr:	
+   338                           ; 1 bytes @ 0x0
+   339                           
+   340  0070                     ??_isr:	
+   341                           ; 1 bytes @ 0x0
+   342                           
+   343  0070                     ?_main:	
+   344                           ; 1 bytes @ 0x0
+   345                           
+   346                           
+   347                           ; 1 bytes @ 0x0
+   348  0070                     	ds	3
+   349  0073                     ??_setup:
+   350  0073                     ??_adc_setup:	
+   351                           ; 1 bytes @ 0x3
+   352                           
+   353  0073                     ??_adc_convert:	
+   354                           ; 1 bytes @ 0x3
+   355                           
+   356  0073                     ??_semaforo:	
+   357                           ; 1 bytes @ 0x3
+   358                           
+   359                           
+   360                           ; 1 bytes @ 0x3
+   361  0073                     	ds	2
+   362  0075                     ??_main:
+   363                           
+   364                           	psect	maintext
+   365  0039                     __pmaintext:	
+   366                           ; 1 bytes @ 0x5
    367 ;;
-   368 ;; *************** function _main *****************
-   369 ;; Defined at:
-   370 ;;		line 67 in file "mcu4_slain.c"
-   371 ;; Parameters:    Size  Location     Type
-   372 ;;		None
-   373 ;; Auto vars:     Size  Location     Type
+   368 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   369 ;;
+   370 ;; *************** function _main *****************
+   371 ;; Defined at:
+   372 ;;		line 67 in file "mcu4_slain.c"
+   373 ;; Parameters:    Size  Location     Type
    374 ;;		None
-   375 ;; Return value:  Size  Location     Type
-   376 ;;                  1    wreg      void 
-   377 ;; Registers used:
-   378 ;;		wreg, status,2, status,0, pclath, cstack
-   379 ;; Tracked objects:
-   380 ;;		On entry : B00/0
-   381 ;;		On exit  : 0/0
-   382 ;;		Unchanged: 0/0
-   383 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   384 ;;      Params:         0       0       0       0       0
-   385 ;;      Locals:         0       0       0       0       0
-   386 ;;      Temps:          0       0       0       0       0
-   387 ;;      Totals:         0       0       0       0       0
-   388 ;;Total ram usage:        0 bytes
-   389 ;; Hardware stack levels required when called:    2
-   390 ;; This function calls:
-   391 ;;		_adc_convert
-   392 ;;		_adc_setup
-   393 ;;		_semaforo
-   394 ;;		_setup
-   395 ;; This function is called by:
-   396 ;;		Startup code after reset
-   397 ;; This function uses a non-reentrant model
-   398 ;;
-   399                           
-   400                           
-   401                           ;psect for function _main
-   402  0039                     _main:
-   403  0039                     l705:	
-   404                           ;incstack = 0
-   405                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   406                           
-   407                           
-   408                           ;mcu4_slain.c: 68:     setup();
-   409  0039  120A  118A  2051  120A  118A  	fcall	_setup
-   410                           
-   411                           ;mcu4_slain.c: 69:     adc_setup();
-   412  003E  120A  118A  2088  120A  118A  	fcall	_adc_setup
-   413  0043                     l41:	
-   414                           ;mcu4_slain.c: 74:     while(1){
-   415                           
-   416                           
-   417                           ;mcu4_slain.c: 75:         adc_convert();
-   418  0043  120A  118A  2064  120A  118A  	fcall	_adc_convert
-   419                           
-   420                           ;mcu4_slain.c: 76:         semaforo();
-   421  0048  120A  118A  2015  120A  118A  	fcall	_semaforo
-   422  004D  2843               	goto	l41
-   423  004E  120A  118A  280C   	ljmp	start
-   424  0051                     __end_of_main:
-   425                           
-   426                           	psect	text1
-   427  0051                     __ptext1:	
-   428 ;; *************** function _setup *****************
-   429 ;; Defined at:
-   430 ;;		line 83 in file "mcu4_slain.c"
-   431 ;; Parameters:    Size  Location     Type
-   432 ;;		None
-   433 ;; Auto vars:     Size  Location     Type
-   434 ;;		None
-   435 ;; Return value:  Size  Location     Type
-   436 ;;                  1    wreg      void 
-   437 ;; Registers used:
-   438 ;;		wreg, status,2
-   439 ;; Tracked objects:
-   440 ;;		On entry : 0/0
-   441 ;;		On exit  : 0/0
-   442 ;;		Unchanged: 0/0
-   443 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   444 ;;      Params:         0       0       0       0       0
-   445 ;;      Locals:         0       0       0       0       0
-   446 ;;      Temps:          0       0       0       0       0
-   447 ;;      Totals:         0       0       0       0       0
-   448 ;;Total ram usage:        0 bytes
-   449 ;; Hardware stack levels used:    1
-   450 ;; Hardware stack levels required when called:    1
-   451 ;; This function calls:
-   452 ;;		Nothing
-   453 ;; This function is called by:
-   454 ;;		_main
-   455 ;; This function uses a non-reentrant model
-   456 ;;
-   457                           
-   458                           
-   459                           ;psect for function _setup
-   460  0051                     _setup:
-   461  0051                     l667:	
-   462                           ;incstack = 0
-   463                           ; Regs used in _setup: [wreg+status,2]
-   464                           
-   465                           
-   466                           ;mcu4_slain.c: 84:     TRISE = 0x00;
-   467  0051  1683               	bsf	3,5	;RP0=1, select bank1
-   468  0052  1303               	bcf	3,6	;RP1=0, select bank1
-   469  0053  0189               	clrf	9	;volatile
-   470                           
-   471                           ;mcu4_slain.c: 85:     PORTE = 0x00;
-   472  0054  1283               	bcf	3,5	;RP0=0, select bank0
-   473  0055  1303               	bcf	3,6	;RP1=0, select bank0
-   474  0056  0189               	clrf	9	;volatile
-   475  0057                     l669:
-   476                           
-   477                           ;mcu4_slain.c: 86:     TRISA = 0x01;
-   478  0057  3001               	movlw	1
-   479  0058  1683               	bsf	3,5	;RP0=1, select bank1
-   480  0059  1303               	bcf	3,6	;RP1=0, select bank1
-   481  005A  0085               	movwf	5	;volatile
-   482  005B                     l671:
-   483                           
-   484                           ;mcu4_slain.c: 87:     PORTA = 0x00;
-   485  005B  1283               	bcf	3,5	;RP0=0, select bank0
-   486  005C  1303               	bcf	3,6	;RP1=0, select bank0
-   487  005D  0185               	clrf	5	;volatile
-   488                           
-   489                           ;mcu4_slain.c: 88:     ANSEL = 0x01;
-   490  005E  3001               	movlw	1
-   491  005F  1683               	bsf	3,5	;RP0=1, select bank3
-   492  0060  1703               	bsf	3,6	;RP1=1, select bank3
-   493  0061  0088               	movwf	8	;volatile
-   494  0062                     l673:
-   495                           
-   496                           ;mcu4_slain.c: 89:     ANSELH = 0x00;
-   497  0062  0189               	clrf	9	;volatile
-   498  0063                     l47:
-   499  0063  0008               	return
-   500  0064                     __end_of_setup:
-   501                           
-   502                           	psect	text2
-   503  0015                     __ptext2:	
-   504 ;; *************** function _semaforo *****************
-   505 ;; Defined at:
-   506 ;;		line 95 in file "mcu4_slain.c"
-   507 ;; Parameters:    Size  Location     Type
-   508 ;;		None
-   509 ;; Auto vars:     Size  Location     Type
-   510 ;;		None
-   511 ;; Return value:  Size  Location     Type
-   512 ;;                  1    wreg      void 
-   513 ;; Registers used:
-   514 ;;		wreg
-   515 ;; Tracked objects:
-   516 ;;		On entry : 0/0
-   517 ;;		On exit  : 0/0
-   518 ;;		Unchanged: 0/0
-   519 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   520 ;;      Params:         0       0       0       0       0
-   521 ;;      Locals:         0       0       0       0       0
-   522 ;;      Temps:          0       0       0       0       0
-   523 ;;      Totals:         0       0       0       0       0
-   524 ;;Total ram usage:        0 bytes
-   525 ;; Hardware stack levels used:    1
-   526 ;; Hardware stack levels required when called:    1
-   527 ;; This function calls:
-   528 ;;		Nothing
-   529 ;; This function is called by:
-   530 ;;		_main
-   531 ;; This function uses a non-reentrant model
-   532 ;;
-   533                           
-   534                           
-   535                           ;psect for function _semaforo
-   536  0015                     _semaforo:
-   537  0015                     l689:	
-   538                           ;incstack = 0
-   539                           ; Regs used in _semaforo: [wreg]
-   540                           
-   541                           
-   542                           ;mcu4_slain.c: 96:     if (temp < 25){
-   543  0015  3019               	movlw	25
-   544  0016  0275               	subwf	_temp,w
-   545  0017  1803               	skipnc
-   546  0018  281A               	goto	u21
-   547  0019  281B               	goto	u20
-   548  001A                     u21:
-   549  001A  2821               	goto	l693
-   550  001B                     u20:
-   551  001B                     l691:
-   552                           
-   553                           ;mcu4_slain.c: 97:         PORTEbits.RE0 = 1;
-   554  001B  1283               	bcf	3,5	;RP0=0, select bank0
-   555  001C  1303               	bcf	3,6	;RP1=0, select bank0
-   556  001D  1409               	bsf	9,0	;volatile
-   557                           
-   558                           ;mcu4_slain.c: 98:         PORTEbits.RE1 = 0;
-   559  001E  1089               	bcf	9,1	;volatile
-   560                           
-   561                           ;mcu4_slain.c: 99:         PORTEbits.RE2 = 0;
-   562  001F  1109               	bcf	9,2	;volatile
+   375 ;; Auto vars:     Size  Location     Type
+   376 ;;		None
+   377 ;; Return value:  Size  Location     Type
+   378 ;;                  1    wreg      void 
+   379 ;; Registers used:
+   380 ;;		wreg, status,2, status,0, pclath, cstack
+   381 ;; Tracked objects:
+   382 ;;		On entry : B00/0
+   383 ;;		On exit  : 0/0
+   384 ;;		Unchanged: 0/0
+   385 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   386 ;;      Params:         0       0       0       0       0
+   387 ;;      Locals:         0       0       0       0       0
+   388 ;;      Temps:          0       0       0       0       0
+   389 ;;      Totals:         0       0       0       0       0
+   390 ;;Total ram usage:        0 bytes
+   391 ;; Hardware stack levels required when called:    2
+   392 ;; This function calls:
+   393 ;;		_adc_convert
+   394 ;;		_adc_setup
+   395 ;;		_semaforo
+   396 ;;		_setup
+   397 ;; This function is called by:
+   398 ;;		Startup code after reset
+   399 ;; This function uses a non-reentrant model
+   400 ;;
+   401                           
+   402                           
+   403                           ;psect for function _main
+   404  0039                     _main:
+   405  0039                     l711:	
+   406                           ;incstack = 0
+   407                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   408                           
+   409                           
+   410                           ;mcu4_slain.c: 68:     setup();
+   411  0039  120A  118A  2055  120A  118A  	fcall	_setup
+   412                           
+   413                           ;mcu4_slain.c: 69:     adc_setup();
+   414  003E  120A  118A  2092  120A  118A  	fcall	_adc_setup
+   415  0043                     l45:	
+   416                           ;mcu4_slain.c: 74:     while(1){
+   417                           
+   418                           
+   419                           ;mcu4_slain.c: 75:         adc_convert();
+   420  0043  120A  118A  206E  120A  118A  	fcall	_adc_convert
+   421  0048                     l713:
+   422                           
+   423                           ;mcu4_slain.c: 76:         PORTD = temp;
+   424  0048  0875               	movf	_temp,w
+   425  0049  1283               	bcf	3,5	;RP0=0, select bank0
+   426  004A  1303               	bcf	3,6	;RP1=0, select bank0
+   427  004B  0088               	movwf	8	;volatile
+   428  004C                     l715:
+   429                           
+   430                           ;mcu4_slain.c: 77:         semaforo();
+   431  004C  120A  118A  2015  120A  118A  	fcall	_semaforo
+   432  0051  2843               	goto	l45
+   433  0052  120A  118A  280C   	ljmp	start
+   434  0055                     __end_of_main:
+   435                           
+   436                           	psect	text1
+   437  0055                     __ptext1:	
+   438 ;; *************** function _setup *****************
+   439 ;; Defined at:
+   440 ;;		line 84 in file "mcu4_slain.c"
+   441 ;; Parameters:    Size  Location     Type
+   442 ;;		None
+   443 ;; Auto vars:     Size  Location     Type
+   444 ;;		None
+   445 ;; Return value:  Size  Location     Type
+   446 ;;                  1    wreg      void 
+   447 ;; Registers used:
+   448 ;;		wreg, status,2
+   449 ;; Tracked objects:
+   450 ;;		On entry : 0/0
+   451 ;;		On exit  : 0/0
+   452 ;;		Unchanged: 0/0
+   453 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   454 ;;      Params:         0       0       0       0       0
+   455 ;;      Locals:         0       0       0       0       0
+   456 ;;      Temps:          0       0       0       0       0
+   457 ;;      Totals:         0       0       0       0       0
+   458 ;;Total ram usage:        0 bytes
+   459 ;; Hardware stack levels used:    1
+   460 ;; Hardware stack levels required when called:    1
+   461 ;; This function calls:
+   462 ;;		Nothing
+   463 ;; This function is called by:
+   464 ;;		_main
+   465 ;; This function uses a non-reentrant model
+   466 ;;
+   467                           
+   468                           
+   469                           ;psect for function _setup
+   470  0055                     _setup:
+   471  0055                     l671:	
+   472                           ;incstack = 0
+   473                           ; Regs used in _setup: [wreg+status,2]
+   474                           
+   475                           
+   476                           ;mcu4_slain.c: 85:     TRISE = 0x00;
+   477  0055  1683               	bsf	3,5	;RP0=1, select bank1
+   478  0056  1303               	bcf	3,6	;RP1=0, select bank1
+   479  0057  0189               	clrf	9	;volatile
+   480                           
+   481                           ;mcu4_slain.c: 86:     PORTE = 0x00;
+   482  0058  1283               	bcf	3,5	;RP0=0, select bank0
+   483  0059  1303               	bcf	3,6	;RP1=0, select bank0
+   484  005A  0189               	clrf	9	;volatile
+   485  005B                     l673:
+   486                           
+   487                           ;mcu4_slain.c: 87:     TRISA = 0x05;
+   488  005B  3005               	movlw	5
+   489  005C  1683               	bsf	3,5	;RP0=1, select bank1
+   490  005D  1303               	bcf	3,6	;RP1=0, select bank1
+   491  005E  0085               	movwf	5	;volatile
+   492  005F                     l675:
+   493                           
+   494                           ;mcu4_slain.c: 88:     PORTA = 0x00;
+   495  005F  1283               	bcf	3,5	;RP0=0, select bank0
+   496  0060  1303               	bcf	3,6	;RP1=0, select bank0
+   497  0061  0185               	clrf	5	;volatile
+   498  0062                     l677:
+   499                           
+   500                           ;mcu4_slain.c: 89:     TRISD = 0;
+   501  0062  1683               	bsf	3,5	;RP0=1, select bank1
+   502  0063  1303               	bcf	3,6	;RP1=0, select bank1
+   503  0064  0188               	clrf	8	;volatile
+   504  0065                     l679:
+   505                           
+   506                           ;mcu4_slain.c: 90:     PORTD = 0;
+   507  0065  1283               	bcf	3,5	;RP0=0, select bank0
+   508  0066  1303               	bcf	3,6	;RP1=0, select bank0
+   509  0067  0188               	clrf	8	;volatile
+   510                           
+   511                           ;mcu4_slain.c: 91:     ANSEL = 0x01;
+   512  0068  3001               	movlw	1
+   513  0069  1683               	bsf	3,5	;RP0=1, select bank3
+   514  006A  1703               	bsf	3,6	;RP1=1, select bank3
+   515  006B  0088               	movwf	8	;volatile
+   516  006C                     l681:
+   517                           
+   518                           ;mcu4_slain.c: 92:     ANSELH = 0x00;
+   519  006C  0189               	clrf	9	;volatile
+   520  006D                     l51:
+   521  006D  0008               	return
+   522  006E                     __end_of_setup:
+   523                           
+   524                           	psect	text2
+   525  0015                     __ptext2:	
+   526 ;; *************** function _semaforo *****************
+   527 ;; Defined at:
+   528 ;;		line 98 in file "mcu4_slain.c"
+   529 ;; Parameters:    Size  Location     Type
+   530 ;;		None
+   531 ;; Auto vars:     Size  Location     Type
+   532 ;;		None
+   533 ;; Return value:  Size  Location     Type
+   534 ;;                  1    wreg      void 
+   535 ;; Registers used:
+   536 ;;		wreg
+   537 ;; Tracked objects:
+   538 ;;		On entry : 0/0
+   539 ;;		On exit  : 0/0
+   540 ;;		Unchanged: 0/0
+   541 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   542 ;;      Params:         0       0       0       0       0
+   543 ;;      Locals:         0       0       0       0       0
+   544 ;;      Temps:          0       0       0       0       0
+   545 ;;      Totals:         0       0       0       0       0
+   546 ;;Total ram usage:        0 bytes
+   547 ;; Hardware stack levels used:    1
+   548 ;; Hardware stack levels required when called:    1
+   549 ;; This function calls:
+   550 ;;		Nothing
+   551 ;; This function is called by:
+   552 ;;		_main
+   553 ;; This function uses a non-reentrant model
+   554 ;;
+   555                           
+   556                           
+   557                           ;psect for function _semaforo
+   558  0015                     _semaforo:
+   559  0015                     l695:	
+   560                           ;incstack = 0
+   561                           ; Regs used in _semaforo: [wreg]
+   562                           
    563                           
-   564                           ;mcu4_slain.c: 100:     }
-   565  0020  2838               	goto	l54
-   566  0021                     l693:
-   567  0021  301A               	movlw	26
-   568  0022  0275               	subwf	_temp,w
-   569  0023  1C03               	skipc
-   570  0024  2826               	goto	u31
-   571  0025  2827               	goto	u30
-   572  0026                     u31:
-   573  0026  2833               	goto	l52
-   574  0027                     u30:
-   575  0027                     l695:
-   576  0027  3024               	movlw	36
-   577  0028  0275               	subwf	_temp,w
-   578  0029  1803               	skipnc
-   579  002A  282C               	goto	u41
-   580  002B  282D               	goto	u40
-   581  002C                     u41:
-   582  002C  2833               	goto	l52
-   583  002D                     u40:
-   584  002D                     l697:
+   564                           ;mcu4_slain.c: 99:     if (temp < 44){
+   565  0015  302C               	movlw	44
+   566  0016  0275               	subwf	_temp,w
+   567  0017  1803               	skipnc
+   568  0018  281A               	goto	u21
+   569  0019  281B               	goto	u20
+   570  001A                     u21:
+   571  001A  2821               	goto	l699
+   572  001B                     u20:
+   573  001B                     l697:
+   574                           
+   575                           ;mcu4_slain.c: 100:         PORTEbits.RE0 = 1;
+   576  001B  1283               	bcf	3,5	;RP0=0, select bank0
+   577  001C  1303               	bcf	3,6	;RP1=0, select bank0
+   578  001D  1409               	bsf	9,0	;volatile
+   579                           
+   580                           ;mcu4_slain.c: 101:         PORTEbits.RE1 = 0;
+   581  001E  1089               	bcf	9,1	;volatile
+   582                           
+   583                           ;mcu4_slain.c: 102:         PORTEbits.RE2 = 0;
+   584  001F  1109               	bcf	9,2	;volatile
    585                           
-   586                           ;mcu4_slain.c: 102:         PORTEbits.RE0 = 0;
-   587  002D  1283               	bcf	3,5	;RP0=0, select bank0
-   588  002E  1303               	bcf	3,6	;RP1=0, select bank0
-   589  002F  1009               	bcf	9,0	;volatile
-   590                           
-   591                           ;mcu4_slain.c: 103:         PORTEbits.RE1 = 1;
-   592  0030  1489               	bsf	9,1	;volatile
-   593                           
-   594                           ;mcu4_slain.c: 104:         PORTEbits.RE2 = 0;
-   595  0031  1109               	bcf	9,2	;volatile
-   596                           
-   597                           ;mcu4_slain.c: 105:     }
-   598  0032  2838               	goto	l54
-   599  0033                     l52:	
-   600                           ;mcu4_slain.c: 106:     else {
-   601                           
-   602                           
-   603                           ;mcu4_slain.c: 107:         PORTEbits.RE0 = 0;
-   604  0033  1283               	bcf	3,5	;RP0=0, select bank0
-   605  0034  1303               	bcf	3,6	;RP1=0, select bank0
-   606  0035  1009               	bcf	9,0	;volatile
+   586                           ;mcu4_slain.c: 103:     }
+   587  0020  2838               	goto	l58
+   588  0021                     l699:
+   589  0021  302C               	movlw	44
+   590  0022  0275               	subwf	_temp,w
+   591  0023  1C03               	skipc
+   592  0024  2826               	goto	u31
+   593  0025  2827               	goto	u30
+   594  0026                     u31:
+   595  0026  2833               	goto	l56
+   596  0027                     u30:
+   597  0027                     l701:
+   598  0027  303E               	movlw	62
+   599  0028  0275               	subwf	_temp,w
+   600  0029  1803               	skipnc
+   601  002A  282C               	goto	u41
+   602  002B  282D               	goto	u40
+   603  002C                     u41:
+   604  002C  2833               	goto	l56
+   605  002D                     u40:
+   606  002D                     l703:
    607                           
-   608                           ;mcu4_slain.c: 108:         PORTEbits.RE1 = 0;
-   609  0036  1089               	bcf	9,1	;volatile
-   610                           
-   611                           ;mcu4_slain.c: 109:         PORTEbits.RE2 = 1;
-   612  0037  1509               	bsf	9,2	;volatile
-   613  0038                     l54:
-   614  0038  0008               	return
-   615  0039                     __end_of_semaforo:
-   616                           
-   617                           	psect	text3
-   618  0088                     __ptext3:	
-   619 ;; *************** function _adc_setup *****************
-   620 ;; Defined at:
-   621 ;;		line 21 in file "adc_library.c"
-   622 ;; Parameters:    Size  Location     Type
-   623 ;;		None
-   624 ;; Auto vars:     Size  Location     Type
-   625 ;;		None
-   626 ;; Return value:  Size  Location     Type
-   627 ;;                  1    wreg      void 
-   628 ;; Registers used:
-   629 ;;		wreg, status,2
-   630 ;; Tracked objects:
-   631 ;;		On entry : 0/0
-   632 ;;		On exit  : 0/0
-   633 ;;		Unchanged: 0/0
-   634 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   635 ;;      Params:         0       0       0       0       0
-   636 ;;      Locals:         0       0       0       0       0
-   637 ;;      Temps:          0       0       0       0       0
-   638 ;;      Totals:         0       0       0       0       0
-   639 ;;Total ram usage:        0 bytes
-   640 ;; Hardware stack levels used:    1
-   641 ;; Hardware stack levels required when called:    1
-   642 ;; This function calls:
-   643 ;;		Nothing
-   644 ;; This function is called by:
-   645 ;;		_main
-   646 ;; This function uses a non-reentrant model
-   647 ;;
-   648                           
-   649                           
-   650                           ;psect for function _adc_setup
-   651  0088                     _adc_setup:
-   652  0088                     l675:	
-   653                           ;incstack = 0
-   654                           ; Regs used in _adc_setup: [wreg+status,2]
-   655                           
-   656                           
-   657                           ;adc_library.c: 22:     PIE1bits.ADIE = 1;
-   658  0088  1683               	bsf	3,5	;RP0=1, select bank1
-   659  0089  1303               	bcf	3,6	;RP1=0, select bank1
-   660  008A  170C               	bsf	12,6	;volatile
-   661                           
-   662                           ;adc_library.c: 23:     PIR1bits.ADIF = 0;
-   663  008B  1283               	bcf	3,5	;RP0=0, select bank0
-   664  008C  1303               	bcf	3,6	;RP1=0, select bank0
-   665  008D  130C               	bcf	12,6	;volatile
-   666                           
-   667                           ;adc_library.c: 24:     INTCONbits.GIE = 1;
-   668  008E  178B               	bsf	11,7	;volatile
-   669                           
-   670                           ;adc_library.c: 25:     INTCONbits.PEIE = 1;
-   671  008F  170B               	bsf	11,6	;volatile
-   672  0090                     l677:
-   673                           
-   674                           ;adc_library.c: 26:     ADCON0 = 0b00000011;
-   675  0090  3003               	movlw	3
-   676  0091  009F               	movwf	31	;volatile
-   677  0092                     l679:
+   608                           ;mcu4_slain.c: 105:         PORTEbits.RE0 = 0;
+   609  002D  1283               	bcf	3,5	;RP0=0, select bank0
+   610  002E  1303               	bcf	3,6	;RP1=0, select bank0
+   611  002F  1009               	bcf	9,0	;volatile
+   612                           
+   613                           ;mcu4_slain.c: 106:         PORTEbits.RE1 = 1;
+   614  0030  1489               	bsf	9,1	;volatile
+   615                           
+   616                           ;mcu4_slain.c: 107:         PORTEbits.RE2 = 0;
+   617  0031  1109               	bcf	9,2	;volatile
+   618                           
+   619                           ;mcu4_slain.c: 108:     }
+   620  0032  2838               	goto	l58
+   621  0033                     l56:	
+   622                           ;mcu4_slain.c: 109:     else {
+   623                           
+   624                           
+   625                           ;mcu4_slain.c: 110:         PORTEbits.RE0 = 0;
+   626  0033  1283               	bcf	3,5	;RP0=0, select bank0
+   627  0034  1303               	bcf	3,6	;RP1=0, select bank0
+   628  0035  1009               	bcf	9,0	;volatile
+   629                           
+   630                           ;mcu4_slain.c: 111:         PORTEbits.RE1 = 0;
+   631  0036  1089               	bcf	9,1	;volatile
+   632                           
+   633                           ;mcu4_slain.c: 112:         PORTEbits.RE2 = 1;
+   634  0037  1509               	bsf	9,2	;volatile
+   635  0038                     l58:
+   636  0038  0008               	return
+   637  0039                     __end_of_semaforo:
+   638                           
+   639                           	psect	text3
+   640  0092                     __ptext3:	
+   641 ;; *************** function _adc_setup *****************
+   642 ;; Defined at:
+   643 ;;		line 21 in file "adc_library.c"
+   644 ;; Parameters:    Size  Location     Type
+   645 ;;		None
+   646 ;; Auto vars:     Size  Location     Type
+   647 ;;		None
+   648 ;; Return value:  Size  Location     Type
+   649 ;;                  1    wreg      void 
+   650 ;; Registers used:
+   651 ;;		wreg
+   652 ;; Tracked objects:
+   653 ;;		On entry : 0/0
+   654 ;;		On exit  : 0/0
+   655 ;;		Unchanged: 0/0
+   656 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   657 ;;      Params:         0       0       0       0       0
+   658 ;;      Locals:         0       0       0       0       0
+   659 ;;      Temps:          0       0       0       0       0
+   660 ;;      Totals:         0       0       0       0       0
+   661 ;;Total ram usage:        0 bytes
+   662 ;; Hardware stack levels used:    1
+   663 ;; Hardware stack levels required when called:    1
+   664 ;; This function calls:
+   665 ;;		Nothing
+   666 ;; This function is called by:
+   667 ;;		_main
+   668 ;; This function uses a non-reentrant model
+   669 ;;
+   670                           
+   671                           
+   672                           ;psect for function _adc_setup
+   673  0092                     _adc_setup:
+   674  0092                     l683:	
+   675                           ;incstack = 0
+   676                           ; Regs used in _adc_setup: [wreg]
+   677                           
    678                           
-   679                           ;adc_library.c: 27:     ADCON1 = 0b00000000;
+   679                           ;adc_library.c: 22:     PIE1bits.ADIE = 1;
    680  0092  1683               	bsf	3,5	;RP0=1, select bank1
    681  0093  1303               	bcf	3,6	;RP1=0, select bank1
-   682  0094  019F               	clrf	31	;volatile
-   683  0095                     l75:
-   684  0095  0008               	return
-   685  0096                     __end_of_adc_setup:
-   686                           
-   687                           	psect	text4
-   688  0064                     __ptext4:	
-   689 ;; *************** function _adc_convert *****************
-   690 ;; Defined at:
-   691 ;;		line 13 in file "adc_library.c"
-   692 ;; Parameters:    Size  Location     Type
-   693 ;;		None
-   694 ;; Auto vars:     Size  Location     Type
-   695 ;;		None
-   696 ;; Return value:  Size  Location     Type
-   697 ;;                  1    wreg      void 
-   698 ;; Registers used:
-   699 ;;		wreg
-   700 ;; Tracked objects:
-   701 ;;		On entry : 0/0
-   702 ;;		On exit  : 0/0
-   703 ;;		Unchanged: 0/0
-   704 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   705 ;;      Params:         0       0       0       0       0
-   706 ;;      Locals:         0       0       0       0       0
-   707 ;;      Temps:          2       0       0       0       0
-   708 ;;      Totals:         2       0       0       0       0
-   709 ;;Total ram usage:        2 bytes
-   710 ;; Hardware stack levels used:    1
-   711 ;; Hardware stack levels required when called:    1
-   712 ;; This function calls:
-   713 ;;		Nothing
-   714 ;; This function is called by:
-   715 ;;		_main
-   716 ;; This function uses a non-reentrant model
-   717 ;;
-   718                           
-   719                           
-   720                           ;psect for function _adc_convert
-   721  0064                     _adc_convert:
-   722  0064                     l681:	
-   723                           ;incstack = 0
-   724                           ; Regs used in _adc_convert: [wreg]
-   725                           
-   726                           
-   727                           ;adc_library.c: 14:     _delay((unsigned long)((2)*(8000000/4000.0)));
-   728  0064  3006               	movlw	6
-   729  0065  00F4               	movwf	??_adc_convert+1
-   730  0066  3030               	movlw	48
-   731  0067  00F3               	movwf	??_adc_convert
-   732  0068                     u67:
-   733  0068  0BF3               	decfsz	??_adc_convert,f
-   734  0069  2868               	goto	u67
-   735  006A  0BF4               	decfsz	??_adc_convert+1,f
-   736  006B  2868               	goto	u67
-   737  006C  0000               	nop
-   738  006D                     l683:
-   739                           
-   740                           ;adc_library.c: 15:     ADCON0bits.GO_nDONE = 1;
-   741  006D  1283               	bcf	3,5	;RP0=0, select bank0
-   742  006E  1303               	bcf	3,6	;RP1=0, select bank0
-   743  006F  149F               	bsf	31,1	;volatile
-   744  0070                     l685:
-   745                           
-   746                           ;adc_library.c: 16:     if (ADCON0bits.GO_nDONE == 0){
-   747  0070  189F               	btfsc	31,1	;volatile
-   748  0071  2873               	goto	u11
-   749  0072  2874               	goto	u10
-   750  0073                     u11:
-   751  0073  2875               	goto	l72
-   752  0074                     u10:
-   753  0074                     l687:
-   754                           
-   755                           ;adc_library.c: 17:         ADCON0bits.GO_nDONE = 1;
-   756  0074  149F               	bsf	31,1	;volatile
-   757  0075                     l72:
-   758  0075  0008               	return
-   759  0076                     __end_of_adc_convert:
-   760                           
-   761                           	psect	text5
-   762  0076                     __ptext5:	
-   763 ;; *************** function _isr *****************
-   764 ;; Defined at:
-   765 ;;		line 51 in file "mcu4_slain.c"
-   766 ;; Parameters:    Size  Location     Type
-   767 ;;		None
-   768 ;; Auto vars:     Size  Location     Type
-   769 ;;		None
-   770 ;; Return value:  Size  Location     Type
-   771 ;;                  1    wreg      void 
-   772 ;; Registers used:
-   773 ;;		wreg
-   774 ;; Tracked objects:
-   775 ;;		On entry : 0/0
-   776 ;;		On exit  : 0/0
-   777 ;;		Unchanged: 0/0
-   778 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   779 ;;      Params:         0       0       0       0       0
-   780 ;;      Locals:         0       0       0       0       0
-   781 ;;      Temps:          3       0       0       0       0
-   782 ;;      Totals:         3       0       0       0       0
-   783 ;;Total ram usage:        3 bytes
-   784 ;; Hardware stack levels used:    1
-   785 ;; This function calls:
-   786 ;;		Nothing
-   787 ;; This function is called by:
-   788 ;;		Interrupt level 1
-   789 ;; This function uses a non-reentrant model
-   790 ;;
-   791                           
-   792                           
-   793                           ;psect for function _isr
-   794  0076                     _isr:
-   795  0076                     i1l699:
-   796                           
-   797                           ;mcu4_slain.c: 52:     if (PIR1bits.ADIF == 1){
-   798  0076  1283               	bcf	3,5	;RP0=0, select bank0
-   799  0077  1303               	bcf	3,6	;RP1=0, select bank0
-   800  0078  1F0C               	btfss	12,6	;volatile
-   801  0079  287B               	goto	u5_21
-   802  007A  287C               	goto	u5_20
-   803  007B                     u5_21:
-   804  007B  2881               	goto	i1l36
-   805  007C                     u5_20:
-   806  007C                     i1l701:
-   807                           
-   808                           ;mcu4_slain.c: 53:         temp = ADRESH;
-   809  007C  081E               	movf	30,w	;volatile
-   810  007D  00F0               	movwf	??_isr
-   811  007E  0870               	movf	??_isr,w
-   812  007F  00F5               	movwf	_temp
-   813  0080                     i1l703:
+   682  0094  170C               	bsf	12,6	;volatile
+   683                           
+   684                           ;adc_library.c: 23:     PIR1bits.ADIF = 0;
+   685  0095  1283               	bcf	3,5	;RP0=0, select bank0
+   686  0096  1303               	bcf	3,6	;RP1=0, select bank0
+   687  0097  130C               	bcf	12,6	;volatile
+   688                           
+   689                           ;adc_library.c: 24:     INTCONbits.GIE = 1;
+   690  0098  178B               	bsf	11,7	;volatile
+   691                           
+   692                           ;adc_library.c: 25:     INTCONbits.PEIE = 1;
+   693  0099  170B               	bsf	11,6	;volatile
+   694  009A                     l685:
+   695                           
+   696                           ;adc_library.c: 26:     ADCON0 = 0b00000011;
+   697  009A  3003               	movlw	3
+   698  009B  009F               	movwf	31	;volatile
+   699                           
+   700                           ;adc_library.c: 27:     ADCON1 = 0b00010000;
+   701  009C  3010               	movlw	16
+   702  009D  1683               	bsf	3,5	;RP0=1, select bank1
+   703  009E  1303               	bcf	3,6	;RP1=0, select bank1
+   704  009F  009F               	movwf	31	;volatile
+   705  00A0                     l79:
+   706  00A0  0008               	return
+   707  00A1                     __end_of_adc_setup:
+   708                           
+   709                           	psect	text4
+   710  006E                     __ptext4:	
+   711 ;; *************** function _adc_convert *****************
+   712 ;; Defined at:
+   713 ;;		line 13 in file "adc_library.c"
+   714 ;; Parameters:    Size  Location     Type
+   715 ;;		None
+   716 ;; Auto vars:     Size  Location     Type
+   717 ;;		None
+   718 ;; Return value:  Size  Location     Type
+   719 ;;                  1    wreg      void 
+   720 ;; Registers used:
+   721 ;;		wreg
+   722 ;; Tracked objects:
+   723 ;;		On entry : 0/0
+   724 ;;		On exit  : 0/0
+   725 ;;		Unchanged: 0/0
+   726 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   727 ;;      Params:         0       0       0       0       0
+   728 ;;      Locals:         0       0       0       0       0
+   729 ;;      Temps:          2       0       0       0       0
+   730 ;;      Totals:         2       0       0       0       0
+   731 ;;Total ram usage:        2 bytes
+   732 ;; Hardware stack levels used:    1
+   733 ;; Hardware stack levels required when called:    1
+   734 ;; This function calls:
+   735 ;;		Nothing
+   736 ;; This function is called by:
+   737 ;;		_main
+   738 ;; This function uses a non-reentrant model
+   739 ;;
+   740                           
+   741                           
+   742                           ;psect for function _adc_convert
+   743  006E                     _adc_convert:
+   744  006E                     l687:	
+   745                           ;incstack = 0
+   746                           ; Regs used in _adc_convert: [wreg]
+   747                           
+   748                           
+   749                           ;adc_library.c: 14:     _delay((unsigned long)((5)*(8000000/4000.0)));
+   750  006E  300D               	movlw	13
+   751  006F  00F4               	movwf	??_adc_convert+1
+   752  0070  30FB               	movlw	251
+   753  0071  00F3               	movwf	??_adc_convert
+   754  0072                     u67:
+   755  0072  0BF3               	decfsz	??_adc_convert,f
+   756  0073  2872               	goto	u67
+   757  0074  0BF4               	decfsz	??_adc_convert+1,f
+   758  0075  2872               	goto	u67
+   759  0076  2877               	nop2
+   760  0077                     l689:
+   761                           
+   762                           ;adc_library.c: 15:     ADCON0bits.GO_nDONE = 1;
+   763  0077  1283               	bcf	3,5	;RP0=0, select bank0
+   764  0078  1303               	bcf	3,6	;RP1=0, select bank0
+   765  0079  149F               	bsf	31,1	;volatile
+   766  007A                     l691:
+   767                           
+   768                           ;adc_library.c: 16:     if (ADCON0bits.GO_nDONE == 0){
+   769  007A  189F               	btfsc	31,1	;volatile
+   770  007B  287D               	goto	u11
+   771  007C  287E               	goto	u10
+   772  007D                     u11:
+   773  007D  287F               	goto	l76
+   774  007E                     u10:
+   775  007E                     l693:
+   776                           
+   777                           ;adc_library.c: 17:         ADCON0bits.GO_nDONE = 1;
+   778  007E  149F               	bsf	31,1	;volatile
+   779  007F                     l76:
+   780  007F  0008               	return
+   781  0080                     __end_of_adc_convert:
+   782                           
+   783                           	psect	text5
+   784  0080                     __ptext5:	
+   785 ;; *************** function _isr *****************
+   786 ;; Defined at:
+   787 ;;		line 51 in file "mcu4_slain.c"
+   788 ;; Parameters:    Size  Location     Type
+   789 ;;		None
+   790 ;; Auto vars:     Size  Location     Type
+   791 ;;		None
+   792 ;; Return value:  Size  Location     Type
+   793 ;;                  1    wreg      void 
+   794 ;; Registers used:
+   795 ;;		wreg
+   796 ;; Tracked objects:
+   797 ;;		On entry : 0/0
+   798 ;;		On exit  : 0/0
+   799 ;;		Unchanged: 0/0
+   800 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   801 ;;      Params:         0       0       0       0       0
+   802 ;;      Locals:         0       0       0       0       0
+   803 ;;      Temps:          3       0       0       0       0
+   804 ;;      Totals:         3       0       0       0       0
+   805 ;;Total ram usage:        3 bytes
+   806 ;; Hardware stack levels used:    1
+   807 ;; This function calls:
+   808 ;;		Nothing
+   809 ;; This function is called by:
+   810 ;;		Interrupt level 1
+   811 ;; This function uses a non-reentrant model
+   812 ;;
+   813                           
    814                           
-   815                           ;mcu4_slain.c: 54:         PIR1bits.ADIF = 0;
-   816  0080  130C               	bcf	12,6	;volatile
-   817  0081                     i1l36:
-   818  0081  0872               	movf	??_isr+2,w
-   819  0082  008A               	movwf	10
-   820  0083  0E71               	swapf	??_isr+1,w
-   821  0084  0083               	movwf	3
-   822  0085  0EFE               	swapf	btemp,f
-   823  0086  0E7E               	swapf	btemp,w
-   824  0087  0009               	retfie
-   825  0088                     __end_of_isr:
-   826  007E                     btemp	set	126	;btemp
-   827  007E                     wtemp0	set	126
-   828                           
-   829                           	psect	intentry
-   830  0004                     __pintentry:	
-   831                           ;incstack = 0
-   832                           ; Regs used in _isr: [wreg]
-   833                           
-   834  0004                     interrupt_function:
-   835  007E                     saved_w	set	btemp
-   836  0004  00FE               	movwf	btemp
-   837  0005  0E03               	swapf	3,w
-   838  0006  00F1               	movwf	??_isr+1
-   839  0007  080A               	movf	10,w
-   840  0008  00F2               	movwf	??_isr+2
-   841  0009  120A  118A  2876   	ljmp	_isr
-   842                           
-   843                           	psect	config
-   844                           
-   845                           ;Config register CONFIG1 @ 0x2007
-   846                           ;	Oscillator Selection bits
-   847                           ;	FOSC = XT, XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
-   848                           ;	Watchdog Timer Enable bit
-   849                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
-   850                           ;	Power-up Timer Enable bit
-   851                           ;	PWRTE = OFF, PWRT disabled
-   852                           ;	RE3/MCLR pin function select bit
-   853                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
-   854                           ;	Code Protection bit
-   855                           ;	CP = OFF, Program memory code protection is disabled
-   856                           ;	Data Code Protection bit
-   857                           ;	CPD = OFF, Data memory code protection is disabled
-   858                           ;	Brown Out Reset Selection bits
-   859                           ;	BOREN = OFF, BOR disabled
-   860                           ;	Internal External Switchover bit
-   861                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-   862                           ;	Fail-Safe Clock Monitor Enabled bit
-   863                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
-   864                           ;	Low Voltage Programming Enable bit
-   865                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
-   866                           ;	In-Circuit Debugger Mode bit
-   867                           ;	DEBUG = 0x1, unprogrammed default
-   868  2007                     	org	8199
-   869  2007  20D1               	dw	8401
-   870                           
-   871                           ;Config register CONFIG2 @ 0x2008
-   872                           ;	Brown-out Reset Selection bit
-   873                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
-   874                           ;	Flash Program Memory Self Write Enable bits
-   875                           ;	WRT = OFF, Write protection off
-   876  2008                     	org	8200
-   877  2008  3FFF               	dw	16383
+   815                           ;psect for function _isr
+   816  0080                     _isr:
+   817  0080                     i1l705:
+   818                           
+   819                           ;mcu4_slain.c: 52:     if (PIR1bits.ADIF == 1){
+   820  0080  1283               	bcf	3,5	;RP0=0, select bank0
+   821  0081  1303               	bcf	3,6	;RP1=0, select bank0
+   822  0082  1F0C               	btfss	12,6	;volatile
+   823  0083  2885               	goto	u5_21
+   824  0084  2886               	goto	u5_20
+   825  0085                     u5_21:
+   826  0085  288B               	goto	i1l40
+   827  0086                     u5_20:
+   828  0086                     i1l707:
+   829                           
+   830                           ;mcu4_slain.c: 53:         temp = ADRESH;
+   831  0086  081E               	movf	30,w	;volatile
+   832  0087  00F0               	movwf	??_isr
+   833  0088  0870               	movf	??_isr,w
+   834  0089  00F5               	movwf	_temp
+   835  008A                     i1l709:
+   836                           
+   837                           ;mcu4_slain.c: 54:         PIR1bits.ADIF = 0;
+   838  008A  130C               	bcf	12,6	;volatile
+   839  008B                     i1l40:
+   840  008B  0872               	movf	??_isr+2,w
+   841  008C  008A               	movwf	10
+   842  008D  0E71               	swapf	??_isr+1,w
+   843  008E  0083               	movwf	3
+   844  008F  0EFE               	swapf	btemp,f
+   845  0090  0E7E               	swapf	btemp,w
+   846  0091  0009               	retfie
+   847  0092                     __end_of_isr:
+   848  007E                     btemp	set	126	;btemp
+   849  007E                     wtemp0	set	126
+   850                           
+   851                           	psect	intentry
+   852  0004                     __pintentry:	
+   853                           ;incstack = 0
+   854                           ; Regs used in _isr: [wreg]
+   855                           
+   856  0004                     interrupt_function:
+   857  007E                     saved_w	set	btemp
+   858  0004  00FE               	movwf	btemp
+   859  0005  0E03               	swapf	3,w
+   860  0006  00F1               	movwf	??_isr+1
+   861  0007  080A               	movf	10,w
+   862  0008  00F2               	movwf	??_isr+2
+   863  0009  120A  118A  2880   	ljmp	_isr
+   864                           
+   865                           	psect	config
+   866                           
+   867                           ;Config register CONFIG1 @ 0x2007
+   868                           ;	Oscillator Selection bits
+   869                           ;	FOSC = XT, XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
+   870                           ;	Watchdog Timer Enable bit
+   871                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+   872                           ;	Power-up Timer Enable bit
+   873                           ;	PWRTE = OFF, PWRT disabled
+   874                           ;	RE3/MCLR pin function select bit
+   875                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
+   876                           ;	Code Protection bit
+   877                           ;	CP = OFF, Program memory code protection is disabled
+   878                           ;	Data Code Protection bit
+   879                           ;	CPD = OFF, Data memory code protection is disabled
+   880                           ;	Brown Out Reset Selection bits
+   881                           ;	BOREN = OFF, BOR disabled
+   882                           ;	Internal External Switchover bit
+   883                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+   884                           ;	Fail-Safe Clock Monitor Enabled bit
+   885                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
+   886                           ;	Low Voltage Programming Enable bit
+   887                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
+   888                           ;	In-Circuit Debugger Mode bit
+   889                           ;	DEBUG = 0x1, unprogrammed default
+   890  2007                     	org	8199
+   891  2007  20D1               	dw	8401
+   892                           
+   893                           ;Config register CONFIG2 @ 0x2008
+   894                           ;	Brown-out Reset Selection bit
+   895                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
+   896                           ;	Flash Program Memory Self Write Enable bits
+   897                           ;	WRT = OFF, Write protection off
+   898  2008                     	org	8200
+   899  2008  3FFF               	dw	16383
 
 Data Sizes:
     Strings     0
@@ -1019,41 +1041,42 @@ DATA                 0      0       7      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Thu Feb 18 15:55:21 2021
+Symbol Table                                                                                   Tue Feb 23 02:20:48 2021
 
-                     l41 0043                       l52 0033                       l54 0038  
-                     l47 0063                       l72 0075                       l75 0095  
-                     u10 0074                       u11 0073                       u20 001B  
+                     l51 006D                       l45 0043                       l56 0033  
+                     l58 0038                       l76 007F                       l79 00A0  
+                     u10 007E                       u11 007D                       u20 001B  
                      u21 001A                       u30 0027                       u31 0026  
-                     u40 002D                       u41 002C                       u67 0068  
-                    l705 0039     __size_of_adc_convert 0012                      l671 005B  
-                    l681 0064                      l673 0062                      l683 006D  
-                    l675 0088                      l691 001B                      l667 0051  
-                    l685 0070                      l677 0090                      l693 0021  
-                    l669 0057                      l687 0074                      l679 0092  
-                    l695 0027                      l697 002D                      l689 0015  
-                    _isr 0076                     ?_isr 0070                     i1l36 0081  
-                   u5_20 007C                     u5_21 007B                     _main 0039  
+                     u40 002D                       u41 002C                       u67 0072  
+                    l701 0027                      l703 002D                      l711 0039  
+                    l713 0048     __size_of_adc_convert 0012                      l715 004C  
+                    l671 0055                      l681 006C                      l673 005B  
+                    l691 007A                      l683 0092                      l675 005F  
+                    l693 007E                      l685 009A                      l677 0062  
+                    l687 006E                      l695 0015                      l679 0065  
+                    l689 0077                      l697 001B                      l699 0021  
+                    _isr 0080                     ?_isr 0070                     i1l40 008B  
+                   u5_20 0086                     u5_21 0085                     _main 0039  
                    _temp 0075                     btemp 007E                     start 000C  
                   ??_isr 0070                    ?_main 0070                    _ANSEL 0188  
-                  i1l701 007C                    i1l703 0080                    i1l699 0076  
-                  _PORTA 0005                    _PORTE 0009                    _TRISA 0085  
-                  _TRISE 0089                    _setup 0051                    pclath 000A  
-                  status 0003                    wtemp0 007E          __initialization 000F  
-           __end_of_main 0051                   ??_main 0075                   _ADCON0 001F  
-                 _ADCON1 009F                   _ADRESH 001E                   ?_setup 0070  
-                 _ANSELH 0189         __end_of_semaforo 0039                   saved_w 007E  
-__end_of__initialization 0011       __size_of_adc_setup 000E           __pcstackCOMMON 0070  
-          __end_of_setup 0064                  ??_setup 0073               __pmaintext 0039  
-             __pintentry 0004            ??_adc_convert 0073        __end_of_adc_setup 0096  
-              ?_semaforo 0070                  __ptext1 0051                  __ptext2 0015  
-                __ptext3 0088                  __ptext4 0064                  __ptext5 0076  
-           __size_of_isr 0012      __end_of_adc_convert 0076     end_of_initialization 0011  
-             ??_semaforo 0073                _PORTEbits 0009              _adc_convert 0064  
-    start_initialization 000F              __end_of_isr 0088              __pbssCOMMON 0075  
-              ___latbits 0002                _adc_setup 0088        __size_of_semaforo 0024  
-             ?_adc_setup 0070           __size_of_setup 0013        interrupt_function 0004  
-               _PIE1bits 008C                 _PIR1bits 000C               _ADCON0bits 001F  
-           ?_adc_convert 0070              ??_adc_setup 0073                 _conv_adc 0076  
-          __size_of_main 0018                 _semaforo 0015               _INTCONbits 000B  
-               intlevel1 0000  
+                  i1l705 0080                    i1l707 0086                    i1l709 008A  
+                  _PORTA 0005                    _PORTD 0008                    _PORTE 0009  
+                  _TRISA 0085                    _TRISD 0088                    _TRISE 0089  
+                  _setup 0055                    pclath 000A                    status 0003  
+                  wtemp0 007E          __initialization 000F             __end_of_main 0055  
+                 ??_main 0075                   _ADCON0 001F                   _ADCON1 009F  
+                 _ADRESH 001E                   ?_setup 0070                   _ANSELH 0189  
+       __end_of_semaforo 0039                   saved_w 007E  __end_of__initialization 0011  
+     __size_of_adc_setup 000F           __pcstackCOMMON 0070            __end_of_setup 006E  
+                ??_setup 0073               __pmaintext 0039               __pintentry 0004  
+          ??_adc_convert 0073        __end_of_adc_setup 00A1                ?_semaforo 0070  
+                __ptext1 0055                  __ptext2 0015                  __ptext3 0092  
+                __ptext4 006E                  __ptext5 0080             __size_of_isr 0012  
+    __end_of_adc_convert 0080     end_of_initialization 0011               ??_semaforo 0073  
+              _PORTEbits 0009              _adc_convert 006E      start_initialization 000F  
+            __end_of_isr 0092              __pbssCOMMON 0075                ___latbits 0002  
+              _adc_setup 0092        __size_of_semaforo 0024               ?_adc_setup 0070  
+         __size_of_setup 0019        interrupt_function 0004                 _PIE1bits 008C  
+               _PIR1bits 000C               _ADCON0bits 001F             ?_adc_convert 0070  
+            ??_adc_setup 0073                 _conv_adc 0076            __size_of_main 001C  
+               _semaforo 0015               _INTCONbits 000B                 intlevel1 0000  
