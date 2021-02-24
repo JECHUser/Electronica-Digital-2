@@ -2735,8 +2735,54 @@ void Lcd_Init(void);
 void Lcd_Write_Char(char a);
 void Lcd_Write_String(char *a);
 # 30 "mcu1_master.c" 2
-# 41 "mcu1_master.c"
-#pragma config FOSC = XT
+
+# 1 "./spi_library.h" 1
+# 13 "./spi_library.h"
+void SPI_Slave_Init(void);
+void SPI_Master_Init(void);
+char SPI_read(void);
+void SPI_write(char data);
+static void wait();
+# 31 "mcu1_master.c" 2
+
+# 1 "./spi.h" 1
+# 15 "./spi.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 32 "mcu1_master.c" 2
+# 43 "mcu1_master.c"
+#pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -2757,10 +2803,14 @@ void Lcd_Write_String(char *a);
 
 
 unsigned int a;
-uint8_t S1 = 1;
+uint8_t S1;
 uint8_t S2;
 uint8_t S3;
-char s[20];
+char s[16];
+
+int entero;
+int decima;
+
 
 
 
@@ -2774,6 +2824,7 @@ void __attribute__((picinterrupt(("")))) isr(void) {
 
 void setup(void);
 void mostrar(void);
+void adc_to_5V(void);
 
 
 
@@ -2782,21 +2833,35 @@ void mostrar(void);
 void main(void) {
     setup();
     Lcd_Init();
-    Lcd_Clear();
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+
 
 
 
     while (1) {
-        mostrar();
+
         PORTBbits.RB0 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        if (SSPSTATbits.BF == 1) {
-            while (!SSPSTATbits.BF) {
-            }
-            S1 = SSPBUF;
-        }
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        spiWrite(0);
+        S1 = spiRead();
         PORTBbits.RB0 = 1;
+        adc_to_5V();
+        mostrar();
+
+        PORTBbits.RB1 = 0;
+        spiWrite(0);
+        S2 = spiRead();
+        PORTBbits.RB1 = 1;
+        mostrar();
+
+        PORTBbits.RB2 = 0;
+        spiWrite(0);
+        S3 = spiRead();
+        PORTBbits.RB2 = 1;
+        mostrar();
+
+        entero = 0;
+        decima = 0;
     }
 }
 
@@ -2805,20 +2870,14 @@ void main(void) {
 
 
 void setup(void) {
-    TRISA = 0x00;
-    PORTA = 0x00;
     TRISB = 0x00;
-    PORTB = 0x00;
-    TRISC = 0b00010000;
-    PORTC = 0x00;
+    PORTB = 0b00000111;
     TRISD = 0x00;
     PORTD = 0x00;
     TRISE = 0x00;
-    PORTE = 0x00;
     ANSEL = 0;
     ANSELH = 0;
-    SSPSTAT = 0b00000000;
-    SSPCON = 0b00110010;
+    INTCON = 0b11000000;
 }
 
 
@@ -2831,13 +2890,32 @@ void mostrar(void) {
     Lcd_Write_String("S2:");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("S3:");
-    sprintf(s, "%d", S1);
+    sprintf(s, "%1i.%1i", entero, decima);
     Lcd_Set_Cursor(2, 1);
     Lcd_Write_String(s);
-    sprintf(s, "%d", S1);
+    sprintf(s, "%3i", S2);
     Lcd_Set_Cursor(2, 7);
     Lcd_Write_String(s);
-    sprintf(s, "%d", S1);
+    sprintf(s, "%3i", S3);
     Lcd_Set_Cursor(2, 13);
     Lcd_Write_String(s);
+}
+
+void adc_to_5V(void) {
+
+
+    if (S1 > 250) {
+        entero = 5;
+        decima = 0;
+    } else {
+
+        while (S1 >= 50) {
+            S1 = S1 - 50;
+            entero++;
+        }
+        while (S1 >= 5) {
+            S1 = S1 - 5;
+            decima++;
+        }
+    }
 }

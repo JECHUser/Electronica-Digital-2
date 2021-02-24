@@ -14,7 +14,7 @@
 // 'C' source line config statements
 
 // CONFIG1
-#pragma config FOSC = XT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config FOSC = INTRC_NOCLKOUT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -35,29 +35,41 @@
 #include <xc.h>
 #include <stdint.h>
 #include <pic16f887.h>
+#include "spi_library.h"
+#include "spi.h"
 
 #define _XTAL_FREQ 8000000
 
 //******************************************************************************
 // Variables
 //******************************************************************************
-int var = 0;
-uint8_t cont = 0;
-uint8_t var_temp;
+uint8_t temp;
+
 //******************************************************************************
 // Interrupciones
 //******************************************************************************
 
 void __interrupt() isr(void) {
-
+    
+    // interrupciones por transición de datos
+    if (PIR1bits.SSPIF == 1) {
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();
+        spiWrite(PORTD);
+    }
+    
+    // interrupciones por interrupt on change del puerto B
     if (INTCONbits.RBIF == 1) {
+        // evalua si se presiona el push-button
         if (PORTBbits.RB0 == 1) {
-            cont++;
+            PORTD++;    // aumento del contador
+            INTCONbits.RBIF = 0;
         }
+        // evalua si se presiona el push-button
         if (PORTBbits.RB1 == 1) {
-            cont--;
+            PORTD--;    // disminución del contador
+            INTCONbits.RBIF = 0;
         }
-        INTCONbits.RBIF = 0;
     }
 }
 //******************************************************************************
@@ -70,16 +82,14 @@ void setup(void);
 //******************************************************************************
 
 void main(void) {
-    setup();
+    setup();    // llamada de configuraciones
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while (1) {
-        PORTD = cont;
-        SSPBUF = cont;
-        while(!SSPSTATbits.BF){}
-        var_temp = SSPBUF;
+        __delay_ms(1);
     }
 }
 
@@ -89,9 +99,6 @@ void main(void) {
 
 void setup(void) {
     TRISA = 0b00100000;
-    PORTA = 0x00;
-    TRISC = 0b00011000;
-    PORTC = 0x00;
     TRISD = 0x00;
     PORTD = 0x00;
     TRISB = 0x03;
@@ -100,8 +107,6 @@ void setup(void) {
     ANSELH = 0;
     INTCON = 0b11001000;
     IOCB = 0x03;
-    SSPSTAT = 0b00000000;
-    SSPCON = 0b00110100;
 }
 //******************************************************************************
 // Funciones

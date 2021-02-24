@@ -28,6 +28,8 @@
 #include <stdio.h>
 #include <pic16f887.h>
 #include "lcd_library.h"
+#include "spi_library.h"
+#include "spi.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -38,7 +40,7 @@
 // 'C' source line config statements
 
 // CONFIG1
-#pragma config FOSC = XT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config FOSC = INTRC_NOCLKOUT       // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -59,10 +61,14 @@
 // Variables
 //******************************************************************************
 unsigned int a;
-uint8_t S1 = 1;
+uint8_t S1;
 uint8_t S2;
 uint8_t S3;
-char s[20];
+char s[16];
+
+int entero;
+int decima;
+
 //******************************************************************************
 // Interrupciones
 //******************************************************************************
@@ -76,6 +82,7 @@ void __interrupt() isr(void) {
 
 void setup(void);
 void mostrar(void);
+void adc_to_5V(void);
 
 //******************************************************************************
 // Ciclo principal
@@ -84,21 +91,35 @@ void mostrar(void);
 void main(void) {
     setup();
     Lcd_Init();
-    Lcd_Clear();
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while (1) {
+
+        PORTBbits.RB0 = 0;  // selec slave 1
+        spiWrite(0);    // escritura de dato fantasma
+        S1 = spiRead(); // lectura de valor (potenciometro))
+        PORTBbits.RB0 = 1;  // des-selecciona el slave 1
+        adc_to_5V();        // mapeo adc --> 5V
         mostrar();
-        PORTBbits.RB0 = 0; // selec slave 1
-        __delay_ms(1);
-        if (SSPSTATbits.BF == 1) {
-            while (!SSPSTATbits.BF) {
-            }
-            S1 = SSPBUF;
-        }
-        __delay_ms(1);
-        PORTBbits.RB0 = 1;
+
+        PORTBbits.RB1 = 0;  // selec slave 2
+        spiWrite(0);    // escritura de dato fantasma
+        S2 = spiRead(); // lectura de valor (contador 8-bits)
+        PORTBbits.RB1 = 1;  // des-selecciona el slave 2
+        mostrar();
+
+        PORTBbits.RB2 = 0;  // selec slave 2
+        spiWrite(0);    // escritura de dato fantasma
+        S3 = spiRead(); // lectura de valor (sensor temp)
+        PORTBbits.RB2 = 1;  // des-selecciona el slave 3
+        mostrar();
+
+        entero = 0;
+        decima = 0;
     }
 }
 
@@ -107,20 +128,14 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
-    TRISA = 0x00;
-    PORTA = 0x00;
-    TRISB = 0x07;
-    PORTB = 0x00; 
-    TRISC = 0b00010000;
-    PORTC = 0x00;
+    TRISB = 0x00;
+    PORTB = 0b00000111;
     TRISD = 0x00;
     PORTD = 0x00;
     TRISE = 0x00;
-    PORTE = 0x00;
     ANSEL = 0;
     ANSELH = 0;
-    SSPSTAT = 0b00000000;
-    SSPCON = 0b00110010;
+    INTCON = 0b11000000;
 }
 //******************************************************************************
 // Funciones
@@ -133,13 +148,32 @@ void mostrar(void) {
     Lcd_Write_String("S2:");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("S3:");
-    sprintf(s, "%d", S1);
+    sprintf(s, "%1i.%1i", entero, decima);
     Lcd_Set_Cursor(2, 1);
     Lcd_Write_String(s);
-    sprintf(s, "%d", S1);
+    sprintf(s, "%3i", S2);
     Lcd_Set_Cursor(2, 7);
     Lcd_Write_String(s);
-    sprintf(s, "%d", S1);
+    sprintf(s, "%3i", S3);
     Lcd_Set_Cursor(2, 13);
     Lcd_Write_String(s);
+}
+
+void adc_to_5V(void) {
+    
+    // lectura de 5V exactos
+    if (S1 > 250) {
+        entero = 5;
+        decima = 0;
+    } else {
+        // en caso contrario calcula entero y decimal
+        while (S1 >= 50) {
+            S1 = S1 - 50;   // iteracion para obtener entero
+            entero++;
+        }
+        while (S1 >= 5) {
+            S1 = S1 - 5;    // iteracion para obtener decimal
+            decima++;
+        }
+    }
 }

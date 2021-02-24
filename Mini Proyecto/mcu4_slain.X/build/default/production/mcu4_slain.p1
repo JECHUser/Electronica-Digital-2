@@ -15,23 +15,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1238
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"47 ./spi.h
+[; ;./spi.h: 47: char spiRead();
+[v _spiRead `(uc ~T0 @X0 0 e? ]
+"45
+[; ;./spi.h: 45: void spiWrite(char);
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
+"352 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 [p mainexit ]
-"60 mcu4_slain.c
-[; ;mcu4_slain.c: 60: void setup(void);
+"70 mcu4_slain.c
+[; ;mcu4_slain.c: 70: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
+"79
+[; ;mcu4_slain.c: 79:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[c E1294 32 33 34 35 36 37 .. ]
+[n E1294 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E1302 0 128 .. ]
+[n E1302 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E1306 16 0 .. ]
+[n E1306 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E1310 0 64 .. ]
+[n E1310 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+"44 ./spi.h
+[; ;./spi.h: 44: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+[v _spiInit `(v ~T0 @X0 0 ef4`E1294`E1302`E1306`E1310 ]
 "14 ./adc_library.h
 [; ;./adc_library.h: 14: void adc_setup(void);
 [v _adc_setup `(v ~T0 @X0 0 ef ]
 "13
 [; ;./adc_library.h: 13: void adc_convert(void);
 [v _adc_convert `(v ~T0 @X0 0 ef ]
-"352 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"61 mcu4_slain.c
-[; ;mcu4_slain.c: 61: void semaforo(void);
+"71 mcu4_slain.c
+[; ;mcu4_slain.c: 71: void semaforo(void);
 [v _semaforo `(v ~T0 @X0 0 ef ]
-"1664 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"1478 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"228
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"1664
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
 [v _TRISE `Vuc ~T0 @X0 0 e@137 ]
 "414
@@ -52,6 +77,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3449
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3449: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
 [v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
+"459
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 459: extern volatile unsigned char INTCON __attribute__((address(0x00B)));
+[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 "420
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 420:     struct {
 [s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -321,167 +349,196 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"45 mcu4_slain.c
-[; ;mcu4_slain.c: 45: uint8_t conv_adc;
-[v _conv_adc `uc ~T0 @X0 1 e ]
-"46
+"46 mcu4_slain.c
 [; ;mcu4_slain.c: 46: uint8_t temp;
 [v _temp `uc ~T0 @X0 1 e ]
+"47
+[; ;mcu4_slain.c: 47: uint8_t temperature;
+[v _temperature `uc ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"51
-[; ;mcu4_slain.c: 51: void __attribute__((picinterrupt(("")))) isr(void){
+"52
+[; ;mcu4_slain.c: 52: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"52
-[; ;mcu4_slain.c: 52:     if (PIR1bits.ADIF == 1){
+"55
+[; ;mcu4_slain.c: 55:     if (PIR1bits.ADIF == 1){
 [e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 139  ]
 {
-"53
-[; ;mcu4_slain.c: 53:         temp = ADRESH;
-[e = _temp _ADRESH ]
-"54
-[; ;mcu4_slain.c: 54:         PIR1bits.ADIF = 0;
+"56
+[; ;mcu4_slain.c: 56:         temperature = ADRESH;
+[e = _temperature _ADRESH ]
+"57
+[; ;mcu4_slain.c: 57:         PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"55
-[; ;mcu4_slain.c: 55:     }
+"58
+[; ;mcu4_slain.c: 58:     }
 }
 [e :U 139 ]
-"56
-[; ;mcu4_slain.c: 56: }
+"61
+[; ;mcu4_slain.c: 61:     if (PIR1bits.SSPIF == 1){
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 140  ]
+{
+"62
+[; ;mcu4_slain.c: 62:         PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"63
+[; ;mcu4_slain.c: 63:         temp = spiRead();
+[e = _temp -> ( _spiRead ..  `uc ]
+"64
+[; ;mcu4_slain.c: 64:         spiWrite(PORTD);
+[e ( _spiWrite (1 -> _PORTD `uc ]
+"65
+[; ;mcu4_slain.c: 65:     }
+}
+[e :U 140 ]
+"66
+[; ;mcu4_slain.c: 66: }
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"67
-[; ;mcu4_slain.c: 67: void main(void) {
+"77
+[; ;mcu4_slain.c: 77: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"68
-[; ;mcu4_slain.c: 68:     setup();
-[e ( _setup ..  ]
-"69
-[; ;mcu4_slain.c: 69:     adc_setup();
-[e ( _adc_setup ..  ]
-"74
-[; ;mcu4_slain.c: 74:     while(1){
-[e :U 142 ]
-{
-"75
-[; ;mcu4_slain.c: 75:         adc_convert();
-[e ( _adc_convert ..  ]
-"76
-[; ;mcu4_slain.c: 76:         PORTD = temp;
-[e = _PORTD _temp ]
-"77
-[; ;mcu4_slain.c: 77:         semaforo();
-[e ( _semaforo ..  ]
 "78
-[; ;mcu4_slain.c: 78:     }
-}
-[e :U 141 ]
-[e $U 142  ]
-[e :U 143 ]
+[; ;mcu4_slain.c: 78:     setup();
+[e ( _setup ..  ]
 "79
-[; ;mcu4_slain.c: 79: }
-[e :UE 140 ]
+[; ;mcu4_slain.c: 79:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E1294 4 . `E1302 0 . `E1306 1 . `E1310 0 ]
+"80
+[; ;mcu4_slain.c: 80:     adc_setup();
+[e ( _adc_setup ..  ]
+"85
+[; ;mcu4_slain.c: 85:     while(1){
+[e :U 143 ]
+{
+"87
+[; ;mcu4_slain.c: 87:         adc_convert();
+[e ( _adc_convert ..  ]
+"89
+[; ;mcu4_slain.c: 89:         PORTD = temperature;
+[e = _PORTD _temperature ]
+"90
+[; ;mcu4_slain.c: 90:         semaforo();
+[e ( _semaforo ..  ]
+"91
+[; ;mcu4_slain.c: 91:     }
 }
-"84
-[; ;mcu4_slain.c: 84: void setup(void){
+[e :U 142 ]
+[e $U 143  ]
+[e :U 144 ]
+"92
+[; ;mcu4_slain.c: 92: }
+[e :UE 141 ]
+}
+"97
+[; ;mcu4_slain.c: 97: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"85
-[; ;mcu4_slain.c: 85:     TRISE = 0x00;
-[e = _TRISE -> -> 0 `i `uc ]
-"86
-[; ;mcu4_slain.c: 86:     PORTE = 0x00;
-[e = _PORTE -> -> 0 `i `uc ]
-"87
-[; ;mcu4_slain.c: 87:     TRISA = 0x05;
-[e = _TRISA -> -> 5 `i `uc ]
-"88
-[; ;mcu4_slain.c: 88:     PORTA = 0x00;
-[e = _PORTA -> -> 0 `i `uc ]
-"89
-[; ;mcu4_slain.c: 89:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
-"90
-[; ;mcu4_slain.c: 90:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
-"91
-[; ;mcu4_slain.c: 91:     ANSEL = 0x01;
-[e = _ANSEL -> -> 1 `i `uc ]
-"92
-[; ;mcu4_slain.c: 92:     ANSELH = 0x00;
-[e = _ANSELH -> -> 0 `i `uc ]
-"93
-[; ;mcu4_slain.c: 93: }
-[e :UE 144 ]
-}
 "98
-[; ;mcu4_slain.c: 98: void semaforo(void){
+[; ;mcu4_slain.c: 98:     TRISB = 0x00;
+[e = _TRISB -> -> 0 `i `uc ]
+"99
+[; ;mcu4_slain.c: 99:     PORTB = 0x00;
+[e = _PORTB -> -> 0 `i `uc ]
+"100
+[; ;mcu4_slain.c: 100:     TRISE = 0x00;
+[e = _TRISE -> -> 0 `i `uc ]
+"101
+[; ;mcu4_slain.c: 101:     PORTE = 0x00;
+[e = _PORTE -> -> 0 `i `uc ]
+"102
+[; ;mcu4_slain.c: 102:     TRISA = 0x21;
+[e = _TRISA -> -> 33 `i `uc ]
+"103
+[; ;mcu4_slain.c: 103:     PORTA = 0x00;
+[e = _PORTA -> -> 0 `i `uc ]
+"104
+[; ;mcu4_slain.c: 104:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
+"105
+[; ;mcu4_slain.c: 105:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+"106
+[; ;mcu4_slain.c: 106:     ANSEL = 0x01;
+[e = _ANSEL -> -> 1 `i `uc ]
+"107
+[; ;mcu4_slain.c: 107:     ANSELH = 0x00;
+[e = _ANSELH -> -> 0 `i `uc ]
+"108
+[; ;mcu4_slain.c: 108:     INTCON = 0b11001000;
+[e = _INTCON -> -> 200 `i `uc ]
+"109
+[; ;mcu4_slain.c: 109: }
+[e :UE 145 ]
+}
+"114
+[; ;mcu4_slain.c: 114: void semaforo(void){
 [v _semaforo `(v ~T0 @X0 1 ef ]
 {
 [e :U _semaforo ]
 [f ]
-"99
-[; ;mcu4_slain.c: 99:     if (temp < 44){
-[e $ ! < -> _temp `i -> 44 `i 146  ]
+"115
+[; ;mcu4_slain.c: 115:     if (temperature < 44){
+[e $ ! < -> _temperature `i -> 44 `i 147  ]
 {
-"100
-[; ;mcu4_slain.c: 100:         PORTEbits.RE0 = 1;
+"116
+[; ;mcu4_slain.c: 116:         PORTEbits.RE0 = 1;
 [e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"101
-[; ;mcu4_slain.c: 101:         PORTEbits.RE1 = 0;
+"117
+[; ;mcu4_slain.c: 117:         PORTEbits.RE1 = 0;
 [e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
-"102
-[; ;mcu4_slain.c: 102:         PORTEbits.RE2 = 0;
+"118
+[; ;mcu4_slain.c: 118:         PORTEbits.RE2 = 0;
 [e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"103
-[; ;mcu4_slain.c: 103:     }
+"119
+[; ;mcu4_slain.c: 119:     }
 }
-[e $U 147  ]
-"104
-[; ;mcu4_slain.c: 104:     else if (temp >= 44 && temp <= 61){
-[e :U 146 ]
-[e $ ! && >= -> _temp `i -> 44 `i <= -> _temp `i -> 61 `i 148  ]
-{
-"105
-[; ;mcu4_slain.c: 105:         PORTEbits.RE0 = 0;
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-"106
-[; ;mcu4_slain.c: 106:         PORTEbits.RE1 = 1;
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"107
-[; ;mcu4_slain.c: 107:         PORTEbits.RE2 = 0;
-[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"108
-[; ;mcu4_slain.c: 108:     }
-}
-[e $U 149  ]
-"109
-[; ;mcu4_slain.c: 109:     else {
-[e :U 148 ]
-{
-"110
-[; ;mcu4_slain.c: 110:         PORTEbits.RE0 = 0;
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-"111
-[; ;mcu4_slain.c: 111:         PORTEbits.RE1 = 0;
-[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
-"112
-[; ;mcu4_slain.c: 112:         PORTEbits.RE2 = 1;
-[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
-"113
-[; ;mcu4_slain.c: 113:     }
-}
-[e :U 149 ]
+[e $U 148  ]
+"120
+[; ;mcu4_slain.c: 120:     else if (temperature >= 44 && temperature <= 61){
 [e :U 147 ]
-"114
-[; ;mcu4_slain.c: 114: }
-[e :UE 145 ]
+[e $ ! && >= -> _temperature `i -> 44 `i <= -> _temperature `i -> 61 `i 149  ]
+{
+"121
+[; ;mcu4_slain.c: 121:         PORTEbits.RE0 = 0;
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+"122
+[; ;mcu4_slain.c: 122:         PORTEbits.RE1 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+"123
+[; ;mcu4_slain.c: 123:         PORTEbits.RE2 = 0;
+[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
+"124
+[; ;mcu4_slain.c: 124:     }
+}
+[e $U 150  ]
+"125
+[; ;mcu4_slain.c: 125:     else {
+[e :U 149 ]
+{
+"126
+[; ;mcu4_slain.c: 126:         PORTEbits.RE0 = 0;
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+"127
+[; ;mcu4_slain.c: 127:         PORTEbits.RE1 = 0;
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+"128
+[; ;mcu4_slain.c: 128:         PORTEbits.RE2 = 1;
+[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+"129
+[; ;mcu4_slain.c: 129:     }
+}
+[e :U 150 ]
+[e :U 148 ]
+"130
+[; ;mcu4_slain.c: 130: }
+[e :UE 146 ]
 }

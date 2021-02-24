@@ -2651,17 +2651,62 @@ void adc_convert(void);
 void adc_setup(void);
 # 38 "mcu2_slain.c" 2
 
+# 1 "./spi.h" 1
+# 15 "./spi.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 39 "mcu2_slain.c" 2
+
 
 
 
 
 
 uint8_t conv_adc;
+uint8_t temp;
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
+
+    if(PIR1bits.SSPIF == 1){
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();
+        spiWrite(conv_adc);
+    }
 
 
     if (PIR1bits.ADIF == 1){
@@ -2680,6 +2725,7 @@ void setup(void);
 
 void main(void) {
     setup();
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     adc_setup();
 
 
@@ -2693,9 +2739,12 @@ void main(void) {
 
 
 void setup(void){
-    TRISA = 0x01;
+    TRISA = 0x21;
     PORTA = 0x00;
+    TRISB = 0x00;
+    PORTB = 0x00;
     ANSEL = 0x01;
+    ANSELH = 0;
     ADCON0 = 0b000000011;
     ADCON1 = 0b000000000;
     INTCONbits.GIE = 1;

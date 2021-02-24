@@ -2651,22 +2651,68 @@ void adc_convert(void);
 void adc_setup(void);
 # 38 "mcu4_slain.c" 2
 
+# 1 "./spi.h" 1
+# 15 "./spi.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 39 "mcu4_slain.c" 2
 
 
 
 
 
 
-uint8_t conv_adc;
+
 uint8_t temp;
+uint8_t temperature;
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
+
     if (PIR1bits.ADIF == 1){
-        temp = ADRESH;
+        temperature = ADRESH;
         PIR1bits.ADIF = 0;
+    }
+
+
+    if (PIR1bits.SSPIF == 1){
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();
+        spiWrite(PORTD);
     }
 }
 
@@ -2681,14 +2727,17 @@ void semaforo(void);
 
 void main(void) {
     setup();
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     adc_setup();
 
 
 
 
     while(1){
+
         adc_convert();
-        PORTD = temp;
+
+        PORTD = temperature;
         semaforo();
     }
 }
@@ -2697,26 +2746,29 @@ void main(void) {
 
 
 void setup(void){
+    TRISB = 0x00;
+    PORTB = 0x00;
     TRISE = 0x00;
     PORTE = 0x00;
-    TRISA = 0x05;
+    TRISA = 0x21;
     PORTA = 0x00;
     TRISD = 0;
     PORTD = 0;
     ANSEL = 0x01;
     ANSELH = 0x00;
+    INTCON = 0b11001000;
 }
 
 
 
 
 void semaforo(void){
-    if (temp < 44){
+    if (temperature < 44){
         PORTEbits.RE0 = 1;
         PORTEbits.RE1 = 0;
         PORTEbits.RE2 = 0;
     }
-    else if (temp >= 44 && temp <= 61){
+    else if (temperature >= 44 && temperature <= 61){
         PORTEbits.RE0 = 0;
         PORTEbits.RE1 = 1;
         PORTEbits.RE2 = 0;

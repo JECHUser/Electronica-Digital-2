@@ -11,10 +11,10 @@
 #define _XTAL_FREQ 8000000
 
 void adc_convert(void){
-    __delay_ms(2);
-    ADCON0bits.GO_nDONE = 1;
-    if (ADCON0bits.GO_nDONE == 0){
-        ADCON0bits.GO_nDONE = 1;
+    if(ADCON0bits.GO == 0){
+        __delay_ms(5);
+        ADCON0bits.GO = 1;
+        __delay_ms(5);
     }
 }
 

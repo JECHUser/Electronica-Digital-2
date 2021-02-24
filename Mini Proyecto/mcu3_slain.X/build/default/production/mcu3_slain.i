@@ -8,7 +8,7 @@
 # 2 "<built-in>" 2
 # 1 "mcu3_slain.c" 2
 # 17 "mcu3_slain.c"
-#pragma config FOSC = XT
+#pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -2645,29 +2645,85 @@ typedef uint16_t uintptr_t;
 # 36 "mcu3_slain.c" 2
 
 
+# 1 "./spi_library.h" 1
+# 13 "./spi_library.h"
+void SPI_Slave_Init(void);
+void SPI_Master_Init(void);
+char SPI_read(void);
+void SPI_write(char data);
+static void wait();
+# 38 "mcu3_slain.c" 2
+
+# 1 "./spi.h" 1
+# 15 "./spi.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 39 "mcu3_slain.c" 2
 
 
 
 
 
 
-int var = 0;
-uint8_t cont = 0;
-uint8_t var_temp;
+
+uint8_t temp;
+
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void) {
 
+
+    if (PIR1bits.SSPIF == 1) {
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();
+        spiWrite(PORTD);
+    }
+
+
     if (INTCONbits.RBIF == 1) {
+
         if (PORTBbits.RB0 == 1) {
-            cont++;
+            PORTD++;
+            INTCONbits.RBIF = 0;
         }
+
         if (PORTBbits.RB1 == 1) {
-            cont--;
+            PORTD--;
+            INTCONbits.RBIF = 0;
         }
-        INTCONbits.RBIF = 0;
     }
 }
 
@@ -2681,15 +2737,13 @@ void setup(void);
 
 void main(void) {
     setup();
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
 
 
     while (1) {
-        PORTD = cont;
-        SSPBUF = cont;
-        while(!SSPSTATbits.BF){}
-        var_temp = SSPBUF;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
     }
 }
 
@@ -2699,9 +2753,6 @@ void main(void) {
 
 void setup(void) {
     TRISA = 0b00100000;
-    PORTA = 0x00;
-    TRISC = 0b00011000;
-    PORTC = 0x00;
     TRISD = 0x00;
     PORTD = 0x00;
     TRISB = 0x03;
@@ -2710,6 +2761,4 @@ void setup(void) {
     ANSELH = 0;
     INTCON = 0b11001000;
     IOCB = 0x03;
-    SSPSTAT = 0b00000000;
-    SSPCON = 0b00110100;
 }

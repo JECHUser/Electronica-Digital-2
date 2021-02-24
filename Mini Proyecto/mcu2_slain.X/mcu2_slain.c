@@ -36,22 +36,31 @@
 #include <stdint.h>
 #include <pic16f887.h>
 #include "adc_library.h"
+#include "spi.h"
 
 #define _XTAL_FREQ 8000000
 //******************************************************************************
 // Variables
 //******************************************************************************
 uint8_t conv_adc;
+uint8_t temp;
 
 //******************************************************************************
 // Interrupciones
 //******************************************************************************
 void __interrupt() isr(void){
     
+    // comprobando transmision/recepcion
+    if(PIR1bits.SSPIF == 1){
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();
+        spiWrite(conv_adc);
+    }
+    
     // comprobando si terminó la conversión
     if (PIR1bits.ADIF == 1){
-        conv_adc = ADRESH;
-        PIR1bits.ADIF = 0;
+        conv_adc = ADRESH;  // lectura de la conversion
+        PIR1bits.ADIF = 0;  // off bandera conversión ADC
     }
 }
 //******************************************************************************
@@ -64,13 +73,14 @@ void setup(void);
 //******************************************************************************
 
 void main(void) {
-    setup();
-    adc_setup();
+    setup();        // llamada configuraciones generales
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    adc_setup();    // llamada configuraciones ADC
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while(1){
-        adc_convert();
+        adc_convert();  // conversion
     }
 }
 
@@ -78,9 +88,12 @@ void main(void) {
 // Configuración
 //******************************************************************************
 void setup(void){
-    TRISA = 0x01;
+    TRISA = 0x21;
     PORTA = 0x00;
+    TRISB = 0x00;
+    PORTB = 0x00;
     ANSEL = 0x01;
+    ANSELH = 0;
     ADCON0 = 0b000000011;
     ADCON1 = 0b000000000;
     INTCONbits.GIE = 1;

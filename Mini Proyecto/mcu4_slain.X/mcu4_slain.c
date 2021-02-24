@@ -36,23 +36,33 @@
 #include <stdint.h>
 #include <pic16f887.h>
 #include "adc_library.h"
+#include "spi.h"
 
 #define _XTAL_FREQ 8000000
 
 //******************************************************************************
 // Variables
 //******************************************************************************
-uint8_t conv_adc;
 uint8_t temp;
+uint8_t temperature;
 
 //******************************************************************************
 // Interrupciones
 //******************************************************************************
 void __interrupt() isr(void){  
+    
+    // interrupciones de adc
     if (PIR1bits.ADIF == 1){
-        temp = ADRESH;
+        temperature = ADRESH; // carga el valor 
         PIR1bits.ADIF = 0;
     }
+    
+    // interrupciones debido a transmision/recepcion
+    if (PIR1bits.SSPIF == 1){
+        PIR1bits.SSPIF = 0;
+        temp = spiRead();   // lectura
+        spiWrite(PORTD);    // escritura SPI
+    } 
 }
 //******************************************************************************
 // Prototipo de funciones
@@ -66,14 +76,17 @@ void semaforo(void);
 
 void main(void) {
     setup();
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     adc_setup();
     
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while(1){
+        // conversion adc
         adc_convert();
-        PORTD = temp;
+        // 
+        PORTD = temperature;
         semaforo();
     }
 }
@@ -82,26 +95,29 @@ void main(void) {
 // Configuración
 //******************************************************************************
 void setup(void){
+    TRISB = 0x00;
+    PORTB = 0x00;
     TRISE = 0x00;
     PORTE = 0x00;
-    TRISA = 0x05;
+    TRISA = 0x21;
     PORTA = 0x00;
     TRISD = 0;
     PORTD = 0;
     ANSEL = 0x01;
     ANSELH = 0x00;
+    INTCON = 0b11001000;
 }
 
 //******************************************************************************
 // Funciones
 //******************************************************************************
 void semaforo(void){
-    if (temp < 44){
+    if (temperature < 44){
         PORTEbits.RE0 = 1;
         PORTEbits.RE1 = 0;
         PORTEbits.RE2 = 0;
     }
-    else if (temp >= 44 && temp <= 61){
+    else if (temperature >= 44 && temperature <= 61){
         PORTEbits.RE0 = 0;
         PORTEbits.RE1 = 1;
         PORTEbits.RE2 = 0;

@@ -2506,10 +2506,10 @@ void adc_setup(void);
 
 
 void adc_convert(void){
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    ADCON0bits.GO_nDONE = 1;
-    if (ADCON0bits.GO_nDONE == 0){
-        ADCON0bits.GO_nDONE = 1;
+    if(ADCON0bits.GO == 0){
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+        ADCON0bits.GO = 1;
+        _delay((unsigned long)((5)*(8000000/4000.0)));
     }
 }
 
