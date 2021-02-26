@@ -28,17 +28,17 @@ void I2C_Master_Wait(){
 
 void I2C_Master_Start(void){
     I2C_Master_Wait();
-    SSPCON2bits.SEN = 1;
+    SSPCON2bits.SEN = 1;            // Start Condition enable bit
 }
 
 void I2C_RepeatedStart(void){
     I2C_Master_Wait();
-    SSPCON2bits.RSEN = 1;
+    SSPCON2bits.RSEN = 1;           // Repeated Start Condition enable bit
 }
 
 void I2C_Master_Stop(){
     I2C_Master_Wait();
-    SSPCON2bits.PEN = 1;
+    SSPCON2bits.PEN = 1;            // Stop Condition enable bit
 }
 
 void I2C_Master_Write(unsigned data){
@@ -49,11 +49,11 @@ void I2C_Master_Write(unsigned data){
 unsigned short I2C_Master_Read(unsigned short a){
     unsigned short temp;
     I2C_Master_Wait();
-    SSPCON2bits.RCEN = 1;
+    SSPCON2bits.RCEN = 1;           // Receive enable bit
     I2C_Master_Wait();
     temp = SSPBUF;
     I2C_Master_Wait();
-    SSPCON2bits.ACKDT = (a)?0:1;
-    SSPCON2bits.ACKEN = 1;
+    SSPCON2bits.ACKDT = (a)?0:1;    // Acknowledge Data bit
+    SSPCON2bits.ACKEN = 1;          // Acknowledge Sequence Enable bit
     return temp;
 }
