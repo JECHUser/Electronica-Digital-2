@@ -1,42 +1,70 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"57 mcu_16f887.c
-[; ;mcu_16f887.c: 57: void setup(void);
-[v _setup `(v ~T0 @X0 0 ef ]
-"13 ./I2C_Library.h
-[; ;./I2C_Library.h: 13: void I2C_Master_Init(const unsigned long c);
-[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"58 mcu_16f887.c
-[; ;mcu_16f887.c: 58: char lecture_sensor(void);
-[v _lecture_sensor `(uc ~T0 @X0 0 ef ]
-"1602 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"352
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"1540
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1540: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"290
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"15 ./I2C_Library.h
-[; ;./I2C_Library.h: 15: void I2C_Master_Start(void);
-[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
-"18
-[; ;./I2C_Library.h: 18: void I2C_Master_Write(unsigned data);
-[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
-"19
-[; ;./I2C_Library.h: 19: unsigned short I2C_Master_Read(unsigned short a);
-[v _I2C_Master_Read `(us ~T0 @X0 0 ef1`us ]
-"17
-[; ;./I2C_Library.h: 17: void I2C_Master_Stop();
-[v _I2C_Master_Stop `(v ~T0 @X0 0 e? ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
+"3695 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3695: extern volatile __bit BRGH __attribute__((address(0x4C2)));
+[v _BRGH `Vb ~T0 @X0 0 e@1218 ]
+"2642
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2642: extern volatile unsigned char SPBRG __attribute__((address(0x099)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
+"4313
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4313: extern volatile __bit SYNC __attribute__((address(0x4C4)));
+[v _SYNC `Vb ~T0 @X0 0 e@1220 ]
+"4259
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4259: extern volatile __bit SPEN __attribute__((address(0xC7)));
+[v _SPEN `Vb ~T0 @X0 0 e@199 ]
+"4469
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4469: extern volatile __bit TRISC7 __attribute__((address(0x43F)));
+[v _TRISC7 `Vb ~T0 @X0 0 e@1087 ]
+"4466
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4466: extern volatile __bit TRISC6 __attribute__((address(0x43E)));
+[v _TRISC6 `Vb ~T0 @X0 0 e@1086 ]
+"3836
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3836: extern volatile __bit CREN __attribute__((address(0xC4)));
+[v _CREN `Vb ~T0 @X0 0 e@196 ]
+"4538
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4538: extern volatile __bit TXEN __attribute__((address(0x4C5)));
+[v _TXEN `Vb ~T0 @X0 0 e@1221 ]
+"543
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1140
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"2562
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2562:     struct {
+[s S99 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S99 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"2572
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2572:     struct {
+[s S100 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S100 . TXD8 . nTX8 ]
+"2577
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2577:     struct {
+[s S101 :6 `uc 1 :1 `uc 1 ]
+[n S101 . . TX8_9 ]
+"2561
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2561: typedef union {
+[u S98 `S99 1 `S100 1 `S101 1 ]
+[n S98 . . . . ]
+"2582
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2582: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0x098)));
+[v _TXSTAbits `VS98 ~T0 @X0 0 e@152 ]
+"1133
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"4175
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4175: extern volatile __bit RCIF __attribute__((address(0x65)));
+[v _RCIF `Vb ~T0 @X0 0 e@101 ]
+"4508
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4508: extern volatile __bit TRMT __attribute__((address(0x4C1)));
+[v _TRMT `Vb ~T0 @X0 0 e@1217 ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -271,138 +299,141 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"25 mcu_16f887.c
-[p x FOSC  =  INTRC_CLKOUT ]
-"26
-[p x WDTE  =  OFF        ]
-"27
-[p x PWRTE  =  OFF       ]
-"28
-[p x MCLRE  =  OFF       ]
-"29
-[p x CP  =  OFF          ]
-"30
-[p x CPD  =  OFF         ]
-"31
-[p x BOREN  =  OFF       ]
-"32
-[p x IESO  =  OFF        ]
-"33
-[p x FCMEN  =  OFF       ]
-"34
-[p x LVP  =  OFF         ]
-"37
-[p x BOR4V  =  BOR40V    ]
-"38
-[p x WRT  =  OFF         ]
-"46
-[v _sensor `uc ~T0 @X0 1 e ]
-"47
-[v _temp `uc ~T0 @X0 1 e ]
-"48
-[v _address `uc ~T0 @X0 1 e ]
-[i _address
--> -> 20 `i `uc
-]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"65
-[; ;mcu_16f887.c: 65: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"15 UART_Library.c
+[; ;UART_Library.c: 15: char UART_Init(const long int baudrate) {
+[v _UART_Init `(uc ~T0 @X0 1 ef1`Cl ]
 {
-[e :U _main ]
+[e :U _UART_Init ]
+[v _baudrate `Cl ~T0 @X0 1 r1 ]
 [f ]
-"67
-[; ;mcu_16f887.c: 67:     setup();
-[e ( _setup ..  ]
-"68
-[; ;mcu_16f887.c: 68:     I2C_Master_Init(100000);
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
-"74
-[; ;mcu_16f887.c: 74:     while (1) {
-[e :U 140 ]
+"16
+[; ;UART_Library.c: 16:     unsigned int x;
+[v _x `ui ~T0 @X0 1 a ]
+"17
+[; ;UART_Library.c: 17:     x = (8000000 - baudrate * 64) / (baudrate * 64);
+[e = _x -> / - -> 8000000 `l * _baudrate -> -> 64 `i `l * _baudrate -> -> 64 `i `l `ui ]
+"18
+[; ;UART_Library.c: 18:     if (x > 255) {
+[e $ ! > _x -> -> 255 `i `ui 139  ]
 {
-"75
-[; ;mcu_16f887.c: 75:         sensor = lecture_sensor();
-[e = _sensor ( _lecture_sensor ..  ]
-"76
-[; ;mcu_16f887.c: 76:     }
+"19
+[; ;UART_Library.c: 19:         x = (8000000 - baudrate * 16) / (baudrate * 16);
+[e = _x -> / - -> 8000000 `l * _baudrate -> -> 16 `i `l * _baudrate -> -> 16 `i `l `ui ]
+"20
+[; ;UART_Library.c: 20:         BRGH = 1;
+[e = _BRGH -> -> 1 `i `b ]
+"21
+[; ;UART_Library.c: 21:     }
 }
 [e :U 139 ]
-[e $U 140  ]
-[e :U 141 ]
-"77
-[; ;mcu_16f887.c: 77: }
+"22
+[; ;UART_Library.c: 22:     if (x < 256) {
+[e $ ! < _x -> -> 256 `i `ui 140  ]
+{
+"23
+[; ;UART_Library.c: 23:         SPBRG = x;
+[e = _SPBRG -> _x `uc ]
+"24
+[; ;UART_Library.c: 24:         SYNC = 0;
+[e = _SYNC -> -> 0 `i `b ]
+"25
+[; ;UART_Library.c: 25:         SPEN = 1;
+[e = _SPEN -> -> 1 `i `b ]
+"26
+[; ;UART_Library.c: 26:         TRISC7 = 1;
+[e = _TRISC7 -> -> 1 `i `b ]
+"27
+[; ;UART_Library.c: 27:         TRISC6 = 1;
+[e = _TRISC6 -> -> 1 `i `b ]
+"28
+[; ;UART_Library.c: 28:         CREN = 1;
+[e = _CREN -> -> 1 `i `b ]
+"29
+[; ;UART_Library.c: 29:         TXEN = 1;
+[e = _TXEN -> -> 1 `i `b ]
+"30
+[; ;UART_Library.c: 30:         return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 138  ]
+"31
+[; ;UART_Library.c: 31:     }
+}
+[e :U 140 ]
+"32
+[; ;UART_Library.c: 32:     return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 138  ]
+"33
+[; ;UART_Library.c: 33: }
 [e :UE 138 ]
 }
-"83
-[; ;mcu_16f887.c: 83: void setup(void) {
-[v _setup `(v ~T0 @X0 1 ef ]
+"35
+[; ;UART_Library.c: 35: char UART_DATA_Read(){
+[v _UART_DATA_Read `(uc ~T0 @X0 1 ef ]
 {
-[e :U _setup ]
+[e :U _UART_DATA_Read ]
 [f ]
-"84
-[; ;mcu_16f887.c: 84:     TRISD = 0b00000000;
-[e = _TRISD -> -> 0 `i `uc ]
-"85
-[; ;mcu_16f887.c: 85:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
-"86
-[; ;mcu_16f887.c: 86:     TRISC = 0b00011000;
-[e = _TRISC -> -> 24 `i `uc ]
-"87
-[; ;mcu_16f887.c: 87:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
-"88
-[; ;mcu_16f887.c: 88: }
-[e :UE 142 ]
+"36
+[; ;UART_Library.c: 36:     while(!PIR1bits.RCIF);
+[e $U 142  ]
+[e :U 143 ]
+[e :U 142 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 143  ]
+[e :U 144 ]
+"37
+[; ;UART_Library.c: 37:     return RCREG;
+[e ) -> _RCREG `uc ]
+[e $UE 141  ]
+"38
+[; ;UART_Library.c: 38: }
+[e :UE 141 ]
 }
-"94
-[; ;mcu_16f887.c: 94: char lecture_esp32(void){
-[v _lecture_esp32 `(uc ~T0 @X0 1 ef ]
+"40
+[; ;UART_Library.c: 40: void UART_DATA_Write(char data){
+[v _UART_DATA_Write `(v ~T0 @X0 1 ef1`uc ]
 {
-[e :U _lecture_esp32 ]
+[e :U _UART_DATA_Write ]
+[v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-"96
-[; ;mcu_16f887.c: 96: }
-[e :UE 143 ]
+"41
+[; ;UART_Library.c: 41:     while(!TXSTAbits.TRMT);
+[e $U 146  ]
+[e :U 147 ]
+[e :U 146 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 147  ]
+[e :U 148 ]
+"42
+[; ;UART_Library.c: 42:     TXREG = data;
+[e = _TXREG -> _data `uc ]
+"43
+[; ;UART_Library.c: 43: }
+[e :UE 145 ]
 }
-"98
-[; ;mcu_16f887.c: 98: char lecture_sensor(void) {
-[v _lecture_sensor `(uc ~T0 @X0 1 ef ]
+"45
+[; ;UART_Library.c: 45: char UART_DATA_Ready(){
+[v _UART_DATA_Ready `(uc ~T0 @X0 1 ef ]
 {
-[e :U _lecture_sensor ]
+[e :U _UART_DATA_Ready ]
 [f ]
-"99
-[; ;mcu_16f887.c: 99:     I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"100
-[; ;mcu_16f887.c: 100:     I2C_Master_Write((address * 2) + 1);
-[e ( _I2C_Master_Write (1 -> + * -> _address `i -> 2 `i -> 1 `i `ui ]
-"101
-[; ;mcu_16f887.c: 101:     PORTD = I2C_Master_Read(1);
-[e = _PORTD -> ( _I2C_Master_Read (1 -> -> 1 `i `us `uc ]
-"102
-[; ;mcu_16f887.c: 102:     I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"103
-[; ;mcu_16f887.c: 103:     _delay((unsigned long)((100)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"104
-[; ;mcu_16f887.c: 104:     I2C_Master_Start();
-[e ( _I2C_Master_Start ..  ]
-"105
-[; ;mcu_16f887.c: 105:     I2C_Master_Write((address * 2) + 0);
-[e ( _I2C_Master_Write (1 -> + * -> _address `i -> 2 `i -> 0 `i `ui ]
-"106
-[; ;mcu_16f887.c: 106:     I2C_Master_Write(0x01);
-[e ( _I2C_Master_Write (1 -> -> 1 `i `ui ]
-"107
-[; ;mcu_16f887.c: 107:     I2C_Master_Stop();
-[e ( _I2C_Master_Stop ..  ]
-"108
-[; ;mcu_16f887.c: 108:     _delay((unsigned long)((100)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"109
-[; ;mcu_16f887.c: 109: }
-[e :UE 144 ]
+"46
+[; ;UART_Library.c: 46:     return RCIF;
+[e ) -> _RCIF `uc ]
+[e $UE 149  ]
+"47
+[; ;UART_Library.c: 47: }
+[e :UE 149 ]
+}
+"49
+[; ;UART_Library.c: 49: char UART_TX_EMPTY(){
+[v _UART_TX_EMPTY `(uc ~T0 @X0 1 ef ]
+{
+[e :U _UART_TX_EMPTY ]
+[f ]
+"50
+[; ;UART_Library.c: 50:     return TRMT;
+[e ) -> _TRMT `uc ]
+[e $UE 150  ]
+"51
+[; ;UART_Library.c: 51: }
+[e :UE 150 ]
 }

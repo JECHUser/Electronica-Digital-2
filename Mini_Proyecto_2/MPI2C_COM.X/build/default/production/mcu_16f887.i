@@ -2489,8 +2489,163 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
 # 12 "mcu_16f887.c" 2
-# 22 "mcu_16f887.c"
-#pragma config FOSC = EXTRC_NOCLKOUT
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
+
+
+
+
+
+
+typedef signed int int16_t;
+
+
+
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 13 "mcu_16f887.c" 2
+
+# 1 "./I2C_Library.h" 1
+# 13 "./I2C_Library.h"
+void I2C_Master_Init(const unsigned long c);
+void I2C_Master_Wait();
+void I2C_Master_Start(void);
+void I2C_RepeatedStart(void);
+void I2C_Master_Stop();
+void I2C_Master_Write(unsigned data);
+unsigned short I2C_Master_Read(unsigned short a);
+# 14 "mcu_16f887.c" 2
+
+# 1 "./UART_Library.h" 1
+# 13 "./UART_Library.h"
+char UART_Init(const long int baudrate);
+char UART_DATA_Read();
+void UART_DATA_Write(char data);
+char UART_DATA_Ready();
+char UART_TX_EMPTY();
+# 15 "mcu_16f887.c" 2
+# 25 "mcu_16f887.c"
+#pragma config FOSC = INTRC_CLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -2504,27 +2659,67 @@ extern __bank0 __bit __timeout;
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 48 "mcu_16f887.c"
+
+
+
+
+
+
+
+char sensor;
+char temp;
+char address = 20;
+# 57 "mcu_16f887.c"
 void setup(void);
+char lecture_sensor(void);
+char lecture_esp32(void);
 
 
 
-void main(void){
+
+
+void main(void) {
+
     setup();
+    I2C_Master_Init(100000);
 
 
 
-    while(1){}
+
+
+    while (1) {
+        sensor = lecture_sensor();
+    }
 }
 
 
 
 
 
-void setup(void){
-    TRISAbits.TRISA0 = 1;
-    ANSELbits.ANS0 = 1;
-    PORTA = 0;
-    TRISD = 0b00000011;
+void setup(void) {
+    TRISD = 0b00000000;
     PORTD = 0;
+    TRISC = 0b00011000;
+    PORTC = 0;
+}
+
+
+
+
+
+char lecture_esp32(void){
+
+}
+
+char lecture_sensor(void) {
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 1);
+    PORTD = I2C_Master_Read(1);
+    I2C_Master_Stop();
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
+    _delay((unsigned long)((100)*(4000000/4000.0)));
 }

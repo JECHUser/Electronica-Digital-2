@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"850 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 850: extern volatile unsigned char SSPCON __attribute__((address(0x014)));
-[v _SSPCON `Vuc ~T0 @X0 0 e@20 ]
-"1979
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1979: extern volatile unsigned char SSPCON2 __attribute__((address(0x091)));
-[v _SSPCON2 `Vuc ~T0 @X0 0 e@145 ]
-"2048
+"2048 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2048: extern volatile unsigned char SSPADD __attribute__((address(0x093)));
 [v _SSPADD `Vuc ~T0 @X0 0 e@147 ]
 "2177
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2177: extern volatile unsigned char SSPSTAT __attribute__((address(0x094)));
 [v _SSPSTAT `Vuc ~T0 @X0 0 e@148 ]
+"850
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 850: extern volatile unsigned char SSPCON __attribute__((address(0x014)));
+[v _SSPCON `Vuc ~T0 @X0 0 e@20 ]
+"1979
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1979: extern volatile unsigned char SSPCON2 __attribute__((address(0x091)));
+[v _SSPCON2 `Vuc ~T0 @X0 0 e@145 ]
 "1546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1546:     struct {
 [s S57 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -278,35 +278,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _c `Cul ~T0 @X0 1 r1 ]
 [f ]
 "17
-[; ;I2C_Library.c: 17:     SSPCON = 0b00101000;
-[e = _SSPCON -> -> 40 `i `uc ]
-"18
-[; ;I2C_Library.c: 18:     SSPCON2 = 0b00000000;
-[e = _SSPCON2 -> -> 0 `i `uc ]
-"19
-[; ;I2C_Library.c: 19:     SSPADD = (8000000/(4*c))-1;
+[; ;I2C_Library.c: 17:     SSPADD = (8000000/(4*c))-1;
 [e = _SSPADD -> - / -> -> 8000000 `l `ul * -> -> -> 4 `i `l `ul _c -> -> -> 1 `i `l `ul `uc ]
-"20
-[; ;I2C_Library.c: 20:     SSPSTAT = 0b00000000;
+"18
+[; ;I2C_Library.c: 18:     SSPSTAT = 0b00000000;
 [e = _SSPSTAT -> -> 0 `i `uc ]
+"19
+[; ;I2C_Library.c: 19:     SSPCON = 0b00101000;
+[e = _SSPCON -> -> 40 `i `uc ]
 "21
-[; ;I2C_Library.c: 21:     TRISCbits.TRISC3 = 1;
-[e = . . _TRISCbits 0 3 -> -> 1 `i `uc ]
-"22
-[; ;I2C_Library.c: 22:     TRISCbits.TRISC4 = 1;
-[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+[; ;I2C_Library.c: 21:     SSPCON2 = 0b00000000;
+[e = _SSPCON2 -> -> 0 `i `uc ]
 "23
-[; ;I2C_Library.c: 23: }
+[; ;I2C_Library.c: 23:     TRISCbits.TRISC3 = 1;
+[e = . . _TRISCbits 0 3 -> -> 1 `i `uc ]
+"24
+[; ;I2C_Library.c: 24:     TRISCbits.TRISC4 = 1;
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+"25
+[; ;I2C_Library.c: 25: }
 [e :UE 138 ]
 }
-"25
-[; ;I2C_Library.c: 25: void I2C_Master_Wait(){
+"27
+[; ;I2C_Library.c: 27: void I2C_Master_Wait(){
 [v _I2C_Master_Wait `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Master_Wait ]
 [f ]
-"26
-[; ;I2C_Library.c: 26:     while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){};
+"28
+[; ;I2C_Library.c: 28:     while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){};
 [e $U 140  ]
 [e :U 141 ]
 {
@@ -314,111 +314,111 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 140 ]
 [e $ || != & -> _SSPSTAT `i -> 4 `i -> 0 `i != & -> _SSPCON2 `i -> 31 `i -> 0 `i 141  ]
 [e :U 142 ]
-"27
-[; ;I2C_Library.c: 27: }
+"29
+[; ;I2C_Library.c: 29: }
 [e :UE 139 ]
 }
-"29
-[; ;I2C_Library.c: 29: void I2C_Master_Start(void){
+"31
+[; ;I2C_Library.c: 31: void I2C_Master_Start(void){
 [v _I2C_Master_Start `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Master_Start ]
 [f ]
-"30
-[; ;I2C_Library.c: 30:     I2C_Master_Wait();
-[e ( _I2C_Master_Wait ..  ]
-"31
-[; ;I2C_Library.c: 31:     SSPCON2bits.SEN = 1;
-[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
 "32
-[; ;I2C_Library.c: 32: }
+[; ;I2C_Library.c: 32:     I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
+"33
+[; ;I2C_Library.c: 33:     SSPCON2bits.SEN = 1;
+[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+"34
+[; ;I2C_Library.c: 34: }
 [e :UE 143 ]
 }
-"34
-[; ;I2C_Library.c: 34: void I2C_RepeatedStart(void){
+"36
+[; ;I2C_Library.c: 36: void I2C_RepeatedStart(void){
 [v _I2C_RepeatedStart `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_RepeatedStart ]
 [f ]
-"35
-[; ;I2C_Library.c: 35:     I2C_Master_Wait();
-[e ( _I2C_Master_Wait ..  ]
-"36
-[; ;I2C_Library.c: 36:     SSPCON2bits.RSEN = 1;
-[e = . . _SSPCON2bits 0 1 -> -> 1 `i `uc ]
 "37
-[; ;I2C_Library.c: 37: }
+[; ;I2C_Library.c: 37:     I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
+"38
+[; ;I2C_Library.c: 38:     SSPCON2bits.RSEN = 1;
+[e = . . _SSPCON2bits 0 1 -> -> 1 `i `uc ]
+"39
+[; ;I2C_Library.c: 39: }
 [e :UE 144 ]
 }
-"39
-[; ;I2C_Library.c: 39: void I2C_Master_Stop(){
+"41
+[; ;I2C_Library.c: 41: void I2C_Master_Stop(){
 [v _I2C_Master_Stop `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Master_Stop ]
 [f ]
-"40
-[; ;I2C_Library.c: 40:     I2C_Master_Wait();
-[e ( _I2C_Master_Wait ..  ]
-"41
-[; ;I2C_Library.c: 41:     SSPCON2bits.PEN = 1;
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
 "42
-[; ;I2C_Library.c: 42: }
+[; ;I2C_Library.c: 42:     I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
+"43
+[; ;I2C_Library.c: 43:     SSPCON2bits.PEN = 1;
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"44
+[; ;I2C_Library.c: 44: }
 [e :UE 145 ]
 }
-"44
-[; ;I2C_Library.c: 44: void I2C_Master_Write(unsigned data){
+"46
+[; ;I2C_Library.c: 46: void I2C_Master_Write(unsigned data){
 [v _I2C_Master_Write `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _I2C_Master_Write ]
 [v _data `ui ~T0 @X0 1 r1 ]
 [f ]
-"45
-[; ;I2C_Library.c: 45:     I2C_Master_Wait();
-[e ( _I2C_Master_Wait ..  ]
-"46
-[; ;I2C_Library.c: 46:     SSPBUF = data;
-[e = _SSPBUF -> _data `uc ]
 "47
-[; ;I2C_Library.c: 47: }
+[; ;I2C_Library.c: 47:     I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
+"48
+[; ;I2C_Library.c: 48:     SSPBUF = data;
+[e = _SSPBUF -> _data `uc ]
+"49
+[; ;I2C_Library.c: 49: }
 [e :UE 146 ]
 }
-"49
-[; ;I2C_Library.c: 49: unsigned short I2C_Master_Read(unsigned short a){
+"51
+[; ;I2C_Library.c: 51: unsigned short I2C_Master_Read(unsigned short a){
 [v _I2C_Master_Read `(us ~T0 @X0 1 ef1`us ]
 {
 [e :U _I2C_Master_Read ]
 [v _a `us ~T0 @X0 1 r1 ]
 [f ]
-"50
-[; ;I2C_Library.c: 50:     unsigned short temp;
-[v _temp `us ~T0 @X0 1 a ]
-"51
-[; ;I2C_Library.c: 51:     I2C_Master_Wait();
-[e ( _I2C_Master_Wait ..  ]
 "52
-[; ;I2C_Library.c: 52:     SSPCON2bits.RCEN = 1;
-[e = . . _SSPCON2bits 0 3 -> -> 1 `i `uc ]
+[; ;I2C_Library.c: 52:     unsigned short temp;
+[v _temp `us ~T0 @X0 1 a ]
 "53
 [; ;I2C_Library.c: 53:     I2C_Master_Wait();
 [e ( _I2C_Master_Wait ..  ]
 "54
-[; ;I2C_Library.c: 54:     temp = SSPBUF;
-[e = _temp -> _SSPBUF `us ]
+[; ;I2C_Library.c: 54:     SSPCON2bits.RCEN = 1;
+[e = . . _SSPCON2bits 0 3 -> -> 1 `i `uc ]
 "55
 [; ;I2C_Library.c: 55:     I2C_Master_Wait();
 [e ( _I2C_Master_Wait ..  ]
 "56
-[; ;I2C_Library.c: 56:     SSPCON2bits.ACKDT = (a)?0:1;
-[e = . . _SSPCON2bits 0 5 -> ? != -> _a `ui -> -> 0 `i `ui : -> 0 `i -> 1 `i `uc ]
+[; ;I2C_Library.c: 56:     temp = SSPBUF;
+[e = _temp -> _SSPBUF `us ]
 "57
-[; ;I2C_Library.c: 57:     SSPCON2bits.ACKEN = 1;
-[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+[; ;I2C_Library.c: 57:     I2C_Master_Wait();
+[e ( _I2C_Master_Wait ..  ]
 "58
-[; ;I2C_Library.c: 58:     return temp;
+[; ;I2C_Library.c: 58:     SSPCON2bits.ACKDT = (a)?0:1;
+[e = . . _SSPCON2bits 0 5 -> ? != -> _a `ui -> -> 0 `i `ui : -> 0 `i -> 1 `i `uc ]
+"59
+[; ;I2C_Library.c: 59:     SSPCON2bits.ACKEN = 1;
+[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+"60
+[; ;I2C_Library.c: 60:     return temp;
 [e ) _temp ]
 [e $UE 147  ]
-"59
-[; ;I2C_Library.c: 59: }
+"61
+[; ;I2C_Library.c: 61: }
 [e :UE 147 ]
 }

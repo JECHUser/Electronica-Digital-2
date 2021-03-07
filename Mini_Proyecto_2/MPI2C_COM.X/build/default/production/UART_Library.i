@@ -1,4 +1,4 @@
-# 1 "I2C_Library.c"
+# 1 "UART_Library.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "I2C_Library.c" 2
-# 10 "I2C_Library.c"
+# 1 "UART_Library.c" 2
+# 10 "UART_Library.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,200 +2488,54 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 10 "I2C_Library.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 11 "I2C_Library.c" 2
-
-# 1 "./I2C_Library.h" 1
-# 13 "./I2C_Library.h"
-void I2C_Master_Init(const unsigned long c);
-void I2C_Master_Wait();
-void I2C_Master_Start(void);
-void I2C_RepeatedStart(void);
-void I2C_Master_Stop();
-void I2C_Master_Write(unsigned data);
-unsigned short I2C_Master_Read(unsigned short a);
-# 12 "I2C_Library.c" 2
-
-
-
-
-void I2C_Master_Init(const unsigned long c){
-    SSPADD = (8000000/(4*c))-1;
-    SSPSTAT = 0b00000000;
-    SSPCON = 0b00101000;
-
-    SSPCON2 = 0b00000000;
-
-    TRISCbits.TRISC3 = 1;
-    TRISCbits.TRISC4 = 1;
+# 10 "UART_Library.c" 2
+
+# 1 "./UART_Library.h" 1
+# 13 "./UART_Library.h"
+char UART_Init(const long int baudrate);
+char UART_DATA_Read();
+void UART_DATA_Write(char data);
+char UART_DATA_Ready();
+char UART_TX_EMPTY();
+# 11 "UART_Library.c" 2
+
+
+
+
+char UART_Init(const long int baudrate) {
+    unsigned int x;
+    x = (8000000 - baudrate * 64) / (baudrate * 64);
+    if (x > 255) {
+        x = (8000000 - baudrate * 16) / (baudrate * 16);
+        BRGH = 1;
+    }
+    if (x < 256) {
+        SPBRG = x;
+        SYNC = 0;
+        SPEN = 1;
+        TRISC7 = 1;
+        TRISC6 = 1;
+        CREN = 1;
+        TXEN = 1;
+        return 1;
+    }
+    return 0;
 }
 
-void I2C_Master_Wait(){
-    while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){};
+char UART_DATA_Read(){
+    while(!PIR1bits.RCIF);
+    return RCREG;
 }
 
-void I2C_Master_Start(void){
-    I2C_Master_Wait();
-    SSPCON2bits.SEN = 1;
+void UART_DATA_Write(char data){
+    while(!TXSTAbits.TRMT);
+    TXREG = data;
 }
 
-void I2C_RepeatedStart(void){
-    I2C_Master_Wait();
-    SSPCON2bits.RSEN = 1;
+char UART_DATA_Ready(){
+    return RCIF;
 }
 
-void I2C_Master_Stop(){
-    I2C_Master_Wait();
-    SSPCON2bits.PEN = 1;
-}
-
-void I2C_Master_Write(unsigned data){
-    I2C_Master_Wait();
-    SSPBUF = data;
-}
-
-unsigned short I2C_Master_Read(unsigned short a){
-    unsigned short temp;
-    I2C_Master_Wait();
-    SSPCON2bits.RCEN = 1;
-    I2C_Master_Wait();
-    temp = SSPBUF;
-    I2C_Master_Wait();
-    SSPCON2bits.ACKDT = (a)?0:1;
-    SSPCON2bits.ACKEN = 1;
-    return temp;
+char UART_TX_EMPTY(){
+    return TRMT;
 }

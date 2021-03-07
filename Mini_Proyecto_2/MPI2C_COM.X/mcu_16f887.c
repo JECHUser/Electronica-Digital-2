@@ -22,7 +22,7 @@
 // 'C' source line config statements
 
 // CONFIG1
-#pragma config FOSC = EXTRC_NOCLKOUT// Oscillator Selection bits (RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
+#pragma config FOSC = INTRC_CLKOUT// Oscillator Selection bits (RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -37,11 +37,15 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
+#define _XTAL_FREQ 4000000
+
 //******************************************************************************
 // Variables
 //******************************************************************************
 
-char S;
+char sensor;
+char temp;
+char address = 20;
 
 //******************************************************************************
 // Interrupciones
@@ -51,20 +55,24 @@ char S;
 // Prototipo de funciones
 //******************************************************************************
 void setup(void);
+char lecture_sensor(void);
+char lecture_esp32(void);
+
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
-void main(void){
+
+void main(void) {
+
     setup();
-    I2C_Master_Init();
-    UART_Init();
-    
+    I2C_Master_Init(100000);
+
     //**************************************************************************
     // Loop principal
     //**************************************************************************
-    while(1){
-        S = I2C_Master_Read();
-        UART_DATA_Write(S);
+
+    while (1) {
+        sensor = lecture_sensor();
     }
 }
 
@@ -72,10 +80,30 @@ void main(void){
 // Configuración
 //******************************************************************************
 
-void setup(void){
-    TRISD = 0b00000011;
+void setup(void) {
+    TRISD = 0b00000000;
     PORTD = 0;
+    TRISC = 0b00011000;
+    PORTC = 0;
 }
+
 //******************************************************************************
 // Funciones
 //******************************************************************************
+
+char lecture_esp32(void){
+    
+}
+
+char lecture_sensor(void) {
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 1);
+    PORTD = I2C_Master_Read(1);
+    I2C_Master_Stop();
+    __delay_ms(100);
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
+    __delay_ms(100);
+}

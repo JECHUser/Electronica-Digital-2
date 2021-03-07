@@ -14,10 +14,12 @@
 #define _XTAL_FREQ 8000000
 
 void I2C_Master_Init(const unsigned long c){
-    SSPCON = 0b00101000;
+    SSPADD = (_XTAL_FREQ/(4*c))-1;  // velocidad de transmisión en baudios
+    SSPSTAT = 0b00000000;           // velocidad de rotación
+    SSPCON = 0b00101000;            // modo maestro y habilitación serial port
+    
     SSPCON2 = 0b00000000;
-    SSPADD = (_XTAL_FREQ/(4*c))-1;
-    SSPSTAT = 0b00000000;
+    
     TRISCbits.TRISC3 = 1;
     TRISCbits.TRISC4 = 1;
 }
