@@ -2643,6 +2643,7 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
+void UART_Write_Text(char *text);
 # 15 "mcu_16f887.c" 2
 # 25 "mcu_16f887.c"
 #pragma config FOSC = INTRC_CLKOUT
@@ -2666,13 +2667,14 @@ char UART_TX_EMPTY();
 
 
 
-char sensor;
+char sensor = 0x45;
 char temp;
 char address = 20;
 # 57 "mcu_16f887.c"
 void setup(void);
-char lecture_sensor(void);
-char lecture_esp32(void);
+char Read_sensor(void);
+char Read_esp32(void);
+void Write_esp32(void);
 
 
 
@@ -2682,13 +2684,15 @@ void main(void) {
 
     setup();
     I2C_Master_Init(100000);
+    UART_Init(9600);
 
 
 
 
 
     while (1) {
-        sensor = lecture_sensor();
+
+        Write_esp32();
     }
 }
 
@@ -2699,7 +2703,7 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000;
     PORTD = 0;
-    TRISC = 0b00011000;
+    TRISC = 0b11011000;
     PORTC = 0;
 }
 
@@ -2707,14 +2711,23 @@ void setup(void) {
 
 
 
-char lecture_esp32(void){
-
+char Read_esp32(void){
+    if(UART_DATA_Ready()){
+        PORTD = UART_DATA_Read();
+        _delay((unsigned long)((100)*(4000000/4000.0)));
+    }
 }
 
-char lecture_sensor(void) {
+void Write_esp32(void){
+    UART_DATA_Write(sensor);
+
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+}
+
+char Read_sensor(void) {
     I2C_Master_Start();
     I2C_Master_Write((address * 2) + 1);
-    PORTD = I2C_Master_Read(1);
+    sensor = I2C_Master_Read(1);
     I2C_Master_Stop();
     _delay((unsigned long)((100)*(4000000/4000.0)));
     I2C_Master_Start();

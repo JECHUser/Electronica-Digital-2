@@ -43,7 +43,7 @@
 // Variables
 //******************************************************************************
 
-char sensor;
+char sensor = 0x45;
 char temp;
 char address = 20;
 
@@ -55,8 +55,9 @@ char address = 20;
 // Prototipo de funciones
 //******************************************************************************
 void setup(void);
-char lecture_sensor(void);
-char lecture_esp32(void);
+char Read_sensor(void);
+char Read_esp32(void);
+void Write_esp32(void);
 
 //******************************************************************************
 // Ciclo principal
@@ -66,13 +67,15 @@ void main(void) {
 
     setup();
     I2C_Master_Init(100000);
+    UART_Init(9600);
 
     //**************************************************************************
     // Loop principal
     //**************************************************************************
 
     while (1) {
-        sensor = lecture_sensor();
+        //sensor = Read_sensor();
+        Write_esp32();
     }
 }
 
@@ -83,7 +86,7 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000;
     PORTD = 0;
-    TRISC = 0b00011000;
+    TRISC = 0b11011000;
     PORTC = 0;
 }
 
@@ -91,14 +94,23 @@ void setup(void) {
 // Funciones
 //******************************************************************************
 
-char lecture_esp32(void){
-    
+char Read_esp32(void){
+    if(UART_DATA_Ready()){
+        PORTD = UART_DATA_Read();
+        __delay_ms(100);
+    }
 }
 
-char lecture_sensor(void) {
+void Write_esp32(void){
+    UART_DATA_Write(sensor);
+    //UART_Write_Text(sensor);
+    __delay_ms(100);
+}
+
+char Read_sensor(void) {
     I2C_Master_Start();
     I2C_Master_Write((address * 2) + 1);
-    PORTD = I2C_Master_Read(1);
+    sensor = I2C_Master_Read(1);
     I2C_Master_Stop();
     __delay_ms(100);
     I2C_Master_Start();

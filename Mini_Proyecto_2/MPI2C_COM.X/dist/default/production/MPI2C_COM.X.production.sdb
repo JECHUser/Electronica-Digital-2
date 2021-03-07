@@ -27,17 +27,25 @@
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 "51
 [v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
-"65 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+"66 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
 [v _main main `(v  1 e 1 0 ]
-"83
+"86
 [v _setup setup `(v  1 e 1 0 ]
-"98
-[v _lecture_sensor lecture_sensor `(uc  1 e 1 0 ]
+"104
+[v _Write_esp32 Write_esp32 `(v  1 e 1 0 ]
+"15 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+[v _UART_Init UART_Init `(uc  1 e 1 0 ]
+"35
+[v _UART_DATA_Read UART_DATA_Read `(uc  1 e 1 0 ]
+"40
+[v _UART_DATA_Write UART_DATA_Write `(v  1 e 1 0 ]
+"45
+[v _UART_DATA_Ready UART_DATA_Ready `(uc  1 e 1 0 ]
 "290 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S157 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S176 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -46,8 +54,8 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S165 . 1 `S157 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES165  1 e 1 @12 ]
+[u S184 . 1 `S176 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES184  1 e 1 @12 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
@@ -58,7 +66,7 @@
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S78 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S97 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -68,13 +76,13 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S87 . 1 `S78 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES87  1 e 1 @135 ]
+[u S106 . 1 `S97 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES106  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S99 . 1 `uc 1 SEN 1 0 :1:0 
+[s S118 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -84,13 +92,13 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S108 . 1 `S99 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES108  1 e 1 @145 ]
+[u S127 . 1 `S118 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES127  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S177 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S196 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -100,15 +108,15 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S186 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S205 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S190 . 1 `uc 1 . 1 0 :6:0 
+[s S209 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S193 . 1 `S177 1 . 1 0 `S186 1 . 1 0 `S190 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES193  1 e 1 @152 ]
+[u S212 . 1 `S196 1 . 1 0 `S205 1 . 1 0 `S209 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES212  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "3695
@@ -131,52 +139,52 @@
 [v _TXEN TXEN `VEb  1 e 0 @1221 ]
 "46 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
 [v _sensor sensor `uc  1 e 1 0 ]
-"65
+"66
 [v _main main `(v  1 e 1 0 ]
 {
-"77
+"80
 } 0
-"83
+"86
 [v _setup setup `(v  1 e 1 0 ]
 {
-"88
+"91
 } 0
-"98
-[v _lecture_sensor lecture_sensor `(uc  1 e 1 0 ]
+"104
+[v _Write_esp32 Write_esp32 `(v  1 e 1 0 ]
 {
-"109
+"108
 } 0
-"46 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+"40 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+[v _UART_DATA_Write UART_DATA_Write `(v  1 e 1 0 ]
 {
-[v I2C_Master_Write@data data `ui  1 p 2 0 ]
-"49
+[v UART_DATA_Write@data data `uc  1 a 1 wreg ]
+[v UART_DATA_Write@data data `uc  1 a 1 wreg ]
+[v UART_DATA_Write@data data `uc  1 a 1 0 ]
+"43
 } 0
-"41
-[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+"15
+[v _UART_Init UART_Init `(uc  1 e 1 0 ]
 {
-"44
-} 0
-"31
-[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
-{
-"34
-} 0
-"51
-[v _I2C_Master_Read I2C_Master_Read `(us  1 e 2 0 ]
-{
-"52
-[v I2C_Master_Read@temp temp `us  1 a 2 4 ]
-"51
-[v I2C_Master_Read@a a `us  1 p 2 0 ]
-"61
-} 0
-"27
-[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
-{
-"29
-} 0
 "16
+[v UART_Init@x x `ui  1 a 2 9 ]
+"15
+[v UART_Init@baudrate baudrate `DCl  1 p 4 6 ]
+"33
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"10
+[v ___aldiv@quotient quotient `l  1 a 4 2 ]
+"11
+[v ___aldiv@sign sign `uc  1 a 1 1 ]
+[v ___aldiv@counter counter `uc  1 a 1 0 ]
+"5
+[v ___aldiv@divisor divisor `l  1 p 4 0 ]
+[v ___aldiv@dividend dividend `l  1 p 4 4 ]
+"41
+} 0
+"16 C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
 {
 [v I2C_Master_Init@c c `DCul  1 p 4 0 ]

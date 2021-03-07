@@ -437,3 +437,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;UART_Library.c: 51: }
 [e :UE 150 ]
 }
+"53
+[; ;UART_Library.c: 53: void UART_Write_Text(char *text)
+[v _UART_Write_Text `(v ~T0 @X0 1 ef1`*uc ]
+"54
+[; ;UART_Library.c: 54: {
+{
+[e :U _UART_Write_Text ]
+"53
+[; ;UART_Library.c: 53: void UART_Write_Text(char *text)
+[v _text `*uc ~T0 @X0 1 r1 ]
+"54
+[; ;UART_Library.c: 54: {
+[f ]
+"55
+[; ;UART_Library.c: 55:   int i;
+[v _i `i ~T0 @X0 1 a ]
+"56
+[; ;UART_Library.c: 56:   for(i=0;text[i]!='\0';i++)
+{
+[e = _i -> 0 `i ]
+[e $U 155  ]
+[e :U 152 ]
+"57
+[; ;UART_Library.c: 57:    UART_DATA_Write(text[i]);
+[e ( _UART_DATA_Write (1 *U + _text * -> _i `x -> -> # *U _text `i `x ]
+[e ++ _i -> 1 `i ]
+[e :U 155 ]
+[e $ != -> *U + _text * -> _i `x -> -> # *U _text `i `x `ui -> 0 `ui 152  ]
+[e :U 153 ]
+}
+"58
+[; ;UART_Library.c: 58: }
+[e :UE 151 ]
+}

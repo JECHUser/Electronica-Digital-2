@@ -2497,6 +2497,7 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
+void UART_Write_Text(char *text);
 # 11 "UART_Library.c" 2
 
 
@@ -2538,4 +2539,11 @@ char UART_DATA_Ready(){
 
 char UART_TX_EMPTY(){
     return TRMT;
+}
+
+void UART_Write_Text(char *text)
+{
+  int i;
+  for(i=0;text[i]!='\0';i++)
+   UART_DATA_Write(text[i]);
 }

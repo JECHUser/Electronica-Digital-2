@@ -49,3 +49,10 @@ char UART_DATA_Ready(){
 char UART_TX_EMPTY(){
     return TRMT;            // Is TSR empty or full?
 }
+
+void UART_Write_Text(char *text)
+{
+  int i;
+  for(i=0;text[i]!='\0';i++)
+	  UART_DATA_Write(text[i]);
+}
