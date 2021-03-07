@@ -2643,7 +2643,7 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
-void UART_Write_Text(char *text);
+void UART_Write_Text(unsigned char *text);
 # 15 "mcu_16f887.c" 2
 # 25 "mcu_16f887.c"
 #pragma config FOSC = INTRC_CLKOUT
@@ -2667,7 +2667,7 @@ void UART_Write_Text(char *text);
 
 
 
-char sensor = 0x45;
+char sensor = 1;
 char temp;
 char address = 20;
 # 57 "mcu_16f887.c"
@@ -2719,7 +2719,7 @@ char Read_esp32(void){
 }
 
 void Write_esp32(void){
-    UART_DATA_Write(sensor);
+    UART_Write_Text("Encender la led");
 
     _delay((unsigned long)((100)*(4000000/4000.0)));
 }

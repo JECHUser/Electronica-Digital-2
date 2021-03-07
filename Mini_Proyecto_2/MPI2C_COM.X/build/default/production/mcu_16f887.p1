@@ -34,9 +34,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"15 ./UART_Library.h
-[; ;./UART_Library.h: 15: void UART_DATA_Write(char data);
-[v _UART_DATA_Write `(v ~T0 @X0 0 ef1`uc ]
+"18 ./UART_Library.h
+[; ;./UART_Library.h: 18: void UART_Write_Text(unsigned char *text);
+[v _UART_Write_Text `(v ~T0 @X0 0 ef1`*uc ]
 "15 ./I2C_Library.h
 [; ;./I2C_Library.h: 15: void I2C_Master_Start(void);
 [v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
@@ -310,7 +310,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [v _sensor `uc ~T0 @X0 1 e ]
 [i _sensor
--> -> 69 `i `uc
+-> -> 1 `i `uc
 ]
 "47
 [v _temp `uc ~T0 @X0 1 e ]
@@ -405,8 +405,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Write_esp32 ]
 [f ]
 "105
-[; ;mcu_16f887.c: 105:     UART_DATA_Write(sensor);
-[e ( _UART_DATA_Write (1 _sensor ]
+[; ;mcu_16f887.c: 105:     UART_Write_Text("Encender la led");
+[e ( _UART_Write_Text (1 :s 1C ]
 "107
 [; ;mcu_16f887.c: 107:     _delay((unsigned long)((100)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -454,3 +454,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcu_16f887.c: 121: }
 [e :UE 146 ]
 }
+[a 1C 69 110 99 101 110 100 101 114 32 108 97 32 108 101 100 0 ]

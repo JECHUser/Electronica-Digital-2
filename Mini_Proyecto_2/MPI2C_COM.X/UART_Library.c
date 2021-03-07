@@ -21,38 +21,39 @@ char UART_Init(const long int baudrate) {
     }
     if (x < 256) {
         SPBRG = x;
-        SYNC = 0;       // Enable the Asynchronous serial port
-        SPEN = 1;       // clearing SYNC and setting SPEN
+        SYNC = 0; // Enable the Asynchronous serial port
+        SPEN = 1; // clearing SYNC and setting SPEN
+        TX9 = 0;
         TRISC7 = 1;
-        TRISC6 = 1;
-        CREN = 1;       // Receive enable
-        TXEN = 1;       // Transmit enable
+        TRISC6 = 0;
+        CREN = 1; // Receive enable
+        TXEN = 1; // Transmit enable
         return 1;
     }
     return 0;
 }
 
-char UART_DATA_Read(){
-    while(!PIR1bits.RCIF);  // Is UART receive buffer full?
+char UART_DATA_Read() {
+    while (!PIR1bits.RCIF); // Is UART receive buffer full?
     return RCREG;
 }
 
-void UART_DATA_Write(char data){
-    while(!TXSTAbits.TRMT); // is TSR full?
+void UART_DATA_Write(char data) {
     TXREG = data;
+    while (!TXSTAbits.TRMT); // is TSR full?
 }
 
-char UART_DATA_Ready(){
-    return RCIF;            
+char UART_DATA_Ready() {
+    return RCIF;
 }
 
-char UART_TX_EMPTY(){
-    return TRMT;            // Is TSR empty or full?
+char UART_TX_EMPTY() {
+    return TRMT; // Is TSR empty or full?
 }
 
-void UART_Write_Text(char *text)
-{
-  int i;
-  for(i=0;text[i]!='\0';i++)
-	  UART_DATA_Write(text[i]);
+void UART_Write_Text(unsigned char *text) {
+    while(*text !=0x00){
+        UART_DATA_Write(*text);
+        text++;
+    }
 }

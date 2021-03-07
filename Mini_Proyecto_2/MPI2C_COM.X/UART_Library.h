@@ -15,7 +15,7 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
-void UART_Write_Text(char *text);
+void UART_Write_Text(unsigned char *text);
 
 #endif	/* UART_LIB */
 

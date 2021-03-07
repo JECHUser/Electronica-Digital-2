@@ -43,7 +43,7 @@
 // Variables
 //******************************************************************************
 
-char sensor = 0x45;
+char sensor = 1;
 char temp;
 char address = 20;
 
@@ -102,7 +102,7 @@ char Read_esp32(void){
 }
 
 void Write_esp32(void){
-    UART_DATA_Write(sensor);
+    UART_Write_Text("Encender la led");
     //UART_Write_Text(sensor);
     __delay_ms(100);
 }

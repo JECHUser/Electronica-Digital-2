@@ -2497,7 +2497,7 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
-void UART_Write_Text(char *text);
+void UART_Write_Text(unsigned char *text);
 # 11 "UART_Library.c" 2
 
 
@@ -2514,8 +2514,9 @@ char UART_Init(const long int baudrate) {
         SPBRG = x;
         SYNC = 0;
         SPEN = 1;
+        TX9 = 0;
         TRISC7 = 1;
-        TRISC6 = 1;
+        TRISC6 = 0;
         CREN = 1;
         TXEN = 1;
         return 1;
@@ -2523,27 +2524,27 @@ char UART_Init(const long int baudrate) {
     return 0;
 }
 
-char UART_DATA_Read(){
-    while(!PIR1bits.RCIF);
+char UART_DATA_Read() {
+    while (!PIR1bits.RCIF);
     return RCREG;
 }
 
-void UART_DATA_Write(char data){
-    while(!TXSTAbits.TRMT);
+void UART_DATA_Write(char data) {
     TXREG = data;
+    while (!TXSTAbits.TRMT);
 }
 
-char UART_DATA_Ready(){
+char UART_DATA_Ready() {
     return RCIF;
 }
 
-char UART_TX_EMPTY(){
+char UART_TX_EMPTY() {
     return TRMT;
 }
 
-void UART_Write_Text(char *text)
-{
-  int i;
-  for(i=0;text[i]!='\0';i++)
-   UART_DATA_Write(text[i]);
+void UART_Write_Text(unsigned char *text) {
+    while(*text !=0x00){
+        UART_DATA_Write(*text);
+        text++;
+    }
 }
