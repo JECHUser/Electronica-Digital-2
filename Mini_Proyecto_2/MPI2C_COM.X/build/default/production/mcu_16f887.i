@@ -2638,7 +2638,7 @@ unsigned short I2C_Master_Read(unsigned short a);
 
 # 1 "./UART_Library.h" 1
 # 13 "./UART_Library.h"
-char UART_Init(const long int baudrate);
+char UART_Init(void);
 char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
@@ -2684,7 +2684,7 @@ void main(void) {
 
     setup();
     I2C_Master_Init(100000);
-    UART_Init(9600);
+    UART_Init();
 
 
 
@@ -2692,7 +2692,9 @@ void main(void) {
 
     while (1) {
 
+        sensor = 69;
         Write_esp32();
+        Read_esp32();
     }
 }
 
@@ -2719,8 +2721,7 @@ char Read_esp32(void){
 }
 
 void Write_esp32(void){
-    UART_Write_Text("Encender la led");
-
+    UART_DATA_Write(sensor);
     _delay((unsigned long)((100)*(4000000/4000.0)));
 }
 

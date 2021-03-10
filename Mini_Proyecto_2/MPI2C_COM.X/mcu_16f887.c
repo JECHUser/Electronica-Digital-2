@@ -1,7 +1,6 @@
 /*
  * File:   mcu_16f887.c
  * Author: Jonatan Chocón
- *
  * Created on 26 de febrero de 2021, 10:38 AM
  */
 
@@ -43,9 +42,8 @@
 // Variables
 //******************************************************************************
 
-char sensor = 1;
-char temp;
-char address = 20;
+char sensor;        // variable que almacena el valor del sensor 
+char address = 20;  // dirección del acelerometro
 
 //******************************************************************************
 // Interrupciones
@@ -54,6 +52,7 @@ char address = 20;
 //******************************************************************************
 // Prototipo de funciones
 //******************************************************************************
+
 void setup(void);
 char Read_sensor(void);
 char Read_esp32(void);
@@ -65,17 +64,19 @@ void Write_esp32(void);
 
 void main(void) {
 
-    setup();
-    I2C_Master_Init(100000);
-    UART_Init(9600);
+    setup();                    // llamada de configuraciones generales
+    I2C_Master_Init(100000);    // inicialización de I2C 100000
+    UART_Init();                // inicialización de UART a 9600
 
     //**************************************************************************
     // Loop principal
     //**************************************************************************
 
     while (1) {
-        //sensor = Read_sensor();
-        Write_esp32();
+        //sensor = Read_sensor();   // leer datos del sensor (comunicación I2C)
+        sensor = 69;
+        Write_esp32();          // escribir el valor del sensor al ESP32
+        Read_esp32();           // leer el valor de las luces piloto de la ESP32
     }
 }
 
@@ -84,9 +85,9 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
-    TRISD = 0b00000000;
+    TRISD = 0b00000000;     // puerto D como salidas
     PORTD = 0;
-    TRISC = 0b11011000;
+    TRISC = 0b11011000;     // puerto C como salidas y entradas
     PORTC = 0;
 }
 
@@ -95,16 +96,15 @@ void setup(void) {
 //******************************************************************************
 
 char Read_esp32(void){
-    if(UART_DATA_Ready()){
-        PORTD = UART_DATA_Read();
+    if(UART_DATA_Ready()){          // evalua bandera RCIF (Recepción))
+        PORTD = UART_DATA_Read();   // lee RCREG para obtener el dato
         __delay_ms(100);
     }
 }
 
 void Write_esp32(void){
-    UART_Write_Text("Encender la led");
-    //UART_Write_Text(sensor);
-    __delay_ms(100);
+    UART_DATA_Write(sensor);        // escribe el dato sensor a TXREG
+    __delay_ms(100);        
 }
 
 char Read_sensor(void) {

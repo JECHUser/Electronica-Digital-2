@@ -20,42 +20,39 @@ void I2C_Master_Init(const unsigned long c){
     
     SSPCON2 = 0b00000000;
     
+    // configuración de pines de transmisión/recepción
     TRISCbits.TRISC3 = 1;
     TRISCbits.TRISC4 = 1;
 }
 
 void I2C_Master_Wait(){
-    while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){};
+    // evalua que ningún proceso se realice en el fondo
+    while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){}; 
 }
 
 void I2C_Master_Start(void){
-    I2C_Master_Wait();
-    SSPCON2bits.SEN = 1;            // Start Condition enable bit
-}
-
-void I2C_RepeatedStart(void){
-    I2C_Master_Wait();
-    SSPCON2bits.RSEN = 1;           // Repeated Start Condition enable bit
+    I2C_Master_Wait();              // espera que terminen procesos
+    SSPCON2bits.SEN = 1;            // habilita proceso de Start Condition 
 }
 
 void I2C_Master_Stop(){
-    I2C_Master_Wait();
-    SSPCON2bits.PEN = 1;            // Stop Condition enable bit
+    I2C_Master_Wait();              // espera que terminen procesos
+    SSPCON2bits.PEN = 1;            // habilita proceso de Stop Condition
 }
 
 void I2C_Master_Write(unsigned data){
-    I2C_Master_Wait();
-    SSPBUF = data;
+    I2C_Master_Wait();              // espera que terminen procesos
+    SSPBUF = data;                  // escribe al SSPBUF para enviar el dato
 }
 
 unsigned short I2C_Master_Read(unsigned short a){
     unsigned short temp;
     I2C_Master_Wait();
-    SSPCON2bits.RCEN = 1;           // Receive enable bit
+    SSPCON2bits.RCEN = 1;           // habilita la recepción de datos
     I2C_Master_Wait();
-    temp = SSPBUF;
+    temp = SSPBUF;                  // escribe a SSPBUF para transmisión
     I2C_Master_Wait();
-    SSPCON2bits.ACKDT = (a)?0:1;    // Acknowledge Data bit
-    SSPCON2bits.ACKEN = 1;          // Acknowledge Sequence Enable bit
+    SSPCON2bits.ACKDT = (a)?0:1;    // Determina el valor del acknowledge
+    SSPCON2bits.ACKEN = 1;          // habilita la secuencia del Acknowledge
     return temp;
 }

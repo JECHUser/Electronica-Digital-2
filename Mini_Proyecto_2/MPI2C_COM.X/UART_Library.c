@@ -12,48 +12,38 @@
 
 #define _XTAL_FREQ 8000000
 
-char UART_Init(const long int baudrate) {
-    unsigned int x;
-    x = (_XTAL_FREQ - baudrate * 64) / (baudrate * 64);
-    if (x > 255) {
-        x = (_XTAL_FREQ - baudrate * 16) / (baudrate * 16);
+char UART_Init(void) {
+         // configuración de baud rate
+        SPBRGH = 0;
+        SPBRG = 25;
         BRGH = 1;
-    }
-    if (x < 256) {
-        SPBRG = x;
-        SYNC = 0; // Enable the Asynchronous serial port
-        SPEN = 1; // clearing SYNC and setting SPEN
+        SYNC = 0; 
+        
+        // configuración UART
+        SPEN = 1; 
         TX9 = 0;
+        CREN = 1;   // habilitar recepción
+        TXEN = 1;   // habilitar transmisión
+        
+        // configuración pines de transmisión/recepción
         TRISC7 = 1;
-        TRISC6 = 0;
-        CREN = 1; // Receive enable
-        TXEN = 1; // Transmit enable
-        return 1;
-    }
-    return 0;
+        TRISC6 = 0;       
 }
 
 char UART_DATA_Read() {
-    while (!PIR1bits.RCIF); // Is UART receive buffer full?
-    return RCREG;
+    while (!PIR1bits.RCIF);     // Evalua la bandera de recepción
+    return RCREG;               // devuelve el valor que llega al RCREG
 }
 
-void UART_DATA_Write(char data) {
-    TXREG = data;
-    while (!TXSTAbits.TRMT); // is TSR full?
+void UART_DATA_Write(char data) {   
+    TXREG = data;               // se escribe el dato a enviar 
+    while (!TXSTAbits.TRMT);    // Evalua si el TSR se encuentra lleno
 }
 
 char UART_DATA_Ready() {
-    return RCIF;
+    return RCIF;    // evalua la bandera de recepción
 }
 
 char UART_TX_EMPTY() {
-    return TRMT; // Is TSR empty or full?
-}
-
-void UART_Write_Text(unsigned char *text) {
-    while(*text !=0x00){
-        UART_DATA_Write(*text);
-        text++;
-    }
+    return TRMT;    // Se evalua si el TSR se encuentra lleno
 }

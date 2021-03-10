@@ -2492,7 +2492,7 @@ extern __bank0 __bit __timeout;
 
 # 1 "./UART_Library.h" 1
 # 13 "./UART_Library.h"
-char UART_Init(const long int baudrate);
+char UART_Init(void);
 char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
@@ -2503,15 +2503,10 @@ void UART_Write_Text(unsigned char *text);
 
 
 
-char UART_Init(const long int baudrate) {
-    unsigned int x;
-    x = (8000000 - baudrate * 64) / (baudrate * 64);
-    if (x > 255) {
-        x = (8000000 - baudrate * 16) / (baudrate * 16);
+char UART_Init(void) {
         BRGH = 1;
-    }
-    if (x < 256) {
-        SPBRG = x;
+        SPBRGH = 0;
+        SPBRG = 25;
         SYNC = 0;
         SPEN = 1;
         TX9 = 0;
@@ -2519,9 +2514,6 @@ char UART_Init(const long int baudrate) {
         TRISC6 = 0;
         CREN = 1;
         TXEN = 1;
-        return 1;
-    }
-    return 0;
 }
 
 char UART_DATA_Read() {

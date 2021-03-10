@@ -13,7 +13,6 @@
 void I2C_Master_Init(const unsigned long c);
 void I2C_Master_Wait();
 void I2C_Master_Start(void);
-void I2C_RepeatedStart(void);
 void I2C_Master_Stop();
 void I2C_Master_Write(unsigned data);
 unsigned short I2C_Master_Read(unsigned short a);
