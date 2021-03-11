@@ -78,7 +78,7 @@ void loop() {
   io.run(); // mantener conexión con io.adafruit.com
   
   while (Serial2.available()){
-    Read_pic = Serial2.read();        // lee el dato enviado por comunicación I2C al Serial2
+    Read_pic = Serial2.read();        // lee el dato enviado por comunicación UART al Serial2
     Write_pic = state_p1 + state_p2;  // operación del estado de las luces piloto
     Serial2.write(Write_pic);         // escribe el estado de las luces piloto y las envía por comunicación I2C
     }
@@ -115,11 +115,11 @@ void handleP2(AdafruitIO_Data *data) {        // onMessage del feed 'P2'
   Serial.print("received <- ");
  
   if(data->isTrue()){
-    state_p2 = 2;   // si el botón se presiona, entonces state_p1 = 0b00000010
+    state_p2 = 2;   // si el botón se presiona, entonces state_p2 = 0b00000010
     Serial.println("P2 - HIGH");
   }
   else{
-    state_p2 = 0;   // si el botón se presiona, entonces state_p1 = 0b00000000
+    state_p2 = 0;   // si el botón se presiona, entonces state_p2 = 0b00000000
     Serial.println("P2 - LOW");
   }
 }

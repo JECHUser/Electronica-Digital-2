@@ -2497,23 +2497,27 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
-void UART_Write_Text(unsigned char *text);
 # 11 "UART_Library.c" 2
 
 
 
 
 char UART_Init(void) {
-        BRGH = 1;
+
         SPBRGH = 0;
         SPBRG = 25;
+        BRGH = 1;
         SYNC = 0;
+
+
         SPEN = 1;
         TX9 = 0;
-        TRISC7 = 1;
-        TRISC6 = 0;
         CREN = 1;
         TXEN = 1;
+
+
+        TRISC7 = 1;
+        TRISC6 = 0;
 }
 
 char UART_DATA_Read() {
@@ -2532,11 +2536,4 @@ char UART_DATA_Ready() {
 
 char UART_TX_EMPTY() {
     return TRMT;
-}
-
-void UART_Write_Text(unsigned char *text) {
-    while(*text !=0x00){
-        UART_DATA_Write(*text);
-        text++;
-    }
 }

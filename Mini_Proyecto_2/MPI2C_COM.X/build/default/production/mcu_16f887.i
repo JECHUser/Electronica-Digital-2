@@ -7,7 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "mcu_16f887.c" 2
-# 12 "mcu_16f887.c"
+# 11 "mcu_16f887.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,7 +2488,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 12 "mcu_16f887.c" 2
+# 11 "mcu_16f887.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2623,18 +2623,17 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 13 "mcu_16f887.c" 2
+# 12 "mcu_16f887.c" 2
 
 # 1 "./I2C_Library.h" 1
 # 13 "./I2C_Library.h"
 void I2C_Master_Init(const unsigned long c);
 void I2C_Master_Wait();
 void I2C_Master_Start(void);
-void I2C_RepeatedStart(void);
 void I2C_Master_Stop();
 void I2C_Master_Write(unsigned data);
 unsigned short I2C_Master_Read(unsigned short a);
-# 14 "mcu_16f887.c" 2
+# 13 "mcu_16f887.c" 2
 
 # 1 "./UART_Library.h" 1
 # 13 "./UART_Library.h"
@@ -2643,9 +2642,8 @@ char UART_DATA_Read();
 void UART_DATA_Write(char data);
 char UART_DATA_Ready();
 char UART_TX_EMPTY();
-void UART_Write_Text(unsigned char *text);
-# 15 "mcu_16f887.c" 2
-# 25 "mcu_16f887.c"
+# 14 "mcu_16f887.c" 2
+# 24 "mcu_16f887.c"
 #pragma config FOSC = INTRC_CLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2667,9 +2665,9 @@ void UART_Write_Text(unsigned char *text);
 
 
 
-char sensor = 1;
-char temp;
-char address = 20;
+char sensor;
+char address = 0x68;
+char Ax, Ay, Az;
 # 57 "mcu_16f887.c"
 void setup(void);
 char Read_sensor(void);
@@ -2686,13 +2684,49 @@ void main(void) {
     I2C_Master_Init(100000);
     UART_Init();
 
+ I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+ I2C_Master_Write(0x19);
+ I2C_Master_Write(0x07);
+ I2C_Master_Stop();
+
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x1A);
+    I2C_Master_Write(0x00);
+    I2C_Master_Stop();
+
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x3B);
+    I2C_Master_Write(0x00);
+    I2C_Master_Stop();
+
+    I2C_Master_Start();
+    I2C_Master_Write(0x1B);
+    I2C_Master_Write(0x18);
+    I2C_Master_Stop();
+
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x6B);
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
+
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x38);
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
+
 
 
 
 
     while (1) {
 
-        sensor = 69;
+
+        sensor = 5;
         Write_esp32();
         Read_esp32();
     }
@@ -2727,13 +2761,14 @@ void Write_esp32(void){
 
 char Read_sensor(void) {
     I2C_Master_Start();
-    I2C_Master_Write((address * 2) + 1);
-    sensor = I2C_Master_Read(1);
-    I2C_Master_Stop();
-    _delay((unsigned long)((100)*(4000000/4000.0)));
-    I2C_Master_Start();
     I2C_Master_Write((address * 2) + 0);
-    I2C_Master_Write(0x01);
+    I2C_Master_Write(0x3B);
     I2C_Master_Stop();
-    _delay((unsigned long)((100)*(4000000/4000.0)));
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 1);
+    Ax = I2C_Master_Read(0)<<8 | I2C_Master_Read(0);
+
+
+
+    I2C_Master_Stop();
 }

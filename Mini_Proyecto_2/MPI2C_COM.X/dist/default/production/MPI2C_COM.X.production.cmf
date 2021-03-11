@@ -11,26 +11,30 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\HP\AppData\Local\Temp\sc88.o
+$C:\Users\HP\AppData\Local\Temp\sam0.o
 end_init CODE 0 0 0 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\MPI2C_COM.X.production.o
-cinit CODE 0 7EF 7EF 11 2
-text1 CODE 0 6D2 6D2 E 2
-text2 CODE 0 6E0 6E0 12 2
-text3 CODE 0 6C6 6C6 C 2
-text4 CODE 0 6F2 6F2 16 2
-text5 CODE 0 708 708 1C 2
-text6 CODE 0 6B8 6B8 6 2
-text7 CODE 0 6BE 6BE 8 2
-text8 CODE 0 751 751 38 2
-text9 CODE 0 789 789 66 2
-maintext CODE 0 724 724 2D 2
+cinit CODE 0 7F2 7F2 E 2
+text1 CODE 0 602 602 E 2
+text2 CODE 0 610 610 12 2
+text3 CODE 0 5E9 5E9 C 2
+text4 CODE 0 622 622 16 2
+text5 CODE 0 638 638 1C 2
+text6 CODE 0 5BF 5BF 6 2
+text7 CODE 0 5C5 5C5 8 2
+text8 CODE 0 5DF 5DF A 2
+text9 CODE 0 5D6 5D6 9 2
+text10 CODE 0 5CD 5CD 9 2
+text11 CODE 0 5F5 5F5 D 2
+text12 CODE 0 654 654 38 2
+text13 CODE 0 68C 68C 66 2
+maintext CODE 0 6F2 6F2 100 2
 cstackCOMMON COMMON 1 70 70 E 1
 cstackBANK0 BANK0 1 20 20 9 1
-bssBANK0 BANK0 1 2B 2B 1 1
-idataBANK0 CODE 0 6B6 6B6 2 2
-dataBANK0 BANK0 1 29 29 2 1
+bssBANK0 BANK0 1 29 29 4 1
+idataBANK0 CODE 0 5BE 5BE 1 2
+dataBANK0 BANK0 1 2D 2D 1 1
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -38,30 +42,30 @@ config CONFIG 4 2007 2007 2 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 2C-6F 1
+RAM 2E-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 2C-6F 1
+BANK0 2E-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST 3-6B5 2
+CONST 3-5BD 2
 CONST 800-1FFF 2
-ENTRY 3-6B5 2
+ENTRY 3-5BD 2
 ENTRY 800-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
-CODE 3-6B5 2
+CODE 3-5BD 2
 CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
 SFR3 180-18F 1
 EEDATA 2100-21FF 2
-STRCODE 3-6B5 2
+STRCODE 3-5BD 2
 STRCODE 800-1FFF 2
-STRING 3-6B5 2
+STRING 3-5BD 2
 STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -77,85 +81,130 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\MPI2C_COM.X.production.o
-7EF cinit CODE >811:C:\Users\HP\AppData\Local\Temp\sc88.s
-7EF cinit CODE >814:C:\Users\HP\AppData\Local\Temp\sc88.s
-7EF cinit CODE >840:C:\Users\HP\AppData\Local\Temp\sc88.s
-7F4 cinit CODE >841:C:\Users\HP\AppData\Local\Temp\sc88.s
-7F5 cinit CODE >842:C:\Users\HP\AppData\Local\Temp\sc88.s
-7FA cinit CODE >843:C:\Users\HP\AppData\Local\Temp\sc88.s
-7FB cinit CODE >847:C:\Users\HP\AppData\Local\Temp\sc88.s
-7FC cinit CODE >853:C:\Users\HP\AppData\Local\Temp\sc88.s
-7FC cinit CODE >855:C:\Users\HP\AppData\Local\Temp\sc88.s
-7FD cinit CODE >856:C:\Users\HP\AppData\Local\Temp\sc88.s
-789 text9 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-789 text9 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-791 text9 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-799 text9 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-79B text9 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-79C text9 CODE >17:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7A5 text9 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7A9 text9 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7AD text9 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7B6 text9 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7C8 text9 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7D6 text9 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7D7 text9 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7E0 text9 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7E6 text9 CODE >29:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-7EE text9 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-751 text8 CODE >16:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-751 text8 CODE >17:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-77E text8 CODE >18:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-77F text8 CODE >19:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-783 text8 CODE >21:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-786 text8 CODE >23:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-787 text8 CODE >24:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-788 text8 CODE >25:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
-6BE text7 CODE >28:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6BE text7 CODE >29:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6C4 text7 CODE >30:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6C5 text7 CODE >31:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6B8 text6 CODE >38:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6B8 text6 CODE >39:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6BD text6 CODE >40:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-708 text5 CODE >99:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-708 text5 CODE >100:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-712 text5 CODE >101:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-71A text5 CODE >102:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-723 text5 CODE >104:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6F2 text4 CODE >15:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6F2 text4 CODE >16:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6F5 text4 CODE >17:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6F6 text4 CODE >18:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6F8 text4 CODE >19:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6F9 text4 CODE >20:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6FC text4 CODE >21:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6FF text4 CODE >22:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-700 text4 CODE >23:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-701 text4 CODE >24:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-704 text4 CODE >25:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-707 text4 CODE >26:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6C6 text3 CODE >33:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6C7 text3 CODE >34:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6CB text3 CODE >35:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6D1 text3 CODE >36:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
-6E0 text2 CODE >106:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6E0 text2 CODE >107:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6E8 text2 CODE >108:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6F1 text2 CODE >109:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6D2 text1 CODE >88:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6D2 text1 CODE >89:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6D5 text1 CODE >90:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6D8 text1 CODE >91:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6DC text1 CODE >92:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-6DF text1 CODE >93:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-724 maintext CODE >66:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-724 maintext CODE >68:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-729 maintext CODE >69:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-738 maintext CODE >70:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-73D maintext CODE >78:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-743 maintext CODE >79:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
-748 maintext CODE >80:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7F2 cinit CODE >814:C:\Users\HP\AppData\Local\Temp\sam0.s
+7F2 cinit CODE >817:C:\Users\HP\AppData\Local\Temp\sam0.s
+7F2 cinit CODE >846:C:\Users\HP\AppData\Local\Temp\sam0.s
+7F7 cinit CODE >847:C:\Users\HP\AppData\Local\Temp\sam0.s
+7F8 cinit CODE >851:C:\Users\HP\AppData\Local\Temp\sam0.s
+7F9 cinit CODE >852:C:\Users\HP\AppData\Local\Temp\sam0.s
+7FA cinit CODE >853:C:\Users\HP\AppData\Local\Temp\sam0.s
+7FB cinit CODE >854:C:\Users\HP\AppData\Local\Temp\sam0.s
+7FC cinit CODE >860:C:\Users\HP\AppData\Local\Temp\sam0.s
+7FC cinit CODE >862:C:\Users\HP\AppData\Local\Temp\sam0.s
+7FD cinit CODE >863:C:\Users\HP\AppData\Local\Temp\sam0.s
+68C text13 CODE >5:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+68C text13 CODE >13:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+694 text13 CODE >14:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+69C text13 CODE >15:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+69E text13 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+69F text13 CODE >17:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6A8 text13 CODE >18:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6AC text13 CODE >16:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6B0 text13 CODE >21:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6B9 text13 CODE >22:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6CB text13 CODE >23:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6D9 text13 CODE >24:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6DA text13 CODE >26:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6E3 text13 CODE >27:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6E9 text13 CODE >29:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+6F1 text13 CODE >30:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
+654 text12 CODE >16:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+654 text12 CODE >17:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+681 text12 CODE >18:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+682 text12 CODE >19:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+686 text12 CODE >21:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+689 text12 CODE >24:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+68A text12 CODE >25:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+68B text12 CODE >26:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5F5 text11 CODE >28:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5F5 text11 CODE >30:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+601 text11 CODE >31:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5CD text10 CODE >33:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5CD text10 CODE >34:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5D2 text10 CODE >35:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5D5 text10 CODE >36:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5D6 text9 CODE >38:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5D6 text9 CODE >39:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5DB text9 CODE >40:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5DE text9 CODE >41:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5DF text8 CODE >43:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5DF text8 CODE >44:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5E4 text8 CODE >45:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5E8 text8 CODE >46:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\I2C_Library.c
+5C5 text7 CODE >33:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5C5 text7 CODE >34:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5CB text7 CODE >35:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5CC text7 CODE >36:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5BF text6 CODE >43:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5BF text6 CODE >44:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5C4 text6 CODE >45:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+638 text5 CODE >135:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+638 text5 CODE >136:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+642 text5 CODE >137:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+64A text5 CODE >138:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+653 text5 CODE >140:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+622 text4 CODE >15:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+622 text4 CODE >17:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+625 text4 CODE >18:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+627 text4 CODE >19:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+628 text4 CODE >20:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+629 text4 CODE >23:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+62C text4 CODE >24:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+62F text4 CODE >25:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+632 text4 CODE >26:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+635 text4 CODE >29:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+636 text4 CODE >30:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+637 text4 CODE >31:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5E9 text3 CODE >38:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5EA text3 CODE >39:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5EE text3 CODE >40:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+5F4 text3 CODE >41:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\UART_Library.c
+610 text2 CODE >142:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+610 text2 CODE >143:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+618 text2 CODE >144:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+621 text2 CODE >145:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+602 text1 CODE >124:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+602 text1 CODE >125:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+605 text1 CODE >126:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+608 text1 CODE >127:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+60C text1 CODE >128:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+60F text1 CODE >129:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+6F2 maintext CODE >66:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+6F2 maintext CODE >68:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+6F7 maintext CODE >69:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+706 maintext CODE >70:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+70B maintext CODE >72:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+710 maintext CODE >73:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+719 maintext CODE >74:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+722 maintext CODE >75:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+72B maintext CODE >76:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+730 maintext CODE >78:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+735 maintext CODE >79:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+73E maintext CODE >80:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+747 maintext CODE >81:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+74F maintext CODE >82:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+754 maintext CODE >84:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+759 maintext CODE >85:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+762 maintext CODE >86:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+76B maintext CODE >87:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+773 maintext CODE >88:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+778 maintext CODE >90:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+77D maintext CODE >91:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+786 maintext CODE >92:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+78F maintext CODE >93:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+794 maintext CODE >95:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+799 maintext CODE >96:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7A2 maintext CODE >97:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7AB maintext CODE >98:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7B4 maintext CODE >99:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7B9 maintext CODE >101:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7BE maintext CODE >102:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7C7 maintext CODE >103:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7D0 maintext CODE >104:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7D9 maintext CODE >105:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7DE maintext CODE >114:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7E4 maintext CODE >115:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
+7E9 maintext CODE >116:C:\Users\HP\Documents\GitHub\Electronica-Digital-2\Mini_Proyecto_2\MPI2C_COM.X\mcu_16f887.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -178,6 +227,7 @@ __Hspace_4 4010 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 I2C_Master_Init@c 20 0 BANK0 1 cstackBANK0 dist/default/production\MPI2C_COM.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_Ax 2B 0 BANK0 1 bssBANK0 dist/default/production\MPI2C_COM.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _BRGH 4C2 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _CREN C4 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
@@ -186,38 +236,38 @@ _SPEN C7 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TRMT 4C1 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\HP\AppData\Local\Temp\sc88.o
-_main E48 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\HP\AppData\Local\Temp\sam0.o
+_main DE4 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-start 0 0 CODE 0 init C:\Users\HP\AppData\Local\Temp\sc88.o
+start 0 0 CODE 0 init C:\Users\HP\AppData\Local\Temp\sam0.o
 __size_of_main 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __size_of___lldiv 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-_UART_DATA_Ready D70 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
-_UART_DATA_Write D8C 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
-__end_of_Write_esp32 DE4 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sc88.o
-_Read_esp32 E10 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
+_UART_DATA_Ready B7E 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
+_UART_DATA_Write BD2 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
+__end_of_Write_esp32 C44 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\HP\AppData\Local\Temp\sam0.o
+_Read_esp32 C70 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of___lldiv FDE 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\HP\AppData\Local\Temp\sc88.o
-___stacklo 0 0 ABS 0 - C:\Users\HP\AppData\Local\Temp\sc88.o
-__end_of_Read_esp32 E48 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
+__end_of___lldiv DE4 0 CODE 0 text13 dist/default/production\MPI2C_COM.X.production.o
+___stackhi 0 0 ABS 0 - C:\Users\HP\AppData\Local\Temp\sam0.o
+___stacklo 0 0 ABS 0 - C:\Users\HP\AppData\Local\Temp\sam0.o
+__end_of_Read_esp32 CA8 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __size_of_UART_DATA_Ready 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __size_of_UART_DATA_Write 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 ___lldiv@counter 7D 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
 __size_of_UART_DATA_Read 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-start_initialization FDE 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
+start_initialization FE4 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 ___lldiv@dividend 74 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
 _SPBRGH 9A 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
@@ -228,7 +278,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TRISC6 43E 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TRISC7 43F 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __size_of_Write_esp32 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\HP\AppData\Local\Temp\sc88.o
+___int_sp 0 0 STACK 2 stack C:\Users\HP\AppData\Local\Temp\sam0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -242,7 +292,7 @@ __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
 __Lbank3 0 0 ABS 0 bank3 -
-__Lcinit FDE 0 CODE 0 cinit -
+__Lcinit FE4 0 CODE 0 cinit -
 __Lstack 0 0 STACK 2 stack -
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
@@ -267,65 +317,80 @@ __S0 800 0 ABS 0 - -
 __S1 7E 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
+_I2C_Master_Start B9A 0 CODE 0 text10 dist/default/production\MPI2C_COM.X.production.o
+_I2C_Master_Write BBE 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
 ___lldiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\HP\AppData\Local\Temp\sc88.o
-__pdataBANK0 29 0 BANK0 1 dataBANK0 dist/default/production\MPI2C_COM.X.production.o
+I2C_Master_Write@data 70 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\HP\AppData\Local\Temp\sam0.o
+__pdataBANK0 2D 0 BANK0 1 dataBANK0 dist/default/production\MPI2C_COM.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_Read_esp32 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-___lldiv F12 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
-__pmaintext E48 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
+__ptext10 B9A 0 CODE 0 text10 dist/default/production\MPI2C_COM.X.production.o
+__ptext11 BEA 0 CODE 0 text11 dist/default/production\MPI2C_COM.X.production.o
+__ptext12 CA8 0 CODE 0 text12 dist/default/production\MPI2C_COM.X.production.o
+__ptext13 D18 0 CODE 0 text13 dist/default/production\MPI2C_COM.X.production.o
+___lldiv D18 0 CODE 0 text13 dist/default/production\MPI2C_COM.X.production.o
+__pmaintext DE4 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
-_sensor 2A 0 BANK0 1 dataBANK0 dist/default/production\MPI2C_COM.X.production.o
+_sensor 2C 0 BANK0 1 bssBANK0 dist/default/production\MPI2C_COM.X.production.o
 UART_DATA_Write@data 70 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
-__end_of_I2C_Master_Init F12 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
+__end_of_I2C_Master_Init D18 0 CODE 0 text12 dist/default/production\MPI2C_COM.X.production.o
+__end_of_I2C_Master_Stop BBE 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
+__end_of_I2C_Master_Wait C04 0 CODE 0 text11 dist/default/production\MPI2C_COM.X.production.o
+__end_of_I2C_Master_Start BAC 0 CODE 0 text10 dist/default/production\MPI2C_COM.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
+__end_of_I2C_Master_Write BD2 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 _PIR1bits C 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __Lend_init 0 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__size_of_I2C_Master_Start 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
+__size_of_I2C_Master_Write 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 end_of_initialization FF8 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
-_Write_esp32 DC0 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
+_Write_esp32 C20 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
 __Hintentry 0 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 ?___lldiv 70 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
 __Hreset_vec 0 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-_UART_DATA_Read D7C 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
-__end_of_UART_Init E10 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
+_UART_DATA_Read B8A 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
+__end_of_UART_Init C70 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
 _SSPCON2bits 91 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __size_of_UART_Init 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-__ptext1 DA4 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
-__ptext2 DC0 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
-__ptext3 D8C 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
-__ptext4 DE4 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
-__ptext5 E10 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
-__ptext6 D70 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
-__ptext7 D7C 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
-__ptext8 EA2 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
-__ptext9 F12 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
+__ptext1 C04 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
+__ptext2 C20 0 CODE 0 text2 dist/default/production\MPI2C_COM.X.production.o
+__ptext3 BD2 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
+__ptext4 C44 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
+__ptext5 C70 0 CODE 0 text5 dist/default/production\MPI2C_COM.X.production.o
+__ptext6 B7E 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
+__ptext7 B8A 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
+__ptext8 BBE 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
+__ptext9 BAC 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_I2C_Master_Init EA2 0 CODE 0 text8 dist/default/production\MPI2C_COM.X.production.o
+_I2C_Master_Init CA8 0 CODE 0 text12 dist/default/production\MPI2C_COM.X.production.o
+_I2C_Master_Stop BAC 0 CODE 0 text9 dist/default/production\MPI2C_COM.X.production.o
+_I2C_Master_Wait BEA 0 CODE 0 text11 dist/default/production\MPI2C_COM.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_UART_Init DE4 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
+_UART_Init C44 0 CODE 0 text4 dist/default/production\MPI2C_COM.X.production.o
 __end_of__initialization FF8 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-__pidataBANK0 D6C 0 CODE 0 idataBANK0 dist/default/production\MPI2C_COM.X.production.o
+__pidataBANK0 B7C 0 CODE 0 idataBANK0 dist/default/production\MPI2C_COM.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
-__end_of_UART_DATA_Read D8C 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
+__end_of_UART_DATA_Read B9A 0 CODE 0 text7 dist/default/production\MPI2C_COM.X.production.o
 ___lldiv@quotient 79 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\MPI2C_COM.X.production.o
 _TXSTAbits 98 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _SSPCON2 91 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _SSPSTAT 94 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 __Hend_init 6 0 CODE 0 end_init -
-__end_of_main EA2 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
+__end_of_main FE4 0 CODE 0 maintext dist/default/production\MPI2C_COM.X.production.o
 _PORTC 7 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _RCREG 1A 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
@@ -333,16 +398,18 @@ _SPBRG 99 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TRISC 87 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
 _TXREG 19 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-__end_of_setup DC0 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
+__end_of_setup C20 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_setup DA4 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
+_setup C04 0 CODE 0 text1 dist/default/production\MPI2C_COM.X.production.o
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
-__initialization FDE 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
-__pbssBANK0 2B 0 BANK0 1 bssBANK0 dist/default/production\MPI2C_COM.X.production.o
+__initialization FE4 0 CODE 0 cinit dist/default/production\MPI2C_COM.X.production.o
+__pbssBANK0 29 0 BANK0 1 bssBANK0 dist/default/production\MPI2C_COM.X.production.o
 __size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
-__end_of_UART_DATA_Ready D7C 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
-__end_of_UART_DATA_Write DA4 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
+__size_of_I2C_Master_Stop 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
+__size_of_I2C_Master_Wait 0 0 ABS 0 - dist/default/production\MPI2C_COM.X.production.o
+__end_of_UART_DATA_Ready B8A 0 CODE 0 text6 dist/default/production\MPI2C_COM.X.production.o
+__end_of_UART_DATA_Write BEA 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -368,21 +435,25 @@ __end_of_UART_DATA_Write DA4 0 CODE 0 text3 dist/default/production\MPI2C_COM.X.
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cinit 0 7EF FDE 11 2
-text1 0 6D2 DA4 E 2
-text2 0 6E0 DC0 12 2
-text3 0 6C6 D8C C 2
-text4 0 6F2 DE4 16 2
-text5 0 708 E10 1C 2
-text6 0 6B8 D70 6 2
-text7 0 6BE D7C 8 2
-text8 0 751 EA2 38 2
-text9 0 789 F12 66 2
-maintext 0 724 E48 2D 2
+cinit 0 7F2 FE4 E 2
+text1 0 602 C04 E 2
+text2 0 610 C20 12 2
+text3 0 5E9 BD2 C 2
+text4 0 622 C44 16 2
+text5 0 638 C70 1C 2
+text6 0 5BF B7E 6 2
+text7 0 5C5 B8A 8 2
+text8 0 5DF BBE A 2
+text9 0 5D6 BAC 9 2
+text10 0 5CD B9A 9 2
+text11 0 5F5 BEA D 2
+text12 0 654 CA8 38 2
+text13 0 68C D18 66 2
+maintext 0 6F2 DE4 100 2
 cstackCOMMON 1 70 70 E 1
-cstackBANK0 1 20 20 C 1
+cstackBANK0 1 20 20 E 1
 reset_vec 0 0 0 3 2
-idataBANK0 0 6B6 D6C 2 2
+idataBANK0 0 5BE B7C 1 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

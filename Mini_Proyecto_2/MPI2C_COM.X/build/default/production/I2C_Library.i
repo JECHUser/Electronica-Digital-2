@@ -2630,7 +2630,6 @@ typedef uint16_t uintptr_t;
 void I2C_Master_Init(const unsigned long c);
 void I2C_Master_Wait();
 void I2C_Master_Start(void);
-void I2C_RepeatedStart(void);
 void I2C_Master_Stop();
 void I2C_Master_Write(unsigned data);
 unsigned short I2C_Master_Read(unsigned short a);
@@ -2646,22 +2645,19 @@ void I2C_Master_Init(const unsigned long c){
 
     SSPCON2 = 0b00000000;
 
+
     TRISCbits.TRISC3 = 1;
     TRISCbits.TRISC4 = 1;
 }
 
 void I2C_Master_Wait(){
+
     while((SSPSTAT & 0b00000100) || (SSPCON2 & 0b00011111)){};
 }
 
 void I2C_Master_Start(void){
     I2C_Master_Wait();
     SSPCON2bits.SEN = 1;
-}
-
-void I2C_RepeatedStart(void){
-    I2C_Master_Wait();
-    SSPCON2bits.RSEN = 1;
 }
 
 void I2C_Master_Stop(){

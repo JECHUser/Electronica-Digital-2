@@ -43,7 +43,8 @@
 //******************************************************************************
 
 char sensor;        // variable que almacena el valor del sensor 
-char address = 20;  // dirección del acelerometro
+char address = 0x68;  // dirección del acelerometro
+char Ax, Ay, Az;
 
 //******************************************************************************
 // Interrupciones
@@ -67,16 +68,52 @@ void main(void) {
     setup();                    // llamada de configuraciones generales
     I2C_Master_Init(100000);    // inicialización de I2C 100000
     UART_Init();                // inicialización de UART a 9600
+    
+	I2C_Master_Start();	
+    I2C_Master_Write((address * 2) + 0);
+	I2C_Master_Write(0x19);	
+	I2C_Master_Write(0x07);
+	I2C_Master_Stop();
+    
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x1A);     // CONFIG
+    I2C_Master_Write(0x00);
+    I2C_Master_Stop();
+    
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x3B);     // ACCEL_CONFIG
+    I2C_Master_Write(0x00);
+    I2C_Master_Stop();
+    
+    I2C_Master_Start();
+    I2C_Master_Write(0x1B);
+    I2C_Master_Write(0x18);
+    I2C_Master_Stop();
+    
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x6B);     // PWR_MGMT_1
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
+    
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 0);
+    I2C_Master_Write(0x38);
+    I2C_Master_Write(0x01);
+    I2C_Master_Stop();
 
     //**************************************************************************
     // Loop principal
     //**************************************************************************
 
     while (1) {
-        //sensor = Read_sensor();   // leer datos del sensor (comunicación I2C)
-        sensor = 69;
+        
+        //Read_sensor();
+        sensor = 5;
         Write_esp32();          // escribir el valor del sensor al ESP32
-        Read_esp32();           // leer el valor de las luces piloto de la ESP32
+        Read_esp32();           // leer el valor de las luces piloto de la ESP32 
     }
 }
 
@@ -109,13 +146,14 @@ void Write_esp32(void){
 
 char Read_sensor(void) {
     I2C_Master_Start();
-    I2C_Master_Write((address * 2) + 1);
-    sensor = I2C_Master_Read(1);
-    I2C_Master_Stop();
-    __delay_ms(100);
-    I2C_Master_Start();
     I2C_Master_Write((address * 2) + 0);
-    I2C_Master_Write(0x01);
+    I2C_Master_Write(0x3B);
     I2C_Master_Stop();
-    __delay_ms(100);
+    I2C_Master_Start();
+    I2C_Master_Write((address * 2) + 1);
+    Ax = I2C_Master_Read(0)<<8 | I2C_Master_Read(0);
+    //Ax = (I2C_Master_Read(0)<<8) | I2C_Master_Read(0);
+    //Ay = (I2C_Master_Read(0)<<8) | I2C_Master_Read(0);
+    //Az = (I2C_Master_Read(0)<<8) | I2C_Master_Read(0);
+    I2C_Master_Stop();
 }
