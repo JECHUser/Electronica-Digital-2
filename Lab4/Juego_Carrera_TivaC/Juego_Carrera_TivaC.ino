@@ -17,6 +17,8 @@ uint8_t PJ2 = 0;
 int PBSState = 0;
 int PB1State = 0;
 int PB2State = 0;
+int pressPB1 = 0;
+int pressPB2 = 0;
 
 void setup(){
   Serial.begin(9600);       // baudaje -> 9600
@@ -29,57 +31,68 @@ void setup(){
   pinMode(PBS, INPUT_PULLUP);
 }
 
+//----------------------------------------------------------------------------------------
+
 void loop(){
-  PB1State = digitalRead(PB1);
-  PB2State = digitalRead(PB2);
+  // lectura digital de pushbutton principal
   PBSState = digitalRead(PBS);
-  digitalWrite(LED1, LOW);
 
   if (PBSState == 0){
-    digitalWrite(LED1, HIGH);
+    // secuencia de semáforo
+    digitalWrite(LED1, HIGH); // rojo encendido - delay 1s entre para cada luz
     digitalWrite(LED2, LOW);
     digitalWrite(LED3, LOW);
     delay(1000);
-    digitalWrite(LED1, LOW);
+    digitalWrite(LED1, LOW);  // amarillo (azul) encendido
     digitalWrite(LED2, HIGH);
     digitalWrite(LED3, LOW);
     delay(1000);
-    digitalWrite(LED1, LOW);
+    digitalWrite(LED1, LOW);  // verde encendido
     digitalWrite(LED2, LOW);
     digitalWrite(LED3, HIGH);
     delay(1000);
-    digitalWrite(LED1, LOW);
+    digitalWrite(LED1, LOW);  // todos apagados
     digitalWrite(LED2, LOW);
     digitalWrite(LED3, LOW);
     }
-  
+  //----------------------------------------------------------------------------------------
+  // lectura digital de pushbutton SW1 
+  PB1State = digitalRead(PB1);
+
+  // se presionó el botón? (progra de antirebote)
   if(PB1State == 0){
-    digitalWrite(LED1, HIGH);
+    pressPB1 = 1;
+  }
+  if(PB1State == LOW && pressPB1 == 1){
     if (PJ1 == 0) {
       PJ1 = 1;
       }
-    PJ1 = PJ1<<1;
+    PJ1 = PJ1<<1;   // corrimiento de bits, para aumento en decadas
+    pressPB1 = 0;
     delay(200);
   }
-  Serial.print("PJ1: ");
-  Serial.println(PJ1, BIN);
-
+  //----------------------------------------------------------------------------------------
+  // lectura digital de pushbutton SW2
+  PB2State = digitalRead(PB2);
+  
+  // se presionó el botón? (progra de antirebote)
   if(PB2State == 0){
-    digitalWrite(LED1, HIGH);
+    pressPB2 = 1;
+  }
+  if(PB2State == LOW && pressPB2 == 1){
     if (PJ2 == 0) {
       PJ2 = 1;
       }
-    PJ2 = PJ2<<1;
-    GPIO Port B () = PJ2;
+    PJ2 = PJ2<<1;   // corrimiento de bits, para aumento en decadas
+    pressPB2 = 0;
     delay(200);
   }
-  Serial.print("PJ2: ");
-  Serial.println(PJ2, BIN);
-
+  //----------------------------------------------------------------------------------------
+  // se enciende bit final?
   if (PJ1 == 128){
-    digitalWrite(LED3, HIGH);
+    digitalWrite(LED3, HIGH);   // gana jugador 1
     }
   if (PJ2 == 128){
-    digitalWrite(LED2, HIGH);
+    digitalWrite(LED2, HIGH);   // gana jugador 2
     }
 }
