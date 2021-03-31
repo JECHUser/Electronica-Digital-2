@@ -1,0 +1,53 @@
+_____________________________________________________________________________________________
+
+Universidad del Valle de Guatemala
+Electrónica Digital 2
+Laboratorio 5
+Tarjeta SD
+
+Jonatan E. Chocón Gómez
+Carné: 18420
+_____________________________________________________________________________________________
+
+
+_____________________________________________________________________________________________
+
+PSEUDO CÓDIGO  
+_____________________________________________________________________________________________          
+
+_____________________________________________________________________________________________
+
+setup(){
+	Serial.begin(9600);
+	selección de módulo 0;
+	// Loop infinito para espera el monitor serial
+	// definir pin PA_3 como salida
+}
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+
+printDirectory(File dir, int numTabs){
+	Mientras (loop infinito)
+	establecer entry a dir.openNextFile();
+	for (uint8_t i=0; i<numTabs; i++)
+		Serial.print('\t'); // imprimimos tabulaciones 
+	Serial.print(entry.name()); // imprimimos el nombre del directorio
+	Si entry.isDirectory() es verdadero entonces
+		Serial.println("/");	// en caso de directorios no se muestran tamaños
+		printDirectory(entry, numTabs+1);
+	De lo contrario
+		// Imprimir posibles errores
+}
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+
+readArchive(){
+	Si Serial.available() es verdadero entonces
+		establecer name a Serial.readString();
+		establecer myFile a SD.open(name.c_str());
+		Mientras Myfile.available() sea verdadero
+			// lectura del archivo mientras se encuentre disponible
+			Serial.write(myFile.read())
+		myFile.close();	// cerramos archivo
+}
+_____________________________________________________________________________________________
