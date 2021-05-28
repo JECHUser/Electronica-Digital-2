@@ -60,10 +60,10 @@ void setup() {
 //************************************************************************************************
 void loop() {
   server.handleClient();
-  while(Serial2.available()){
-    dataIn = Serial2.read(); 
+  while(Serial2.available() > 0){
+    dataIn = Serial2.read();
   }
-  Serial.println(dataIn);
+  
 }
 //************************************************************************************************
 // Handler de Inicio página
@@ -79,6 +79,7 @@ String SendHTML(uint8_t occupied_spaces) {
   String ptr = "<!DOCTYPE html> <html>\n";
   ptr += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
   ptr += "<title>Parqueo-matic - Web Server</title>\n";
+  ptr += "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"0.1;URL=/init\"> </head>";
   ptr += "<style>\n";
   ptr += "body {background-color: black; font-family: sans-serif; }\n";
   ptr += "h1 {color: white; font-family: sans-serif; text-align:center; }\n";
@@ -100,37 +101,121 @@ String SendHTML(uint8_t occupied_spaces) {
   ptr += "<hr>\n";
   ptr += "<br>\n";
   ptr += "<h3>Estado de los parqueos</h3>\n";
-  ptr += "<a class=\"button button-on\" href=\"/init\">Refresh</a>\n";
   ptr += "<div class=\"boxes\">\n";
-
-  if (occupied_spaces == 49){
-    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
-  }
-  else{
+  if (occupied_spaces == 0){
     ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
-  }
-  
-  if (occupied_spaces == '1'){
-    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
-  }
-  else{
     ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
-  }
-  
-  if (occupied_spaces == 3){
-    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
-  }
-  else{
     ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
-  }
-  
-  if (occupied_spaces == 4){
-    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
-  }
-  else{
     ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 4</h1>\n";
   }
-  
+  else if (occupied_spaces == 1){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 3</h1>\n";
+  }
+  else if (occupied_spaces == 2){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 3</h1>\n";
+  }
+  else if (occupied_spaces == 3){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 2</h1>\n";
+  }
+  else if (occupied_spaces == 4){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 3</h1>\n";
+  }
+  else if (occupied_spaces == 5){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 2</h1>\n";
+  }
+  else if (occupied_spaces == 6){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 2</h1>\n";
+  }
+  else if (occupied_spaces == 7){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 1</h1>\n";
+  }
+  else if (occupied_spaces == 8){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 3</h1>\n";
+  }
+  else if (occupied_spaces == 9){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 2</h1>\n";
+  }
+  else if (occupied_spaces == 10){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 2</h1>\n";
+  }
+  else if (occupied_spaces == 11){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 1</h1>\n";
+  }
+  else if (occupied_spaces == 12){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 3</h1>\n";
+  }
+  else if (occupied_spaces == 13){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"greenbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 1</h1>\n";
+  }
+  else if (occupied_spaces == 14){
+    ptr += "<div class=\"greenbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 1</h1>\n";
+  }
+  else if (occupied_spaces == 15){
+    ptr += "<div class=\"redbox\">Parqueo 1</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 2</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 3</div>\n";
+    ptr += "<div class=\"redbox\">Parqueo 4</div>\n";
+    ptr += "<h1> PARQUEOS DISPONIBLES: 0</h1>\n";
+  }
+
+
   ptr += "</div>\n";
   ptr += "</body>\n";
   ptr += "</html>\n";
